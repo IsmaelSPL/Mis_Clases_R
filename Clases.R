@@ -745,4 +745,9 @@ plot(1:10, main= "Mi gráfico", xlab = "eje de abscisas",
      ylab = "eje de ordenadas", cex= 2, pch=19 ,col= "red")
 
 ###############################################################################
+#(Clase 9)
+
+
+
+
 
