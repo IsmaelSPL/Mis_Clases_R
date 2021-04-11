@@ -723,31 +723,212 @@ plot(1:10)
 #xlab: etiqueta en el eje de abscisa
 #ylab: etiqueta en el eje de ordenada
 x11()
-plot(1:10, main= "Mi gráfico", xlab = "eje de abscisas", 
-     ylab = "eje de ordenadas")
+plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
+     ylab = "Eje de ordenadas")
 
 #Cambiamos el tamaño de los puntos
 #1 es el valor predeterminado, mientras que 0.5 significa 50% más pequeño 
 #y 2 significa 100% más grande
 x11()
-plot(1:10, main= "Mi gráfico", xlab = "eje de abscisas", 
-     ylab = "eje de ordenadas", cex= 2)
+plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
+     ylab = "Eje de ordenadas", cex= 2)
 
 #Cambiamos la forma del punto
 #Use pch con un valor de 0 a 25, donde 1 es el predeterminado
 x11()
-plot(1:10, main= "Mi gráfico", xlab = "eje de abscisas", 
-     ylab = "eje de ordenadas", cex= 2, pch= 18)
+plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
+     ylab = "Eje de ordenadas", cex= 2, pch= 18)
 
 #Apariencia del gráfico
 x11()
-plot(1:10, main= "Mi gráfico", xlab = "eje de abscisas", 
-     ylab = "eje de ordenadas", cex= 2, pch=19 ,col= "red")
+plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
+     ylab = "Eje de ordenadas", cex= 2, pch=19 ,col= "red")
 
 ###############################################################################
-#(Clase 9)
+#(Clase 9) Gráfico de dispersión
+#Un gráfico de dispersión es un tipo de gráfico que se 
+#utiliza para mostrar la relación entre dos variables 
+#numéricas y traza un punto para cada observación
+
+#Creamos un data.frame del precio y consumo de pescado
+df_pescado<- data.frame(
+  precio= c(5,7,8,7,2,2,9,4,11,12,9,6,10),
+  consumo= c(99,86,87,88,111,103,87,94,78,77,85,86,80))
+
+x11()
+plot(df_pescado$consumo,df_pescado$precio,
+     main = "Gráfico de dispersión", 
+     xlab= "Consumo",
+     ylab= "Precio", 
+     cex= 2, pch= 19, col= "orange")
+
+#Insertamos un leyenda
+#usamos legend()
+##La leyenda se puede colocar como:
+#bottomright, bottomleft, bottom, topright, topleft, 
+#top, center, right, left.
+
+x11()
+plot(df_pescado$consumo,df_pescado$precio,
+     main = "Gráfico de dispersión", 
+     xlab= "Consumo",
+     ylab= "Precio", 
+     cex= 2, pch= 19, col= "orange")
+
+legend("topright", "Pescado", fill = "orange")
 
 
+#Combinamos dos gráficos de dispersión
+df_pescado<- data.frame(
+  precio= c(5,7,8,7,2,2,9,4,11,12,9,6,10),
+  consumo= c(99,86,87,88,111,103,87,94,78,77,85,86,80))
+
+df_pollo<- data.frame(
+  precio= c(2,2,8,1,15,8,12,9,7,3,11,4,7,14,12),
+  consumo= c(100,105,84,105,90,99,90,95,94,100,79,112,91,80,85))
+
+x11()
+plot(df_pescado$consumo,df_pescado$precio,
+     main = "Gráfico de dispersión", 
+     xlab= "Consumo",
+     ylab= "Precio", 
+     cex= 2, pch= 19, col= "orange")
+
+points(df_pollo$consumo,df_pollo$precio,
+       cex= 2, pch= 19, col= "dark green")
+
+legend("topright", c("Pescado", "Pollo"), fill= c("orange", "dark green"))
+
+###############################################################################
+#(Clase 10) Gráfico de linea
+
+#Colocamos type = "l" para que nos de un gráfico lineal
+x<- c(10,15,18,23,26)
+y<- c(9,11,15,20,22)
+
+x11()
+plot(x,y, main= "Mi gráfico lineal", xlab= "Eje de abscisas",
+     ylab = "Eje de ordenadas", type = "l")
+
+#Cambiamos el grosor de la linea
+#1 es el valor predeterminado, mientras que 0.5 significa 50% más pequeño 
+#y 2 significa 100% más grande
+x11()
+plot(x,y, main= "Mi gráfico lineal", xlab= "Eje de abscisas",
+     ylab = "Eje de ordenadas", type = "l", lwd=2)
+
+#Estilos de linea
+#Utilizamos lty con un valor de 0 a 6 para especificar el formato de línea.
+x11()
+plot(x,y, main= "Mi gráfico lineal", xlab= "Eje de abscisas",
+     ylab = "Eje de ordenadas", type = "l", lwd=2, lty=3)
+
+#Valores de parámetro disponibles para lty
+#0 quita la línea
+#1 muestra una línea continua
+#2 muestra una línea discontinua
+#3 muestra una línea de puntos
+#4 muestra una línea de "puntos discontinuos"
+#5 muestra una línea de "trazos largos"
+#6 muestra una línea de "dos guiones"
+
+#Graficamos los ingresos anuales
+grupo_df<- data.frame(
+  años = c(2016, 2017, 2018, 2019, 2020),
+  ingresos = c(1500, 12000,8500,14300,12500))
+
+x11()
+plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "Años", ylab= "Ingresos", type= "l", lwd= 2, lty= 5)
+
+#Color de linea
+x11()
+plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "Años", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
+     col="dark blue")
+
+#Insertamos un leyenda
+#usamos legend()
+##La leyenda se puede colocar como:
+#bottomright, bottomleft, bottom, topright, topleft, 
+#top, center, right, left.
+x11()
+plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "Años", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
+     col="dark blue")
+
+legend("bottomright", "Angela", fill = "dark blue")
+
+#Juntamos dos gráficos lineales
+grupo_df<- data.frame(
+  años = c(2016, 2017, 2018, 2019, 2020),
+  ingresos = c(1500, 12000,8500,14300,12500))
+
+grupo_df2<- data.frame(
+  años= c(2016, 2017, 2018, 2019, 2020),
+  ingresos= c(8300,4200,7500,10800,9700))
+
+x11()
+plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "Años", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
+     col="dark blue")
+lines(grupo_df2$años, grupo_df2$ingresos, type= "l", lwd= 2, lty= 6,
+      col= "dark red")
+
+legend("bottomright", c("Angela", "Victor"), 
+       fill = c("dark blue", "dark red"))
+###############################################################################
+#(Clase 11) Gráficos circulares
+
+df_gustos<- data.frame(
+  preferencia= c(0.32, 0.24,0.16,0.29),
+  cursos= c("Álgebra", "Trigonometría", "Geometría","Aritmética"),
+  colores= c("dark blue", "dark red", "orange", "purple"))
+
+x11()
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón")
+
+#Etiquetas y encabezados
+etiqueta1<- paste(df_gustos$preferencia)
+
+x11()
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
+    label= etiqueta1)
+
+etiqueta2<- paste(df_gustos$preferencia, "%", sep= " ")
+
+x11()
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
+    label= etiqueta2)
+
+#Apariencia
+x11()
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
+    label= etiqueta2,
+    col = df_gustos$colores)
+
+#Insertamos un leyenda
+#usamos legend()
+##La leyenda se puede colocar como:
+#bottomright, bottomleft, bottom, topright, topleft, 
+#top, center, right, left.
+x11()
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
+    label= etiqueta2,
+    col = df_gustos$colores)
+
+legend("topleft", df_gustos$cursos, fill = df_gustos$colores)
+
+#Tamaño de leyenda
+x11()
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
+    label= etiqueta2,
+    col = df_gustos$colores)
+
+legend("topleft", df_gustos$cursos, fill = df_gustos$colores, cex= 0.85)
+
+###############################################################################
+#(Clase 12) Gráfico de barras
 
 
 
