@@ -212,6 +212,13 @@ numeros[2]<- 23
 frutas[1]<- "mandarina"
 vec_logico[3]<- F
 
+#Insertamos los nombres de las frutas en el vector numeros
+numeros<- c(20,5,8,10,15,7)
+frutas<- c("platano", "manzana", "naranja", "mango", "limon", "fresa")
+
+names(numeros)<- c(frutas)
+numeros
+
 #Jerarquía (character > numeric > logical)
 error1 <- c("Angela", "Carlos", 22, "Contabilidad",FALSE,TRUE)
 class(error1)
@@ -368,7 +375,7 @@ length(numatrix)
 length(animalmatrix)
 
 #Para agregar filas adicionales usamos rbind()
-#Ejemplo 2
+#Ejemplo 1
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
 animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
@@ -383,7 +390,7 @@ animalmatrix2<- rbind(animalmatrix, c("coala", "tigre","perro"))
 
 
 #Usamos cbind() para agregar columnas adicionales en la matriz
-#Ejemplo 1
+#Ejemplo 2
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
 animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
@@ -735,6 +742,8 @@ plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas",
 
 #Cambiamos la forma del punto
 #Use pch con un valor de 0 a 25, donde 1 es el predeterminado
+help("points")
+
 x11()
 plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas", cex= 2, pch= 18)
@@ -743,6 +752,9 @@ plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas",
 x11()
 plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas", cex= 2, pch=19 ,col= "red")
+
+#Vemos la lista de todos los colores
+colors()
 
 ###############################################################################
 #(Clase 9) Gráfico de dispersión
@@ -877,6 +889,29 @@ lines(grupo_df2$años, grupo_df2$ingresos, type= "l", lwd= 2, lty= 6,
 
 legend("bottomright", c("Angela", "Victor"), 
        fill = c("dark blue", "dark red"))
+
+#Gráfico de lineas siguiente la secuencia de puntos
+x11()
+plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "Años", ylab= "Ingresos", type= "o", lwd= 2, lty= 5,
+     col="dark blue")
+lines(grupo_df2$años, grupo_df2$ingresos, type= "o", lwd= 2, lty= 6,
+      col= "dark red")
+
+legend("bottomright", c("Angela", "Victor"), 
+       fill = c("dark blue", "dark red"))
+
+#Cambios el tipo de puntos y aumentamos su tamaño
+x11()
+plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "Años", ylab= "Ingresos", type= "o", lwd= 2, lty= 5,
+     col="dark blue", pch= 19, cex= 2)
+lines(grupo_df2$años, grupo_df2$ingresos, type= "o", lwd= 2, lty= 6,
+      col= "dark red", pch= 19, cex= 2)
+
+legend("bottomright", c("Angela", "Victor"), 
+       fill = c("dark blue", "dark red"))
+
 ###############################################################################
 #(Clase 11) Gráficos circulares
 
@@ -929,6 +964,183 @@ legend("topleft", df_gustos$cursos, fill = df_gustos$colores, cex= 0.85)
 
 ###############################################################################
 #(Clase 12) Gráfico de barras
+
+df_ingresos<- data.frame(
+  meses= c("En", "Fe", "Mar", "Abr", "May", "Jun",
+            "Jul", "Ago", "Sep", "Oct", "Nov",
+            "Dic"),
+  ingresos= c(1500,2500,2000,3500,7000,4000,8500,6000,10000,5000,7500,
+              11000))
+
+#Usamaos barplot para graficar
+#Usamos namex.arg para definir los nombres de cada 
+#observación en el eje x
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses)
+
+#Cambiamos el tamaño de los nombres
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses, cex.names = 0.9)
+
+#Titulo y ejes
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", xlab= "Meses", ylab= "Ingresos",
+        cex.names = 0.9)
+
+#Apariencia
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", xlab= "Meses", ylab= "Ingresos",
+        cex.names = 0.9, col = "tomato3")
+
+#Densidad / Textura de barra
+#Para cambiar la textura de la barra usamos density
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", xlab= "Meses", ylab= "Ingresos",
+        cex.names = 0.9, col= "tomato3", density= 25)
+
+#Utilizamos width para el ancho de la barra
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", xlab= "Meses", ylab= "Ingresos",
+        cex.names = 0.9, col= "tomato3", density= 25,
+        width= c(1,2,3,4,5,6,7,8,9,10,11,12))
+
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", xlab= "Meses", ylab= "Ingresos",
+        cex.names = 0.9, col= "tomato3", density= 25,
+        width= c(4,4,4,4,4,4,4,4,4,4,4,4))
+
+#Barras horizontales
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
+        cex.names = 0.8, col= "tomato3", density= 25,
+        width= c(4,4,4,4,4,4,4,4,4,4,4,4),
+        horiz= TRUE)
+
+#Modificamos los límites del eje x
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
+        cex.names = 0.8, col= "tomato3", density= 25,
+        width= c(4,4,4,4,4,4,4,4,4,4,4,4),
+        horiz= TRUE, xlim = c(0,14000))
+
+#Insertamos un leyenda
+#usamos legend()
+##La leyenda se puede colocar como:
+#bottomright, bottomleft, bottom, topright, topleft, 
+#top, center, right, left.
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
+        cex.names = 0.8, col= "tomato3", density= 25,
+        width= c(4,4,4,4,4,4,4,4,4,4,4,4),
+        horiz= TRUE, xlim = c(0,14000))
+
+legend("bottomright", "Ingresos de Pamela", fill = "tomato3")
+
+#Otra forma de insertar leyenda
+meses_table<- table(df_ingresos$meses)
+colores<- c("blue", "red", "yellow", "orange", "gray", "green", 
+            "tomato3", "dark red", "violetred", "turquoise", "pink2",
+            "honeydew")
+
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
+        cex.names = 0.8, col= colores,
+        width= c(4,4,4,4,4,4,4,4,4,4,4,4),
+        horiz= TRUE, xlim = c(0,14000),
+        legend= rownames(meses_table))
+
+#Cambiamos la orientación de los caracteres de los ejes con last
+#0: predeterminado
+#1: pone horizontal el eje de ordenadas
+#2: pone horizontal el eje de ordenadas y vertical abscisas
+#3: pone todos los ejes verticalmente
+x11()
+barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
+        cex.names = 0.8, col= colores,
+        width= c(4,4,4,4,4,4,4,4,4,4,4,4),
+        horiz= TRUE, xlim = c(0,14000),
+        legend= rownames(meses_table),
+        las= 1)
+
+###############################################################################
+#(Clase 13) Gráfico de barras apiladas y agrupadas
+df_fuma<- data.frame(
+  genero= rep(c("Femenino", "Masculino", "Masculino", "Femenino",
+                "Masculino", "Femenino", "Masculino", "Femenino"),
+              times= c(2,3,8,7,9,5,4,6)),
+  fuma= rep(c("Si", "No", "Si", "Si", "Si", "No", "Si", "No"), 
+            times= c(7,3,5,9,4,6,2,8)))
+
+fuma_table<- table(df_fuma$genero, df_fuma$fuma)
+
+x11()
+barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
+        xlab= "Fuman", ylab = "Cantidad",
+        col= c("dark red", "dark blue"))
+
+#Modificamos el eje de ordenadas
+x11()
+barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
+        xlab= "Fuman", ylab = "Cantidad",
+        col= c("dark red", "dark blue"), ylim= c(0,35))
+
+#Insertamos leyenda
+x11()
+barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
+        xlab= "Fuman", ylab = "Cantidad",
+        col= c("dark red", "dark blue"), ylim= c(0,35),
+        legend= rownames(fuma_table))
+
+#Otra forma de insertar leyenda
+#usamos legend()
+##La leyenda se puede colocar como:
+#bottomright, bottomleft, bottom, topright, topleft, 
+#top, center, right, left.
+x11()
+barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
+        xlab= "Fuman", ylab = "Cantidad",
+        col= c("dark red", "dark blue"), ylim= c(0,35))
+
+legend("top", rownames(fuma_table), fill = c("dark red", "dark blue"))
+
+#Diagrama de barras agrupadas 
+x11()
+barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
+        xlab= "Fuman", ylab = "Cantidad",
+        col= c("dark red", "dark blue"), ylim= c(0,35),
+        legend= rownames(fuma_table),
+        beside= TRUE)
+
+#Combinamos gráficos
+x11()
+par(mfrow= c(1,2))
+
+barplot(fuma_table, main= "Grafico de barras apiladas",
+        xlab= "Fuman", ylab = "Cantidad",
+        col= c("dark red", "dark blue"), ylim= c(0,35),
+        legend= rownames(fuma_table))
+
+barplot(fuma_table, main= "Grafico de barras agrupadas",
+        xlab= "Fuman", ylab = "Cantidad",
+        col= c("dark red", "dark blue"), ylim= c(0,35),
+        legend= rownames(fuma_table),
+        beside= TRUE)
+
+###############################################################################
+#(Clase 14) 
+
+
+
 
 
 
