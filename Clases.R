@@ -9,6 +9,10 @@ print("Hola mundo")
 help(summary)
 mean() #Sombreas + FI
 
+#Instalación de paquete y usarlo
+install.packages("car")
+library(car)
+
 #Para saber donde está el directorio de trabajo
 getwd()
 
