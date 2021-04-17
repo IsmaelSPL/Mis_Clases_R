@@ -9,7 +9,7 @@ print("Hola mundo")
 help(summary)
 mean() #Sombreas + FI
 
-#Instalación de paquete y usarlo
+#Instalación de paquete y activamos el paquete
 install.packages("car")
 library(car)
 
