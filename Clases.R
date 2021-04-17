@@ -1,4 +1,5 @@
-#(Clase 1) Comandos básicos, Asignación de variables, tipo de datos y operaciones
+#(Clase 1) Comandos básicos, Asignación de variables, 
+#tipo de datos y operaciones en Rstudio
 
 #Print
 print("Hola mundo")
@@ -119,7 +120,7 @@ print(c)
 c
 
 ###############################################################################
-#(Clase 2) Vectores
+#(Clase 2) Vectores en Rstudio
 
 #Vectores numeric
 numeros<- c(20,5,8)
@@ -241,9 +242,8 @@ vec2<- c(5,10,3,2,10,15)
 #R agarrará los valores del inicios hasta completar la longitud del otro vector
 vec3<- vec1 + vec2
 
-
 ###############################################################################
-#(Clase 3) Listas
+#(Clase 3) Listas en Rstudio
 
 #Una lista en R puede contener muchos tipos de datos diferentes
 milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
@@ -312,6 +312,8 @@ append(milist2[[1]], "Juan")
 append(milist3, 3)
 append(milist3[[2]], 3)
 
+milist<- append(milist, "Pamela")
+
 #Eliminar elementos de la lista
 milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
 milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
@@ -327,7 +329,7 @@ list2<- list(21,23,26)
 list3<- c(list1, list2)
 
 ###############################################################################
-#(Clase 4) Matrices
+#(Clase 4) Matrices en Rstudio
 
 #Matriz numeric
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
@@ -469,7 +471,7 @@ numatrix / numatrix2
 5*numatrix
 
 ###############################################################################
-#(Clase 5) Factores 
+#(Clase 5) Factores en Rstudio
 
 #Factores se utilizan para categorizar los datos. Ejemplos:
 #Sexo: masculino/femenino
@@ -543,7 +545,7 @@ diasclass_factor<- factor(clases_factor, levels= dias_factor)
 table(diasclass_factor)
 
 ###############################################################################
-#(Clase 6) Data.Frames
+#(Clase 6) Data.Frames en Rstudio
 
 #Son datos que se muestran en formato de tabla
 #Pueden tener diferentes tipos de datos en su interior. 
@@ -678,7 +680,7 @@ str(grupo_df)
 
 
 ###############################################################################
-#(Clase 7) Subconjunto de un data.frame
+#(Clase 7) Subconjunto de un data.frame en Rstudio
 grupo_df<- data.frame(
   trabajadores = c("Angela", "David", "Melanie", "Hector","Emma", "Daniel"),
   edades = c(22,23,24,26,25,27),
@@ -699,7 +701,7 @@ mujeres_ed_ing<- subset(grupo_df, genero == "Femenino" & ingresos>5000 &
                           edades>24)
 
 ###############################################################################
-#(Clase 8) Introducción a los gráficos
+#(Clase 8) Introducción a los gráficos en Rstudio
 
 #Dibujamos un punto en el diagrama, en la posición (1) y 
 #la posición (3)
@@ -757,7 +759,8 @@ plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas",
 colors()
 
 ###############################################################################
-#(Clase 9) Gráfico de dispersión
+#(Clase 9) Gráfico de dispersión en Rstudio
+
 #Un gráfico de dispersión es un tipo de gráfico que se 
 #utiliza para mostrar la relación entre dos variables 
 #numéricas y traza un punto para cada observación
@@ -812,7 +815,7 @@ points(df_pollo$consumo,df_pollo$precio,
 legend("topright", c("Pescado", "Pollo"), fill= c("orange", "dark green"))
 
 ###############################################################################
-#(Clase 10) Gráfico de linea
+#(Clase 10) Gráfico de linea en Rstudio
 
 #Colocamos type = "l" para que nos de un gráfico lineal
 x<- c(10,15,18,23,26)
@@ -913,7 +916,7 @@ legend("bottomright", c("Angela", "Victor"),
        fill = c("dark blue", "dark red"))
 
 ###############################################################################
-#(Clase 11) Gráficos circulares
+#(Clase 11) Gráficos circulares en Rstudio
 
 df_gustos<- data.frame(
   preferencia= c(0.32, 0.24,0.16,0.29),
@@ -963,7 +966,7 @@ pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
 legend("topleft", df_gustos$cursos, fill = df_gustos$colores, cex= 0.85)
 
 ###############################################################################
-#(Clase 12) Gráfico de barras
+#(Clase 12) Gráfico de barras en Rstudio
 
 df_ingresos<- data.frame(
   meses= c("En", "Fe", "Mar", "Abr", "May", "Jun",
@@ -1073,7 +1076,7 @@ barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
         las= 1)
 
 ###############################################################################
-#(Clase 13) Gráfico de barras apiladas y agrupadas
+#(Clase 13) Gráfico de barras apiladas y agrupadas en Rstudio
 df_fuma<- data.frame(
   genero= rep(c("Femenino", "Masculino", "Masculino", "Femenino",
                 "Masculino", "Femenino", "Masculino", "Femenino"),
@@ -1122,6 +1125,8 @@ barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
         beside= TRUE)
 
 #Combinamos gráficos
+#Dividimos la gráfica en una fila y dos columnas.
+#Normalmente está como mfrow= c(1,1)
 x11()
 par(mfrow= c(1,2))
 
@@ -1137,10 +1142,701 @@ barplot(fuma_table, main= "Grafico de barras agrupadas",
         beside= TRUE)
 
 ###############################################################################
-#(Clase 14) 
+#(Clase 14) Máximo, mínimo, desviación estándar, varianza,
+#media, mediana, percentil en Rstudio
+
+#Hay un conjunto de datos incorporado en R llamado 
+#mtcars (prueba de carrera de automóviles de Motor Tred)
+
+#Información sobre le conjunto de datos
+help(mtcars)
+
+#mpg	  Miles/(US) gallon
+#cyl	  Number of cylinders
+#disp	  Displacement (cu.in.)
+#hp	    Gross horsepower
+#drat	  Rear axle ratio
+#wt	    Weight (1000 lbs)
+#qsec	  1/4 mile time
+#vs	    Engine (0 = V-shaped, 1 = straight)
+#am	    Transmission (0 = automatic, 1 = manual)
+#gear	  Number of forward gears
+#carb	  Number of carburetors
+
+#Obtenemos la información y lo guardamos en la variable Data_Cars 
+Data_Cars<- mtcars
+
+#Utilizamos la función la dim() para encontrar las dimensiones 
+#del data set y la función names() para ver 
+#los nombres de las variables:
+dim(Data_Cars)
+names(Data_Cars)
+
+#Usamos la función rownames() para obtener el nombre de cada fila
+#que son los nombres de los automóviles
+rownames(Data_Cars)
+
+#Acceso a la data
+Data_Cars[2]
+Data_Cars[,2]
+Data_Cars[2,]
+Data_Cars[c(1,2)]
+
+#Usamos sort() para ordenar las variables
+Data_Cars$cyl
+sort(Data_Cars$cyl)
+
+#Usamos summary() para obtener un resumen estadístico de los datos
+summary(Data_Cars)
+
+# Máximo y mínimo de la variable hp
+Data_Cars["hp"]
+Data_Cars$hp
+max(Data_Cars$hp)
+min(Data_Cars$hp)
+
+#Usamos las funciones which.max() y 
+#which.min() para encontrar la posición del índice del valor 
+#máximo y mínimo en la tabla:
+which.max(Data_Cars$hp)
+which.min(Data_Cars$hp)
+
+#Combinamos las funciones which.max() y which.min() con la función
+#rownames() para obtener el nombre del automóvil que tiene la
+#máxima y mínima potencia
+rownames(Data_Cars)[which.max(Data_Cars$hp)]
+rownames(Data_Cars)[which.min(Data_Cars$hp)]
+
+#Media de la variable wt
+mean(Data_Cars$mpg)
+
+#Mediana de la variable wt
+median(Data_Cars$mpg)
+
+#Rango
+sort(Data_Cars$mpg)
+range(Data_Cars$mpg)
+
+#Desviación estándar
+sd(Data_Cars$wt)
+
+#Varianza
+var(Data_Cars$wt)
+
+#Percentil
+#El percentil es una medida de posición usada en estadística 
+#que indica, una vez ordenados los datos de menor a mayor, 
+#el valor de la variable por debajo del cual se encuentra 
+#un porcentaje dado de observaciones en un grupo
+
+#¿Cuál es el precentil 75 de la variable wt?, 
+sort(Data_Cars$wt)
+quantile(Data_Cars$wt, c(0.75))
+#Es decir, el 75% de automóviles que pesan 3.61 o menos 
+
+#Si ejecuta quantile() sin especificar el c(), obtendrá 
+#los percentiles 0% 25% 50% 75% 100%
+summary(Data_Cars$wt)
+quantile(Data_Cars$wt)
+
+#Los cuartiles son datos divididos en cuatro partes, cuando se ordenan 
+#en orden ascendente:
+
+#El valor del primer cuartil corta el primer 25% de los datos.
+#El valor del segundo cuartil corta el primer 50% de los datos.
+#El valor del tercer cuartil corta el primer 75% de los datos.
+#El valor del cuarto cuartil corta el 100% de los datos.
+
+###############################################################################
+#(Clase 15) Gráfico histograma en Rstudio
+
+#Mostrará la frecuencia con la que se presenta los datos seleccionados.
+Data_Cars<- mtcars
+sort(Data_Cars$hp)
+
+x11()
+hist(Data_Cars$hp, main = "Histograma", xlab= "Caballos de fuerza",
+     ylab= "Frecuencia")
+
+#Apariencia
+x11()
+hist(Data_Cars$hp, main = "Histograma", xlab= "Caballos de fuerza",
+     ylab= "Frecuencia", col= "plum4")
+
+#Cambiamos el limite del eje de ordenadas
+x11()
+hist(Data_Cars$hp, main = "Histograma", xlab= "Caballos de fuerza",
+     ylab= "Frecuencia", col= "plum4", ylim= c(0,12))
+
+#Histograma de densidad
+x11()
+hist(Data_Cars$hp, main = "Histograma de densidad", xlab= "Caballos de fuerza",
+     ylab= "Densidad", col= "plum4", ylim= c(0,0.01),
+     prob= T)
+
+#Si queremos cambiar el número de barras usamos breaks
+x11()
+par(mfrow= c(1,3))
+
+hist(Data_Cars$hp, main = "Histograma de densidad", xlab= "Caballos de fuerza",
+     ylab= "Densidad", col= "plum4", ylim= c(0,0.01),
+     prob= T)
+
+hist(Data_Cars$hp, main = "Histograma de densidad", xlab= "Caballos de fuerza",
+     ylab= "Densidad", col= "skyblue", ylim= c(0,0.01),
+     prob= T, breaks= 2)
+
+hist(Data_Cars$hp, main = "Histograma de densidad", xlab= "Caballos de fuerza",
+     ylab= "Densidad", col= "orange", ylim= c(0,0.01),
+     prob= T, breaks= 40)
+
+#rnorm (r significa random (aleatorio), norm significa normal)
+#rnorm(n, mean, sd) donde n es el número de valores a obtener
+x <- rnorm(1000, mean= 0, sd= 2)    
+y <- rnorm(500, mean= 0, sd= 2)
+
+x11()
+par(mfrow= c(1,2))
+hist(x, main = "Primer histograma", ylab = "Frecuencia", col= "tomato2")
+hist(y, main= "Segundo histograma", ylab= "Frecuencia", col= c("skyblue"))
+
+#Histograma con dos variables
+#add= TRUE nos permitirá unir un histograma con otro
+x11()
+hist(x, main = "Histograma con dos variables", ylab = "Frecuencia", 
+     col= "tomato2")
+hist(y, add = TRUE, col= c("skyblue"))
+
+#Juntando los tres gráficos para visualizarlos
+x11()
+par(mfrow= c(1,3))
+hist(x, main = "Primer histograma", ylab = "Frecuencia", col= "tomato2")
+hist(y, main= "Segundo histograma", ylab= "Frecuencia", col= c("skyblue"))
+
+hist(x, main = "Histograma con dos variables", ylab = "Frecuencia", 
+     col= "tomato2")
+hist(y, add = TRUE, col= c("skyblue"))
+
+###############################################################################
+#(Clase 16) if y else en Rstudio
+
+#Condición if
+a<- 33
+b<- 200
+
+if (b>a) {
+  print("b es mayor que a")
+}
+
+#Condición else if
+#else if: es la forma en que R dice 
+#"si las condiciones anteriores no eran verdaderas, 
+#pruebe esta condición"
+
+a<- 120
+b<- 120
+
+if (b>a) {
+  print("b es mayor que a")
+} else if (a==b) {
+  print("a y b son iguales")
+}
+
+#else: captura cualquier cosa que no sea capturada por las 
+#condiciones anteriores:
+a<- 150
+b<- 75
+
+if (b>a) {
+  print("b es mayor que a")
+} else if (a==b) {
+  print("a es igual que b")
+} else {
+  print("a es mayor que b")
+}
+
+#También podemos usar else sin else if
+a<- 90
+b<- 26
+
+if (b>a) {
+  print("b es mayor que a")
+} else {
+  print("b no es mayor que a")
+}
+
+#Declaraciones de if anidadas
+edad<- 15
+
+if (edad>18) {
+  print("Tu edad está por encima de los 18 años")
+  if (edad>20){
+    print("y también está por encima de los 20 años")
+  } else {
+    print("pero no por encima de los 20")
+  }
+} else {
+  print("No eres mayor de edad, tu tines:")
+  paste(edad, "años")
+}
+
+#and
+#&: se usa para combinar declaraciones condicionales
+#Ejemplo 1
+a<- 200
+b<- 150
+c<- 500
+
+if (a>b & c>a) {
+  print("Ambas condiciones son verdaderas")
+}
+
+#Ejemplo 2
+desc_tarje<- 0.4
+desc_efec<- 0.2
+monto<- 160
+metodo_pago<- "tarjeta"
+
+if (monto>150 & metodo_pago== "tarjeta") {
+  paste("El total será de",monto - monto*desc_tarje, "soles")
+} else if (monto>150 & metodo_pago== "efectivo") {
+  paste("El total será de", monto - monto*desc_efec, "soles")
+} else{
+  paste("El total será de", monto, "soles")
+}
+
+#O
+#Ejemplo 1
+#|: se usa para combinar declaraciones condicionales:
+a<- 180
+b<- 150
+c<- 250
+
+if (a>b | a>c) {
+  print("Al menos una de las condiciones es verdadera")
+}
+
+#Ejemplo 2
+precioA<- 10
+precioB<- 5
+A<- 49
+B<- 80
+
+if(A>=50 | B>40) {
+  paste("Tendrá un descuento", (A*precioA + B*precioB)*0.2, "soles")
+} else if (A<50 | B<=40) {
+  print("No tendrán descuento")
+}
 
 
+###############################################################################
+#(Clase 17) Funciones en Rstudio
+
+mi_funcion<- function() {
+  print("Mi primera función")
+}
+
+#Llamar a una función
+#Use el nombre de la función seguido de paréntesis.
+mi_funcion() 
+
+#Argumentos
+#La información se puede pasar a funciones como argumentos,
+#los argumentos se especifican después del nombre de la 
+#función, entre paréntesis. Puede agregar tantos argumentos
+#como desee, solo sepárelos con una coma.
+#El siguiente ejemplo tiene una función con argumento 
+#(fnombre). Cuando se llama a la función, pasamos un nombre,
+#que se usa dentro de la función para imprimir el 
+#nombre completo
+#Ejemplo 1
+mi_funcion<- function(elemento) {
+  print(elemento)
+}
+
+mi_funcion("Ismael")
+mi_funcion(15)
+mi_funcion(20*5)
+
+#Ejemplo 2
+edad_funcion<- function(edad, peso) {
+  paste(edad, "años")
+}
+
+edad_funcion(24)
+edad_funcion("Yo tengo 24")
+
+#Si su función espera 2 argumentos, debe llamar 
+#a la función con 2 argumentos.
+mi_funcion<- function(edad, hobby) {
+  paste(edad, hobby)
+}
+
+mi_funcion(20, "años y mi hobby es tocar guitarra")
+
+#Valor de parámetro predeterminado 
+mi_funcion<- function(pais = "Perú"){
+  paste("Yo soy de", pais)
+}
+
+mi_funcion()
+mi_funcion("Colombia")
+mi_funcion(23)
+
+#Valores devueltos
+#usamos la función return()
+mi_funcion<- function(x) {
+  return(5*x)
+}
+
+mi_funcion(10)
+print(mi_funcion(3))
+
+#Funciones anidadas
+#Ejemplo 1
+fcosto<- function(precio, cantidad) {
+  costo<- precio*cantidad
+  return(costo)
+}
+
+fcosto(4,9)
+fcosto(fcosto(2,2), fcosto(3,3))
+
+#Ejemplo 2
+fcosto1<- function(precio) {
+  fcosto2<- function(cantidad) {
+    costo<- precio*cantidad
+    return(costo)
+  }
+  return(fcosto2)
+}
+
+costo<- fcosto1(4)
+costo(9)
+###############################################################################
+#(Clase 18) Variables Globales, redLines en Rstudio
+
+#Las variables globales que se crean fuera de una función se conocen
+#como variables globales
+#todo el mundo puede utilizar las variables globales, 
+#tanto dentro como fuera de las funciones.
+
+#Ejemplo 1
+Global1<- "Hola"
+
+mi_funcion<- function() {
+  paste(Global1, "mundo")
+}
+
+mi_funcion()
+
+#Ejemplo 2
+#Si Global2 se usa como el nombre de un objeto dentro de la función, 
+#el valor de Global2 en el entorno global  no cambia.
+Global2<- 3500
+
+mi_funcion<- function() {
+  Global2= 9500
+  paste("Mi ingreso mensual es", Global2)
+}
+
+mi_funcion()
+Global2
+
+#Si usa el operador de asignación <<- la variable pertenece
+#al ámbito global
+mi_funcion<- function() {
+  Global3<<- 2200
+  paste("Mi gasto mensual es", Global3)
+}
+
+mi_funcion()
+Global3
+
+#Además, use el operador de asignación global <<- si desea 
+#cambiar una variable global dentro de una función
+edad<- 20
+
+mi_funcion<- function() {
+  edad<<- 25
+  paste("Yo tengo", edad, "años")
+}
+
+mi_funcion()
+edad
+
+#redLines
+#Ejemplo 1
+pregunta<- function() {
+  cat("Introduzca su edad: ")
+  edad<- readLines(n= 3) 
+  paste("Yo tengo", edad, "años")
+}
+
+pregunta()
+
+#Ejemplo 2
+pregunta<- function() {
+  cat("Introduzca su edad: ")
+  edad<- readLines(n= 1) 
+  paste("Yo tengo", edad, "años")
+}
+
+#Condicionales
+pA<- 20
+pB<- 25
+pC<- 28
+
+pregunta<- function() {
+  cat("Introduzca el número de hamburguesas que comprará:")
+  cantidad<- readLines(n=1)
+  cantidad<- as.numeric(cantidad)
+  cat("Indicar si pagará con efectivo con un si, caso contrario colocar no:")
+  pago<- readLines(n= 1)
+  
+  if (pago == "si"){
+    cat("Indicar que hamburguesa desea comprar: A, B, C")
+    hamburguesa<- readLines(n=1)
+    
+    if (hamburguesa == "A") {
+      costo<- pA*cantidad
+      print(costo)
+      
+    }else if (hamburguesa == "B") {
+      costo<- pA*cantidad
+      print(costo)
+      
+    }else if (hamburguesa == "C") {
+      costo<- pC*cantidad
+      print(costo)
+      
+    }else {
+      print("Hubo un problema, por favor intente de nuevo")
+    }
+    
+  } else if (pago == "no") {
+    cat("Indicar que hamburguesa desea comprar: A, B, C")
+    hamburguesa<- readLines(n=1)
+    
+    if (hamburguesa == "A") {
+      costo<- (pA - pA*0.05)*cantidad
+      print(costo)
+      
+    } else if (hamburguesa == "B") {
+      costo<- (pB - pB*0.05)*cantidad
+      print(costo)
+      
+    }else if (hamburguesa == "c"){
+      costo<- (pC - pC*0.05)*cantidad
+      print(costo)
+      
+    }else {
+      print("Hubo un problema, por favor intente de nuevo")
+    }
+    
+  }else {
+    print("Hubo un problema, por favor intente de nuevo")
+  } 
+
+}
+
+pregunta()
+
+###############################################################################
+#(Clase 19) Bucles while y for 
+
+#Los blucles pueden ejecutar un bloque de código siempre que se
+#alcance una condición específica 
+
+#while: bucle que permite ejecutar un conjunto de declaraciones
+#Siempre que una condición sea Verdadera
+#Ejemplo 1
+#No se ejecutará porque no es verdadera la condición
+i<- 1
+
+while (i>10) {
+  print(i)
+  i<- i + 1
+}
+
+#Ejemplo 2
+i<- 1
+
+while (i<10) {
+  print(i)
+  i<- i + 1
+}
+
+print(i)
+
+#break: podemos detener el ciclo 
+i<- 1
+
+while (i<10) {
+  print(i)
+  i<- i+1
+  
+  if (i==4) {
+    print(i)
+    break
+  }
+}
+
+#next: podemos omitir una iteración sin terminar el ciclo
+i<- 0
+
+while (i<10) {
+  i<- i + 1
+  
+  if (i==4) {
+    next
+  }
+  
+  print(i)
+}
+
+#Funciones con bucle while
+milist_m3<- list()
+milist_no3<- list()
+
+pregunta<- function(){
+  cat("Introduzca el número inicial")
+  inicio<- readLines(n= 1)
+  inicio<- as.numeric(inicio)
+  cat("Introduzca el número final")
+  final<- readLines(n=1)
+  final<- as.numeric(final)
+  
+  while (inicio <= final) {
+    
+    if  ((inicio%%3) != 0) {
+      cat(inicio, "no es multiplo de 3\n")
+      milist_no3<<- append(milist_no3, inicio)
+    } else {
+      cat(inicio, "es multiplo de 3\n")
+      milist_m3<<- append(milist_m3, inicio)
+    }
+    
+    inicio<- inicio + 1
+  }
+}
+
+pregunta()
+
+#for: bucle que se usa para iterar sobre una secuencia,
+#podemos ejecutar un conjunto de sentencias,
+#una vez por cada elemento de un vector, matriz, lista, etc.
+for (x in 1:10) {
+  print(x)
+}
+
+#Ejemplo 1: imprima todos los elementos de una lista
+frutas<- list("manzana", "mango", "fresa")
+
+for (x in frutas) {
+  print(x)
+}
+
+#Ejemplo 2: imprime el número de dados:
+dados<- c(1,2,3,4,5,6)
+
+for (x in dados) {
+  print(x)
+}
+
+#break: podemos detener el ciclo antes de que haya pasado
+#por todos los elementos
+frutas<- list("manzana", "mango", "fresa")
+
+for (x in frutas) {
+  
+  if (x == "mango") {
+    break
+  }
+  print(x)
+}
+
+#next: declaración, podemos omitir una iteración sin 
+#terminar el ciclo
+frutas<- list("manzana", "mango", "fresa")
+
+for (x in frutas) {
+  if (x == "mango") {
+    next
+  }
+  print(x)
+}
 
 
+#Bucles anidados 
+#Es un bucle dentro de un bucle
+#El "bucle interno" se ejecutará una vez por cada 
+#iteración del "iteración" del "bucle externo"
+
+num1<- c(5, 3)
+num2<- c(2, 4, 8)
+
+for (x in num1) {
+  for (y in num2) {
+    print(x*y)
+  }
+}
 
 
+#Funciones con ciclo for
+pregunta<- function(){
+  cat("Introduzca el número inicial")
+  inicio<- readLines(n= 1)
+  inicio<- as.numeric(inicio)
+  cat("Introduzca el número final")
+  final<- readLines(n=1)
+  final<- as.numeric(final)
+  
+  for (x in inicio:final) {
+    
+    if  ((x%%2) != 0) {
+      cat(x, "no es múltiplo de 2\n")
+      sumaimpar<<- ((x + 1)/2)^2
+    } else {
+      cat(x, "es múltiplo de 2\n")
+      sumapar<<- (x/2)*((x/2) + 1)
+    }
+  }
+  cat("La suma de los números pares es", sumapar, "\n")
+  cat("La suma de los números impares es", sumaimpar, "\n")
+}
+
+pregunta()
+
+
+#Funciones con data.frame, bucle for 
+dfimpar<- c()
+dfpar<- c()
+
+pregunta<- function(){
+  cat("Introduzca el número inicial")
+  inicio<- readLines(n= 1)
+  inicio<- as.numeric(inicio)
+  cat("Introduzca el número final")
+  final<- readLines(n=1)
+  final<- as.numeric(final)
+  
+  for (x in inicio:final) {
+    
+    if  ((x%%2) != 0) {
+      cat(x, "no es múltiplo de 2\n")
+      df_impar<- data.frame(impares = x)
+      dfimpar<<- rbind(dfimpar, df_impar)
+      sumaimpar<<- ((x + 1)/2)^2
+    } else {
+      cat(x, "es múltiplo de 2\n")
+      df_par<- data.frame(pares = x)
+      dfpar<<- rbind(dfpar, df_par)
+      sumapar<<- (x/2)*((x/2) + 1)
+    }
+  }
+  cat("La suma de los números pares es", sumapar, "\n")
+  cat("La suma de los números impares es", sumaimpar, "\n")
+}
+
+pregunta()
