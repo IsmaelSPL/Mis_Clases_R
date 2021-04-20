@@ -600,6 +600,8 @@ grupo_df<- data.frame(
 
 newfila_grupo_df<- rbind(grupo_df, c("Pamela",23,F,4300,"Femenino"))
 
+grupo_df<- rbind(grupo_df, c("Pamela",23,F,4300,"Femenino"))
+
 #Agregamos columnas con cbind()
 grupo_df<- data.frame(
   trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
@@ -608,8 +610,15 @@ grupo_df<- data.frame(
   ingresos = c(1500, 12000,8500,5500,14500),
   genero = c("Femenino","Masculino","Femenino","Masculino","Femenino"))
 
+#Primera forma
 newcol_grupo_df<- cbind(grupo_df,
                         ahorros= c(15500,30000,21200,18300,42300))
+
+grupo_df<- cbind(grupo_df,
+                 ahorros= c(15500,30000,21200,18300,42300))
+
+#Segunda forma
+grupo_df$ahorros<- c(15500,30000,21200,18300,42300)
 
 #Usamos cbind() para combinar dos o más data frame horizontalmente
 grupo_df<- data.frame(
