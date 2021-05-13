@@ -538,15 +538,29 @@ music_genre <- factor(c("Jazz", "Rock", "Classic",
 
 music_genre[3]<- "Opera"
 
+#Renombrar los levels
+music_genre<- factor(c("Jazz","Rock","Classic","Classic",
+                       "Pop","Jazz","Rock", "Jazz"))
+
+levels(music_genre)<- c("Piano", "violín", "batería", "guitarra")
+
 #Juntando dos factores
 dias_factor<- factor(c("lunes", "martes", "miercoles", "juves",
                      "viernes", "sabado", "domingo"))
 
 clases_factor<- factor(c("martes", "juves", "sabado"))
 
-diasclass_factor<- factor(clases_factor, levels= dias_factor)
+dia_clas_fac<- factor(clases_factor, levels= dias_factor)
 
-table(diasclass_factor)
+table(dia_clas_fac)
+
+#Eliminamos contenido
+#pero sin arrancarlo del level de los factores
+music_genre<- factor(c("Jazz","Rock","Classic","Classic",
+                       "Pop","Jazz","Rock", "Jazz"))
+
+mus_no_arrancar<- music_genre[-c(1,3)]
+
 
 ###############################################################################
 #(Clase 6) Data.Frames en Rstudio
@@ -600,8 +614,6 @@ grupo_df<- data.frame(
 
 newfila_grupo_df<- rbind(grupo_df, c("Pamela",23,F,4300,"Femenino"))
 
-grupo_df<- rbind(grupo_df, c("Pamela",23,F,4300,"Femenino"))
-
 #Agregamos columnas con cbind()
 grupo_df<- data.frame(
   trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
@@ -614,11 +626,15 @@ grupo_df<- data.frame(
 newcol_grupo_df<- cbind(grupo_df,
                         ahorros= c(15500,30000,21200,18300,42300))
 
-grupo_df<- cbind(grupo_df,
-                 ahorros= c(15500,30000,21200,18300,42300))
-
 #Segunda forma
 grupo_df$ahorros<- c(15500,30000,21200,18300,42300)
+
+#Cambiamos los nombres de las columnas
+colnames(grupo_df)<- c("TRABAJADORES", "EDADES", "HIJOS", "INGRESOS",
+                       "GENERO", "AHORROS")
+
+#Cambiamos los nombres de las filas
+rownames(grupo_df)<- c("Fila 1", "Fila 2", "Fila 3", "Fila 4", "Fila 5")
 
 #Usamos cbind() para combinar dos o más data frame horizontalmente
 grupo_df<- data.frame(
@@ -659,7 +675,14 @@ grupo_df<- data.frame(
   ingresos = c(1500, 12000,8500,5500,14500),
   genero = c("Femenino","Masculino","Femenino","Masculino","Femenino"))
 
-grupo_df<- grupo_df[-c(1),-c(1)]
+#Primera forma
+grupo_df<- grupo_df[-c(1),-c(2)]
+grupo_df<- grupo_df[-c(1),]
+grupo_df<- grupo_df[,-c(2)]
+
+#Segunda forma para borrar columna
+grupo_df$ingresos<- NULL
+
 
 #Cantidad de filas y columnas
 grupo_df<- data.frame(
