@@ -165,14 +165,51 @@ nchar(cadena4)
 # 5. Conectores Lógicos para combinar variables booleanas #
 ###########################################################
 
-# Conector: and
+# Conector and: ("&" o "&&")
 
+# El operador and se utiliza para combinar dos o más condiciones, y 
+# devuelve True solo si todas las condiciones son verdaderas. 
+# Si al menos una de las condiciones es falsa, la expresión completa evalúa a False.
 
-# Conector: or
+# &: se utiliza para realizar una operación AND elemento por elemento
+# &&: se utiliza para realizar una operación AND, pero solo evalúa el primer
+# elemento si hay más de uno.
 
-# Conector: not
+a = TRUE
+b = FALSE
+c = TRUE
+
+resultado = a & b & c
+print(resultado)  # Salida: False
+
+# Conector or: ("|" o "||")
+# |: se utiliza para realizar una operación OR elemento por elemento.
+# ||:  se utiliza para realizar una operación OR, pero solo evalúa el primer elemento 
+# si hay más de uno
+
+x = F
+y = T
+z = F
+
+resultado = x | y | z
+print(resultado)  # Salida: True
+
+# Conector not: ("!")
+# !: se utiliza para negar una condición
+valor = TRUE
+negado = !valor
+
+print(negado)  # Salida: False
 
 # Ejemplo
+
+edad = 18
+tiene_dinero = TRUE
+permiso_adulto = FALSE
+
+puede_comprar = (edad >= 16 & tiene_dinero) | (edad < 16 & permiso_adulto)
+
+paste("¿Puede comprar el producto?", puede_comprar)
 
 #####################################
 # 6. Ingreso de Valores del Usuario #
