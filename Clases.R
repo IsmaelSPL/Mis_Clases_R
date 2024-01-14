@@ -326,11 +326,6 @@ frutas[c(1,3)]
 vec_logico[4]
 vec_logico[c(2,4)]
 
-# Ordenamos los elementos de un vector
-sort(numeros)
-sort(frutas)
-sort(vec_logico)
-
 # Modificar elementos de un vector
 numeros[2] <- 23
 frutas[1] <- "mandarina"
@@ -346,157 +341,56 @@ vec3 <- vec1 * vec2
 vec3 <- vec1 / vec2
 
 # length: longitud del vector
+length(numeros)
 
-
-# Insertamos los nombres de las frutas en el vector numeros
-numeros<- c(20,5,8,10,15,7)
-frutas<- c("platano", "manzana", "naranja", "mango", "limon", "fresa")
-
-names(numeros)<- c(frutas)
+# Agregar elementos a un vector
+numeros <- c(numeros, 7, 9)
 numeros
 
-#Jerarqu?a (character > numeric > logical)
+# Eliminar elemento de un vector
+numeros <- numeros[-2]
+numeros
+
+# Ordenamos los elementos de un vector
+sort(numeros)
+sort(frutas)
+sort(vec_logico)
+
+# sum, min, max
+suma_vector <- sum(numeros)
+minimo_vector <- min(numeros)
+maximo_vector <- max(numeros)
+
+paste("La suma del vector es:", suma_vector)
+paste("El valor mínimo del vector es:", minimo_vector)
+paste("El valor máximo del vector es:", maximo_vector)
+
+# Jerarquía (character > numeric > logical)
 error1 <- c("Angela", "Carlos", 22, "Contabilidad",FALSE,TRUE)
 class(error1)
+
 error2 <- c(23,T,FALSE)
 class(error2)
 
-###############################################################################
-#(Clase 3) Listas en Rstudio
+###############
+# 2. Matrices #
+###############
 
-#Una lista en R puede contener muchos tipos de datos diferentes
-milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
-milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
-milist3<- list(nombres= c("Angela", "Carlos","Allison"), edades= c(20,25,23))
-
-#Accesos a elementos de una lista
-milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
-milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
-milist3<- list(nombres= c("Angela", "Carlos","Allison"), edades= c(20,25,23))
-
-milist[1]
-milist[c(2,4)]
-
-milist2[[1]]
-milist2[c(1,2)]
-milist2[[c(1,2)]]
-
-milist3[1]
-milist3[[1]]
-milist3[c(1,2)]
-milist3[[c(1,2)]]
-milist3[["edades"]]
-
-#Cambiamos un elemento de la lista
-milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
-milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
-milist3<- list(nombres= c("Angela", "Carlos","Allison"), edades= c(20,25,23))
-
-milist[1]<- "Pamela"
-
-milist2[[1]]<- c("Pamela","Juan","Shirley")
-
-milist3[["edades"]]<- c(25,30,18)
-milist3[[2]]<- c(21,28,24)
-
-#Para saber cu?ntos elementos tiene una lista
-milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
-milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
-milist3<- list(nombres= c("Angela", "Carlos","Allison"), edades= c(20,25,23))
-
-length(milist)
-length(milist2)
-length(milist3)
-
-#Para saber si un elemento especifico est? presente en una lista usamos
-milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
-milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
-milist3<- list(nombres= c("Angela", "Carlos","Allison"), edades= c(20,25,23))
-
-"Esteban" %in% milist
-"Angela" %in% milist2[[1]]
-20 %in% milist3[[2]]
-  
-#Para agregar un elemento al final de la lista, usamos append()
-milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
-milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
-milist3<- list(nombres= c("Angela", "Carlos","Allison"), edades= c(20,25,23))
-
-append(milist, "Pamela")
-append(milist[1], "Pamela")
-
-append(milist2, "Juan")
-append(milist2[[1]], "Juan")
-
-append(milist3, 3)
-append(milist3[[2]], 3)
-
-milist<- append(milist, "Pamela")
-
-#Eliminar elementos de la lista
-milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
-milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
-milist3<- list(nombres= c("Angela", "Carlos","Allison"), edades= c(20,25,23))
-
-newlist<- milist[-1]
-newlist2<- milist2[[-1]]
-newlist3<- milist3[[-2]]
-
-#Unir dos listas 
-list1<- list("Rosa", "Jesus", "Carmen")
-list2<- list(21,23,26)
-list3<- c(list1, list2)
-
-###############################################################################
-#(Clase 4) Matrices en Rstudio
-
-#Matriz numeric
+# Matriz numeric
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
-#Matriz character
-numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
-
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
-
-#Accedemos a los elementos de una matriz
-numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
-
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
+# Accedemos a los elementos de una matriz
 
 numatrix[2,2]
-numatrix[1,] #Mostramos la fila 1
-numatrix[,2] #Mostramos la columna 2
+numatrix[1,] # Mostramos la fila 1
+numatrix[,2] # Mostramos la columna 2
+numatrix[c(1,2),] # Muestro la fila 1 y 2
 
-animalmatrix[1,2]
-animalmatrix[2,] #Mostramos la fila 2
-animalmatrix[,2] #Mostramos la columna 2
-
-#Acceda a m?s de una fila y columna
-numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
-
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
-
-numatrix[c(1,2),] #Muestro la fila 1 y 2
-animalmatrix[,c(1,3)] #Muestro la columna 1 y 3
-
-#Longitud de la matriz
-numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
-
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
-
+# Longitud de la matriz
 length(numatrix)
-length(animalmatrix)
 
-#Para agregar filas adicionales usamos rbind()
-#Ejemplo 1
+# Para agregar filas adicionales usamos rbind()
+# Ejemplo 1
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
 animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
@@ -506,12 +400,12 @@ animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
 numatrix2<- rbind(numatrix, c(23,27))
 
 animalmatrix2<- rbind(animalmatrix, c("coala", "tigre","perro"))
-#Las celdas de la nueva fila deben tener la misma longitud 
-#que la matriz existente.
+# Las celdas de la nueva fila deben tener la misma longitud 
+# que la matriz existente.
 
 
-#Usamos cbind() para agregar columnas adicionales en la matriz
-#Ejemplo 2
+# Usamos cbind() para agregar columnas adicionales en la matriz
+# Ejemplo 2
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
 animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
@@ -588,6 +482,62 @@ numatrix - numatrix2
 numatrix %*% numatrix2
 numatrix / numatrix2
 5*numatrix
+
+#############
+# 3. Listas #
+#############
+
+# Las listas sirven para almacenar y manipular colecciones ordenadas de elementos. 
+# Las listas te permiten almacenar múltiples elementos en un solo lugar. 
+# Estos elementos pueden ser de diferentes tipos, como números, cadenas de texto, 
+# booleanos, objetos personalizados, entre otros.
+
+# Crear una lista
+milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
+milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
+milist3<- list(nombres = c("Angela", "Carlos","Allison"), edades = c(20,25,23))
+
+class(milist)
+
+# Accedemos a elementos de una lista
+milist[1] # Accede a un elemento de una lista
+milist[c(2,4)] # Accede a dos elementos de una lista
+milist2[1] # Accede a un vector de la lista
+milist3["edades"] # Accede por ticker
+
+# Modificiar elementos de una lista
+milist[1]<- "Pamela"
+
+milist2[[1]]<- c("Pamela","Juan","Shirley")
+
+milist3[["edades"]]<- c(25,30,18)
+
+# longitud de una lista
+length(milist)
+length(milist2)
+length(milist3)
+  
+# append: agregar elementos a una lista
+nueva_list <- append(milist, c("Carlos"))
+nueva_list
+
+# Eliminar elementos de la lista
+
+newlist <- milist[-1]
+newlist
+
+newlist2 <- milist2[-1]
+newlist2
+
+newlist3 <- milist3[-2]
+newlist3
+
+# Unir dos listas 
+list1<- list("Rosa", "Jesus", "Carmen")
+list2<- list(21,23,26)
+list3<- c(list1, list2)
+
+
 
 ###############################################################################
 #(Clase 5) Factores en Rstudio
