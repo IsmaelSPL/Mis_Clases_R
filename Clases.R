@@ -241,7 +241,9 @@ class(edad)
 
 # Calcular el monto a pagar por un préstamo
   
-# El monto final a pagar por el préstamo se calcula multiplicando el monto prestado por uno más el interés elevado a la cantidad de meses que dura el préstamo. Las variables de entrada son:
+# El monto final a pagar por el préstamo se calcula multiplicando el monto 
+# prestado por uno más el interés elevado a la cantidad de meses que dura el préstamo. 
+# Las variables de entrada son:
 # m: monto prestamo  
 # n: número de meses que dura el préstamo  
 # i: tasa de interés mensual
@@ -256,8 +258,10 @@ monto_total_pagar = monto_prestamo * (1 + tasa_interes_mensual) ^ num_meses
 
 paste("El monto total a pagar al final del préstamo es:", round(monto_total_pagar))
 
-
 ###############################################################################
+#                      Módulo 2 - R Data Structures                           #
+###############################################################################
+
 #(Clase 2) Vectores en Rstudio
 
 #Vectores numeric
