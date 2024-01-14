@@ -215,13 +215,46 @@ paste("¿Puede comprar el producto?", puede_comprar)
 # 6. Ingreso de Valores del Usuario #
 #####################################
 
+# Función readline
+readline()
 
+# Solicitar al usuario que ingrese su nombre y almacenarlo en una variable
+nombre = readline("Por favor, ingresa tu nombre: ")
+
+class(nombre)
+
+# Solicitar al usuario que ingrese su edad y almacenarla en una variable
+edad = readline("Ingresa tu edad: ")
+
+class(edad)
+
+# Mostrar los valores ingresados por el usuario
+paste("Hola,", nombre, "tienes", edad, "años.")
+
+# Transformaos a una variable entender
+edad = as.integer(edad)
+class(edad)
 
 #########################
 # 7. Ejercicio Práctico #
 #########################
 
+# Calcular el monto a pagar por un préstamo
+  
+# El monto final a pagar por el préstamo se calcula multiplicando el monto prestado por uno más el interés elevado a la cantidad de meses que dura el préstamo. Las variables de entrada son:
+# m: monto prestamo  
+# n: número de meses que dura el préstamo  
+# i: tasa de interés mensual
 
+# Variables de entrada
+monto_prestamo = as.numeric(readline("Ingrese el monto del préstamo: "))
+num_meses = as.integer(readline("Ingrese el número de meses del préstamo: "))
+tasa_interes_mensual = as.numeric(readline("Ingrese la tasa de interés mensual en decimal (por ejemplo, 0.05 para 5%): "))
+
+# Cálculo del monto total a pagar
+monto_total_pagar = monto_prestamo * (1 + tasa_interes_mensual) ^ num_meses
+
+paste("El monto total a pagar al final del préstamo es:", round(monto_total_pagar))
 
 
 ###############################################################################
