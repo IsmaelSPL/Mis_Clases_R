@@ -376,7 +376,7 @@ class(error2)
 # 2. Matrices #
 ###############
 
-# Matriz numeric
+# Crear una matriz de 4x2
 numatrix <- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
 # Accedemos a los elementos de una matriz
@@ -389,14 +389,14 @@ numatrix[c(1,2),] # Muestro la fila 1 y 2
 # Longitud de la matriz
 length(numatrix)
 
-#Utilizamos dim() para saber la cantidad de filas y columnas en una matriz
+# Utilizamos dim() para saber la cantidad de filas y columnas en una matriz
 dim(numatrix)
 
-#Eliminamos filas y columnas
+# Eliminamos filas y columnas
 numatrix <- numatrix[-c(1),-c(2)] #Remueve la primera fila y la segunda columna
 numatrix
 
-#Jerarquía (character > numeric > logical)
+# Jerarquía (character > numeric > logical)
 error1 <- matrix(c("león", "5", 6, 21, 8, 20, TRUE, FALSE), nrow=2, ncol=4)
 error1
 
@@ -466,79 +466,55 @@ list1<- list("Rosa", "Jesus", "Carmen")
 list2<- list(21,23,26)
 list3<- c(list1, list2)
 
+###############
+# 3. Factores #
+###############
 
+# Factores se utilizan para categorizar los datos. Ejemplos:
+# Sexo: masculino/femenino
+# Música: Rock, Pop, Clásica, Jazz
+# País: Perú, Argentina, España, Francia
 
-###############################################################################
-#(Clase 5) Factores en Rstudio
-
-#Factores se utilizan para categorizar los datos. Ejemplos:
-#Sexo: masculino/femenino
-#M?sica: Rock, Pop, Cl?sica, Jazz
-#Pa?s: Per?, Argentina, Espa?a, Francia
-
-#Para crear un factor usamos factor() 
-music_genre<- factor(c("Jazz","Rock","Classic","Classic",
+# Crear un factor
+music_genero <- factor(c("Jazz","Rock","Classic","Classic",
                        "Pop","Jazz","Rock", "Jazz"))
-#Para imprimir solo los niveles hacemos
-levels(music_genre)
 
-#También se puede establecer los niveles
-music_genre<- factor(c("Jazz","Rock","Classic","Classic",
+music_genero
+
+# Imprimir solo los niveles
+levels(music_genero)
+
+# Establecer los niveles
+music_genero<- factor(c("Jazz","Rock","Classic","Classic",
                        "Pop","Jazz","Rock", "Jazz"),
-                     levels= c("Classic","Jazz","Pop",
+                     levels = c("Classic","Jazz","Pop",
                                "Rock","Otros"))
 
-levels(music_genre)
+levels(music_genero)
 
-#Longitud del factor
-music_genre<- factor(c("Jazz","Rock","Classic","Classic",
+# Longitud del factor
+music_genero<- factor(c("Jazz","Rock","Classic","Classic",
                        "Pop","Jazz","Rock", "Jazz"))
 
-length(music_genre)
+length(music_genero)
 
-#Tabla de frecuencia
-music_genre<- factor(c("Jazz","Rock","Classic","Classic",
+# Tabla de frecuencia
+table(music_genero)
+
+# Accedemos a los factores
+music_genero<- factor(c("Jazz","Rock","Classic","Classic",
                        "Pop","Jazz","Rock", "Jazz"))
 
-table(music_genre)
+music_genero[3]
+music_genero[-1]
 
-#Factores de acceso 
-music_genre<- factor(c("Jazz","Rock","Classic","Classic",
+# Modificamos el valor de un item
+music_genero <- factor(c("Jazz","Rock","Classic","Classic",
                        "Pop","Jazz","Rock", "Jazz"))
 
-music_genre[3]
-music_genre[-1]
+music_genero[3]<- "Pop"
 
-#Cambiar el valor de un item
-music_genre<- factor(c("Jazz","Rock","Classic","Classic",
-                       "Pop","Jazz","Rock", "Jazz"))
-
-music_genre[3]<- "Pop"
-
-#Tenga en cuenta que no puede cambiar el valor de un 
-#art?culo espec?fico si a?n no est? especificado en el factor.
-#El siguiente ejemplo producir? un error:
-music_genre<- factor(c("Jazz","Rock","Classic","Classic",
-                       "Pop","Jazz","Rock", "Jazz"))
-
-music_genre[3]<- "Opera"
-
-#Tenemos que especificarlo dentro de levels
-music_genre <- factor(c("Jazz", "Rock", "Classic",
-                        "Classic", "Pop", "Jazz", "Rock", 
-                        "Jazz"), 
-                      levels = c("Classic", "Jazz", "Pop", 
-                                 "Rock", "Opera"))
-
-music_genre[3]<- "Opera"
-
-#Renombrar los levels
-music_genre<- factor(c("Jazz","Rock","Classic","Classic",
-                       "Pop","Jazz","Rock", "Jazz"))
-
-levels(music_genre)<- c("Piano", "viol?n", "bater?a", "guitarra")
-
-#Juntando dos factores
+# Juntando dos factores
 dias_factor<- factor(c("lunes", "martes", "miercoles", "juves",
                      "viernes", "sabado", "domingo"))
 
@@ -548,16 +524,9 @@ dia_clas_fac<- factor(clases_factor, levels= dias_factor)
 
 table(dia_clas_fac)
 
-#Eliminamos contenido
-#pero sin arrancarlo del level de los factores
-music_genre<- factor(c("Jazz","Rock","Classic","Classic",
-                       "Pop","Jazz","Rock", "Jazz"))
-
-mus_no_arrancar<- music_genre[-c(1,3)]
-
-
-###############################################################################
-#(Clase 6) Data.Frames en Rstudio
+#################
+# 3. data.frame #
+#################
 
 # Son datos que se muestran en formato de tabla
 # Pueden tener diferentes tipos de datos en su interior. 
@@ -565,23 +534,15 @@ mus_no_arrancar<- music_genre[-c(1,3)]
 # la segunda y la tercera pueden ser numeric o logical.
 # Sin embargo, cada columna debe tener el mismo tipo de datos
 
-# Forma 1
-trabajadores<- c("Angela", "David", "Melanie", "Hector","Emma")
-edades<- c(22,23,24,26,25)
-hijos<- c(F,F,T,T,F)
-ingresos<- c(1500, 12000,8500,5500,14500)
-genero<- c("Femenino","Masculino","Femenino","Masculino","Femenino")
-
-grupo_df<- data.frame(trabajadores, edades, hijos, ingresos, genero)
-
-#Forma 2 
+# Creamos un data.frame
 grupo_df<- data.frame(
   trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
-  edades = c(22,23,24,26,25),
-  hijos = c(F,F,T,T,F),
-  ingresos = c(1500, 12000,8500,5500,14500),
+  edades = c(22, 23, 24, 26, 25),
+  hijos = c(F, F, T, T, F),
+  ingresos = c(1500, 12000, 8500, 5500, 14500),
   genero = c("Femenino","Masculino","Femenino","Masculino","Femenino"))
 
+grupo_df
 View(grupo_df)
 
 #Acceso de elementos de la data.frame
