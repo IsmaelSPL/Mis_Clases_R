@@ -10,24 +10,17 @@
 print("Hola mundo")
 "hola mundo"
 
-# paste: fusiona o concatena dos o más cadenas:
-nombre <- "Juan"
-edad <- 25
-hobby <- "guitarra"
-
-paste("Nombre", nombre, ", edad", edad, " y hobby tocar", hobby)
-
-# cat:  se utiliza para concatenar y mostrar en la consola el contenido de uno 
-# o más objetos, sin devolver un valor.
-# No devuelve un valor (su valor de retorno es NULL). 
-# Simplemente se utiliza para mostrar información en la consola
-
-cat("Nombre", nombre, ", edad", edad, " y hobby tocar", hobby)
+# Creamos algunas variables
+x <- 5
+y <- 2
+z <- 9
+a <- "Cadena de texto"
+b <- 10
 
 # Eliminar una variable
-rm(list = c("nombre"))
+rm(list = c("x"))
 # Eliminar dos o más variables
-rm(list = c("edad", "hobby"))
+rm(list = c("y", "z"))
 # ls: sirve para conocer objetos existentes
 ls()
 # Eliminamos todos los objetos
@@ -46,7 +39,7 @@ library(ggplot2)
 getwd()
 
 # Cambiamos nuestro directorio de tabajo
-setwd("Ruta")
+setwd("Ruta con separacion: /")
 
 # Para limpiar la consola: control + L
 
@@ -117,51 +110,80 @@ b = 2
 # Adición
 a + b 
 
-7-2
-7*9
-12/5
-5^2
-5%%2 #Para obtener el residuo
-35%/%2 #División entera
-abs(-10) #Valor absoluto
-log(100) #Logaritmo neperiano
-log10(100)
+# Sustracción
+a - b
 
-# Operadores de comparación
-5==5
-5!=7
-7>9
-7<9
-7>=9
-7<=9
+# Multiplicación
+a * b
 
-# Operaciones con asignación 
-x<- 12
-y<- 5
+# División
+a / b
 
-x+y
-x*y
-x/y
-x^y
-x<y
-print(x+y)
+# División entera
+a %/% b
 
+# Residuo de la división
+a %% b
 
-# String 
-a<- "Aprediendo a 
-programar"
-a
-cat(a)
-# Para encontrar el número de caracteres de una cadena
-nchar(a)
+# Potenciación
+a ^ b
+
+# Raíz cuadrada
+100 ^ (1/2)
+
+################################
+# 4. Cadenas de Texto (String) #
+################################
+
+# Concatenación de cadenas
+cadena1 = "Hola, "
+cadena2 = "¿cómo estás?"
+
+# paste: fusiona o concatena dos o más cadenas
+concatenacion_paste = paste(cadena1, cadena2)
+concatenacion_paste
+
+# cat:  se utiliza para concatenar y mostrar en la consola el contenido de uno 
+# o más objetos, sin devolver un valor.
+# No devuelve un valor (su valor de retorno es NULL). 
+# Simplemente se utiliza para mostrar información en la consola
+concatenacion_cat = cat("Mi cadeba de texto:", cadena1, cadena2)
+concatenacion_cat
+cat("Mi cadeba de texto:", cadena1, cadena2)
 
 # grepl: verifica si un caracter o una secuencia de 
-# caracteres est?n presentes en una cadena
-a<- "Hoy voy a pasear a mi gran perro que tiene 1 a?o"
-grepl("H",a)
-grepl("gran", a)
-grepl(1,a)
-grepl(5,a)
+# caracteres están presentes en una cadena
+cadena4 <- "Hoy voy a pasear a mi perro que tiene 1 año"
+grepl("H", cadena4)
+grepl("gran", cadena4)
+grepl(1, cadena4)
+
+# nchar: dá el número de caracteres de una cadena
+nchar(cadena4)
+
+###########################################################
+# 5. Conectores Lógicos para combinar variables booleanas #
+###########################################################
+
+# Conector: and
+
+
+# Conector: or
+
+# Conector: not
+
+# Ejemplo
+
+#####################################
+# 6. Ingreso de Valores del Usuario #
+#####################################
+
+
+
+#########################
+# 7. Ejercicio Práctico #
+#########################
+
 
 
 
