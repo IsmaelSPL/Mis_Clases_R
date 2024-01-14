@@ -1,28 +1,32 @@
-#(Clase 1) Comandos básicos, Asignación de variables, 
-#tipo de datos y operaciones en Rstudio
+###############################################################################
+#                         MÃ³dulo 1 - R Basics                                 #
+###############################################################################
 
-#Print
+# 1. Tipos de Variables
+#######################
+
+# Print
 print("Hola mundo")
 "hola mundo"
 
-#Help
+# Help
 help(summary)
-mean() #Sombreas + FI
+mean # Sombreas + F1
 
-#Instalación de paquete y activamos el paquete
+# InstalaciÃ³n de paquete y activamos el paquete
 install.packages("car")
 library(car)
 
-#Para saber donde está el directorio de trabajo
+# Para saber donde estÃ¡ el directorio de trabajo
 getwd()
 
-#Cambiamos nuestro directorio de tabajo
-setwd("C:/Users/Ismael/Documents/GitHub/Mis_clases")
+# Cambiamos nuestro directorio de tabajo
+setwd("Colocar Ruta")
 
-#Para limpiar la consola: control + L
+# Para limpiar la consola: control + L
 
-#Asignación de Variables y Tipos de datos
-#Numeric
+#AsignaciÃ³n de Variables y Tipos de datos
+#Flotantes
 x<- 10.5
 class(x)
 x<-123
@@ -57,12 +61,12 @@ x<- FALSE
 12/5
 5^2
 5%%2 #Para obtener el residuo
-35%/%2 #División entera
+35%/%2 #Divisi?n entera
 abs(-10) #Valor absoluto
 log(100) #Logaritmo neperiano
 log10(100)
 
-#Operadores de comparación
+#Operadores de comparaci?n
 5==5
 5!=7
 7>9
@@ -70,7 +74,7 @@ log10(100)
 7>=9
 7<=9
 
-#Operaciones con asignación 
+#Operaciones con asignaci?n 
 x<- 12
 y<- 5
 
@@ -83,7 +87,7 @@ print(x+y)
 
 #Para eliminar una variable
 rm(list = c("x"))
-#Para eliminar dos o más variables
+#Para eliminar dos o m?s variables
 x<- 12
 y<- 5
 z<- 6
@@ -94,9 +98,9 @@ ls()
 rm(list = ls())
 
 #Redondeo
-#ceilling: redondea un número hacia arriba a su entero más cercano
+#ceilling: redondea un n?mero hacia arriba a su entero m?s cercano
 ceiling(2.4)
-#floor: redondea un número hacia abajo a su entero más cercano
+#floor: redondea un n?mero hacia abajo a su entero m?s cercano
 floor(2.4)
 
 #String 
@@ -104,18 +108,18 @@ a<- "Aprediendo a
 programar"
 a
 cat(a)
-#Para encontrar el número de caracteres de una cadena
+#Para encontrar el n?mero de caracteres de una cadena
 nchar(a)
 
 #grepl: verifica si un caracter o una secuencia de 
-#caracteres están presentes en una cadena
-a<- "Hoy voy a pasear a mi gran perro que tiene 1 año"
+#caracteres est?n presentes en una cadena
+a<- "Hoy voy a pasear a mi gran perro que tiene 1 a?o"
 grepl("H",a)
 grepl("gran", a)
 grepl(1,a)
 grepl(5,a)
 
-#paste(): función para fusionar o concatenar dos cadenas:
+#paste(): funci?n para fusionar o concatenar dos cadenas:
 a<- "Mi hobby es"
 b<- "tocar la guitarra"
 paste(a,b)
@@ -130,18 +134,18 @@ c
 numeros<- c(20,5,8)
 numeros
 class(numeros)
-#Para crear un vector con una secuencia de números
+#Para crear un vector con una secuencia de n?meros
 numeros<- 3:10
 numeros
 numeros<- c(3:10)
 #Vectores con decimales
-#Cuando pertenece el último elemento a la secuencia
+#Cuando pertenece el ?ltimo elemento a la secuencia
 numero1<- c(1.5:6.5)
 numero1
 #cuando no pertenece el ultimo elemento a la secuencia
 numero2<- c(1.5:6.3)
 numero2
-#Generación de vectores secuenciados 
+#Generaci?n de vectores secuenciados 
 numeros<- seq(from=0, to=100, by=20)
 numeros
 numeros<- seq(0,100, by=20)
@@ -224,7 +228,7 @@ frutas<- c("platano", "manzana", "naranja", "mango", "limon", "fresa")
 names(numeros)<- c(frutas)
 numeros
 
-#Jerarquía (character > numeric > logical)
+#Jerarqu?a (character > numeric > logical)
 error1 <- c("Angela", "Carlos", 22, "Contabilidad",FALSE,TRUE)
 class(error1)
 error2 <- c(23,T,FALSE)
@@ -243,7 +247,7 @@ vec3<- vec1/vec2
 vec1<- c(1,5,6,30)
 vec2<- c(5,10,3,2,10,15)
 
-#R agarrará los valores del inicios hasta completar la longitud del otro vector
+#R agarrar? los valores del inicios hasta completar la longitud del otro vector
 vec3<- vec1 + vec2
 
 ###############################################################################
@@ -284,7 +288,7 @@ milist2[[1]]<- c("Pamela","Juan","Shirley")
 milist3[["edades"]]<- c(25,30,18)
 milist3[[2]]<- c(21,28,24)
 
-#Para saber cuántos elementos tiene una lista
+#Para saber cu?ntos elementos tiene una lista
 milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
 milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
 milist3<- list(nombres= c("Angela", "Carlos","Allison"), edades= c(20,25,23))
@@ -293,7 +297,7 @@ length(milist)
 length(milist2)
 length(milist3)
 
-#Para saber si un elemento especifico está presente en una lista usamos
+#Para saber si un elemento especifico est? presente en una lista usamos
 milist<- list("Angela", "Carlos", "Allison", 20, 25, 23)
 milist2<- list(c("Angela", "Carlos","Allison"), c(20,25,23))
 milist3<- list(nombres= c("Angela", "Carlos","Allison"), edades= c(20,25,23))
@@ -341,14 +345,14 @@ numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 #Matriz character
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
 #Accedemos a los elementos de una matriz
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
@@ -360,10 +364,10 @@ animalmatrix[1,2]
 animalmatrix[2,] #Mostramos la fila 2
 animalmatrix[,2] #Mostramos la columna 2
 
-#Acceda a más de una fila y columna
+#Acceda a m?s de una fila y columna
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
@@ -373,7 +377,7 @@ animalmatrix[,c(1,3)] #Muestro la columna 1 y 3
 #Longitud de la matriz
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
@@ -384,7 +388,7 @@ length(animalmatrix)
 #Ejemplo 1
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
@@ -399,7 +403,7 @@ animalmatrix2<- rbind(animalmatrix, c("coala", "tigre","perro"))
 #Ejemplo 2
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
@@ -412,18 +416,18 @@ animalmatrix2<- cbind(animalmatrix, c("coala", "tigre","perro"))
 #Eliminamos filas y columnas
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
-numatrix<- numatrix[-c(1),-c(1)] #Removerála primera fila y la primera columna
+numatrix<- numatrix[-c(1),-c(1)] #Remover?la primera fila y la primera columna
 
-animalmatrix<- animalmatrix2[,-c(2)] #Eliminará la columna 2
+animalmatrix<- animalmatrix2[,-c(2)] #Eliminar? la columna 2
 
 #Compruebe si existe un elemento en la matriz
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
@@ -433,22 +437,22 @@ animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
 #Utilizamos dim() para saber la cantidad de filas y columnas en una matriz
 numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
 dim(numatrix)
 dim(animalmatrix)
 
-#Jerarquía (character > numeric > logical)
-error1<- matrix(c("león", "5", 6, 21,8,20, TRUE, FALSE), nrow=2, ncol=4)
+#Jerarqu?a (character > numeric > logical)
+error1<- matrix(c("le?n", "5", 6, 21,8,20, TRUE, FALSE), nrow=2, ncol=4)
 error2<- matrix(c(5,TRUE, FALSE, T, F,F), nrow=2, ncol=3)
 
 #Combinar dos matrices con filas
 #tienen que tener la misma cantidad de columnas
 numatrix<- matrix(c(1,2,3,4,5,6,7,8,9,10,11,12), nrow=4, ncol=3)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
@@ -458,7 +462,7 @@ combinar_matrix<- rbind(numatrix, animalmatrix)
 #Tienen que tener la misma cantidad de filas
 numatrix<- matrix(c(1,2,3,4,5,6,7,8,9,10,11,12), nrow=3, ncol=4)
 
-animalmatrix<- matrix(c("león", "panda", "gato", "canguro","cocodrilo",
+animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
                         "elefante", "lobo", "jirafa",
                         "conejo"), nrow=3, ncol = 3)
 
@@ -479,8 +483,8 @@ numatrix / numatrix2
 
 #Factores se utilizan para categorizar los datos. Ejemplos:
 #Sexo: masculino/femenino
-#Música: Rock, Pop, Clásica, Jazz
-#País: Perú, Argentina, España, Francia
+#M?sica: Rock, Pop, Cl?sica, Jazz
+#Pa?s: Per?, Argentina, Espa?a, Francia
 
 #Para crear un factor usamos factor() 
 music_genre<- factor(c("Jazz","Rock","Classic","Classic",
@@ -488,7 +492,7 @@ music_genre<- factor(c("Jazz","Rock","Classic","Classic",
 #Para imprimir solo los niveles hacemos
 levels(music_genre)
 
-#También se puede establecer los niveles
+#TambiÃ©n se puede establecer los niveles
 music_genre<- factor(c("Jazz","Rock","Classic","Classic",
                        "Pop","Jazz","Rock", "Jazz"),
                      levels= c("Classic","Jazz","Pop",
@@ -522,8 +526,8 @@ music_genre<- factor(c("Jazz","Rock","Classic","Classic",
 music_genre[3]<- "Pop"
 
 #Tenga en cuenta que no puede cambiar el valor de un 
-#artículo específico si aún no está especificado en el factor.
-#El siguiente ejemplo producirá un error:
+#art?culo espec?fico si a?n no est? especificado en el factor.
+#El siguiente ejemplo producir? un error:
 music_genre<- factor(c("Jazz","Rock","Classic","Classic",
                        "Pop","Jazz","Rock", "Jazz"))
 
@@ -542,7 +546,7 @@ music_genre[3]<- "Opera"
 music_genre<- factor(c("Jazz","Rock","Classic","Classic",
                        "Pop","Jazz","Rock", "Jazz"))
 
-levels(music_genre)<- c("Piano", "violín", "batería", "guitarra")
+levels(music_genre)<- c("Piano", "viol?n", "bater?a", "guitarra")
 
 #Juntando dos factores
 dias_factor<- factor(c("lunes", "martes", "miercoles", "juves",
@@ -636,7 +640,7 @@ colnames(grupo_df)<- c("TRABAJADORES", "EDADES", "HIJOS", "INGRESOS",
 #Cambiamos los nombres de las filas
 rownames(grupo_df)<- c("Fila 1", "Fila 2", "Fila 3", "Fila 4", "Fila 5")
 
-#Usamos cbind() para combinar dos o más data frame horizontalmente
+#Usamos cbind() para combinar dos o m?s data frame horizontalmente
 grupo_df<- data.frame(
   trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
   edades = c(22,23,24,26,25),
@@ -650,7 +654,7 @@ grupo_df2<- data.frame(
 
 new_grupo_df<- cbind(grupo_df, grupo_df2)
 
-#Utilice rbind() para combinar dos o más data.frame verticalmente
+#Utilice rbind() para combinar dos o m?s data.frame verticalmente
 grupo_df<- data.frame(
   trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
   edades = c(22,23,24,26,25),
@@ -694,8 +698,8 @@ grupo_df<- data.frame(
 
 dim(grupo_df)
 
-#También se puede usar ncol() para encontrar el número 
-#de columnas y nrow() para encontrar el número de filas
+#Tambi?n se puede usar ncol() para encontrar el n?mero 
+#de columnas y nrow() para encontrar el n?mero de filas
 ncol(grupo_df)
 nrow(grupo_df)
 
@@ -725,27 +729,27 @@ grupo_df<- data.frame(
   genero = c("Femenino","Masculino","Femenino","Masculino",
              "Femenino","Masculino"))
 
-#subconjuntos subset(data, condición)
+#subconjuntos subset(data, condici?n)
 hombres<- subset(grupo_df, genero == "Masculino")
 mujeres<- subset(grupo_df, genero == "Femenino")
 ingresos_sub<- subset(grupo_df, ingresos>7000)
 
-#Subconjunto con más de una condición
+#Subconjunto con m?s de una condici?n
 hombres_ingreso<- subset(grupo_df, genero == "Masculino" & ingresos>9000)
 mujeres_edades<- subset(grupo_df, genero == "Femenino" & edades>23)
 mujeres_ed_ing<- subset(grupo_df, genero == "Femenino" & ingresos>5000 &
                           edades>24)
 
 ###############################################################################
-#(Clase 8) Introducción a los gráficos en Rstudio
+#(Clase 8) Introducci?n a los gr?ficos en Rstudio
 
-#Dibujamos un punto en el diagrama, en la posición (1) y 
-#la posición (3)
+#Dibujamos un punto en el diagrama, en la posici?n (1) y 
+#la posici?n (3)
 x11()
 plot(1,3)
 
-#Dibuja dos puntos en el diagrama, uno en la posición (1, 3) 
-#y otro en la posición (8, 10)
+#Dibuja dos puntos en el diagrama, uno en la posici?n (1, 3) 
+#y otro en la posici?n (8, 10)
 x11()
 plot(c(1,8),c(3,10))
 
@@ -764,18 +768,18 @@ x11()
 plot(1:10)
 
 #Etiquetas(labels)
-#main: colocamos título
+#main: colocamos t?tulo
 #xlab: etiqueta en el eje de abscisa
 #ylab: etiqueta en el eje de ordenada
 x11()
-plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
+plot(1:10, main= "Mi grafico", xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas")
 
-#Cambiamos el tamaño de los puntos
-#1 es el valor predeterminado, mientras que 0.5 significa 50% más pequeño 
-#y 2 significa 100% más grande
+#Cambiamos el tama?o de los puntos
+#1 es el valor predeterminado, mientras que 0.5 significa 50% m?s peque?o 
+#y 2 significa 100% m?s grande
 x11()
-plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
+plot(1:10, main= "Mi grafico", xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas", cex= 2)
 
 #Cambiamos la forma del punto
@@ -783,23 +787,23 @@ plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas",
 help("points")
 
 x11()
-plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
+plot(1:10, main= "Mi gr?fico", xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas", cex= 2, pch= 18)
 
-#Apariencia del gráfico
+#Apariencia del gr?fico
 x11()
-plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
+plot(1:10, main= "Mi gr?fico", xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas", cex= 2, pch=19 ,col= "red")
 
 #Vemos la lista de todos los colores
 colors()
 
 ###############################################################################
-#(Clase 9) Gráfico de dispersión en Rstudio
+#(Clase 9) Gr?fico de dispersi?n en Rstudio
 
-#Un gráfico de dispersión es un tipo de gráfico que se 
-#utiliza para mostrar la relación entre dos variables 
-#numéricas y traza un punto para cada observación
+#Un gr?fico de dispersi?n es un tipo de gr?fico que se 
+#utiliza para mostrar la relaci?n entre dos variables 
+#num?ricas y traza un punto para cada observaci?n
 
 #Creamos un data.frame del precio y consumo de pescado
 df_pescado<- data.frame(
@@ -808,7 +812,7 @@ df_pescado<- data.frame(
 
 x11()
 plot(df_pescado$consumo,df_pescado$precio,
-     main = "Gráfico de dispersión", 
+     main = "Gr?fico de dispersi?n", 
      xlab= "Consumo",
      ylab= "Precio", 
      cex= 2, pch= 19, col= "orange")
@@ -821,7 +825,7 @@ plot(df_pescado$consumo,df_pescado$precio,
 
 x11()
 plot(df_pescado$consumo,df_pescado$precio,
-     main = "Gráfico de dispersión", 
+     main = "Gr?fico de dispersi?n", 
      xlab= "Consumo",
      ylab= "Precio", 
      cex= 2, pch= 19, col= "orange")
@@ -829,7 +833,7 @@ plot(df_pescado$consumo,df_pescado$precio,
 legend("topright", "Pescado", fill = "orange")
 
 
-#Combinamos dos gráficos de dispersión
+#Combinamos dos gr?ficos de dispersi?n
 df_pescado<- data.frame(
   precio= c(5,7,8,7,2,2,9,4,11,12,9,6,10),
   consumo= c(99,86,87,88,111,103,87,94,78,77,85,86,80))
@@ -840,7 +844,7 @@ df_pollo<- data.frame(
 
 x11()
 plot(df_pescado$consumo,df_pescado$precio,
-     main = "Gráfico de dispersión", 
+     main = "Gr?fico de dispersi?n", 
      xlab= "Consumo",
      ylab= "Precio", 
      cex= 2, pch= 19, col= "orange")
@@ -851,51 +855,51 @@ points(df_pollo$consumo,df_pollo$precio,
 legend("topright", c("Pescado", "Pollo"), fill= c("orange", "dark green"))
 
 ###############################################################################
-#(Clase 10) Gráfico de linea en Rstudio
+#(Clase 10) Gr?fico de linea en Rstudio
 
-#Colocamos type = "l" para que nos de un gráfico lineal
+#Colocamos type = "l" para que nos de un gr?fico lineal
 x<- c(10,15,18,23,26)
 y<- c(9,11,15,20,22)
 
 x11()
-plot(x,y, main= "Mi gráfico lineal", xlab= "Eje de abscisas",
+plot(x,y, main= "Mi gr?fico lineal", xlab= "Eje de abscisas",
      ylab = "Eje de ordenadas", type = "l")
 
 #Cambiamos el grosor de la linea
-#1 es el valor predeterminado, mientras que 0.5 significa 50% más pequeño 
-#y 2 significa 100% más grande
+#1 es el valor predeterminado, mientras que 0.5 significa 50% m?s peque?o 
+#y 2 significa 100% m?s grande
 x11()
-plot(x,y, main= "Mi gráfico lineal", xlab= "Eje de abscisas",
+plot(x,y, main= "Mi gr?fico lineal", xlab= "Eje de abscisas",
      ylab = "Eje de ordenadas", type = "l", lwd=2)
 
 #Estilos de linea
-#Utilizamos lty con un valor de 0 a 6 para especificar el formato de línea.
+#Utilizamos lty con un valor de 0 a 6 para especificar el formato de l?nea.
 x11()
-plot(x,y, main= "Mi gráfico lineal", xlab= "Eje de abscisas",
+plot(x,y, main= "Mi gr?fico lineal", xlab= "Eje de abscisas",
      ylab = "Eje de ordenadas", type = "l", lwd=2, lty=3)
 
-#Valores de parámetro disponibles para lty
-#0 quita la línea
-#1 muestra una línea continua
-#2 muestra una línea discontinua
-#3 muestra una línea de puntos
-#4 muestra una línea de "puntos discontinuos"
-#5 muestra una línea de "trazos largos"
-#6 muestra una línea de "dos guiones"
+#Valores de par?metro disponibles para lty
+#0 quita la l?nea
+#1 muestra una l?nea continua
+#2 muestra una l?nea discontinua
+#3 muestra una l?nea de puntos
+#4 muestra una l?nea de "puntos discontinuos"
+#5 muestra una l?nea de "trazos largos"
+#6 muestra una l?nea de "dos guiones"
 
 #Graficamos los ingresos anuales
 grupo_df<- data.frame(
-  años = c(2016, 2017, 2018, 2019, 2020),
+  a?os = c(2016, 2017, 2018, 2019, 2020),
   ingresos = c(1500, 12000,8500,14300,12500))
 
 x11()
-plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "Años", ylab= "Ingresos", type= "l", lwd= 2, lty= 5)
+plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "A?os", ylab= "Ingresos", type= "l", lwd= 2, lty= 5)
 
 #Color de linea
 x11()
-plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "Años", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
+plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "A?os", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
      col="dark blue")
 
 #Insertamos un leyenda
@@ -904,80 +908,80 @@ plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
 #bottomright, bottomleft, bottom, topright, topleft, 
 #top, center, right, left.
 x11()
-plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "Años", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
+plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "A?os", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
      col="dark blue")
 
 legend("bottomright", "Angela", fill = "dark blue")
 
-#Juntamos dos gráficos lineales
+#Juntamos dos gr?ficos lineales
 grupo_df<- data.frame(
-  años = c(2016, 2017, 2018, 2019, 2020),
+  a?os = c(2016, 2017, 2018, 2019, 2020),
   ingresos = c(1500, 12000,8500,14300,12500))
 
 grupo_df2<- data.frame(
-  años= c(2016, 2017, 2018, 2019, 2020),
+  a?os= c(2016, 2017, 2018, 2019, 2020),
   ingresos= c(8300,4200,7500,10800,9700))
 
 x11()
-plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "Años", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
+plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "A?os", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
      col="dark blue")
-lines(grupo_df2$años, grupo_df2$ingresos, type= "l", lwd= 2, lty= 6,
+lines(grupo_df2$a?os, grupo_df2$ingresos, type= "l", lwd= 2, lty= 6,
       col= "dark red")
 
 legend("bottomright", c("Angela", "Victor"), 
        fill = c("dark blue", "dark red"))
 
-#Gráfico de lineas siguiente la secuencia de puntos
+#Gr?fico de lineas siguiente la secuencia de puntos
 x11()
-plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "Años", ylab= "Ingresos", type= "o", lwd= 2, lty= 5,
+plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "A?os", ylab= "Ingresos", type= "o", lwd= 2, lty= 5,
      col="dark blue")
-lines(grupo_df2$años, grupo_df2$ingresos, type= "o", lwd= 2, lty= 6,
+lines(grupo_df2$a?os, grupo_df2$ingresos, type= "o", lwd= 2, lty= 6,
       col= "dark red")
 
 legend("bottomright", c("Angela", "Victor"), 
        fill = c("dark blue", "dark red"))
 
-#Cambios el tipo de puntos y aumentamos su tamaño
+#Cambios el tipo de puntos y aumentamos su tama?o
 x11()
-plot(grupo_df$años, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "Años", ylab= "Ingresos", type= "o", lwd= 2, lty= 5,
+plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
+     xlab= "A?os", ylab= "Ingresos", type= "o", lwd= 2, lty= 5,
      col="dark blue", pch= 19, cex= 2)
-lines(grupo_df2$años, grupo_df2$ingresos, type= "o", lwd= 2, lty= 6,
+lines(grupo_df2$a?os, grupo_df2$ingresos, type= "o", lwd= 2, lty= 6,
       col= "dark red", pch= 19, cex= 2)
 
 legend("bottomright", c("Angela", "Victor"), 
        fill = c("dark blue", "dark red"))
 
 ###############################################################################
-#(Clase 11) Gráficos circulares en Rstudio
+#(Clase 11) Gr?ficos circulares en Rstudio
 
 df_gustos<- data.frame(
   preferencia= c(0.32, 0.24,0.16,0.29),
-  cursos= c("Álgebra", "Trigonometría", "Geometría","Aritmética"),
+  cursos= c("?lgebra", "Trigonometr?a", "Geometr?a","Aritm?tica"),
   colores= c("dark blue", "dark red", "orange", "purple"))
 
 x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón")
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n")
 
 #Etiquetas y encabezados
 etiqueta1<- paste(df_gustos$preferencia)
 
 x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n",
     label= etiqueta1)
 
 etiqueta2<- paste(df_gustos$preferencia, "%", sep= " ")
 
 x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n",
     label= etiqueta2)
 
 #Apariencia
 x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n",
     label= etiqueta2,
     col = df_gustos$colores)
 
@@ -987,22 +991,22 @@ pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
 #bottomright, bottomleft, bottom, topright, topleft, 
 #top, center, right, left.
 x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n",
     label= etiqueta2,
     col = df_gustos$colores)
 
 legend("topleft", df_gustos$cursos, fill = df_gustos$colores)
 
-#Tamaño de leyenda
+#Tama?o de leyenda
 x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el salón",
+pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n",
     label= etiqueta2,
     col = df_gustos$colores)
 
 legend("topleft", df_gustos$cursos, fill = df_gustos$colores, cex= 0.85)
 
 ###############################################################################
-#(Clase 12) Gráfico de barras en Rstudio
+#(Clase 12) Gr?fico de barras en Rstudio
 
 df_ingresos<- data.frame(
   meses= c("En", "Fe", "Mar", "Abr", "May", "Jun",
@@ -1013,11 +1017,11 @@ df_ingresos<- data.frame(
 
 #Usamaos barplot para graficar
 #Usamos namex.arg para definir los nombres de cada 
-#observación en el eje x
+#observaci?n en el eje x
 x11()
 barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses)
 
-#Cambiamos el tamaño de los nombres
+#Cambiamos el tama?o de los nombres
 x11()
 barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses, cex.names = 0.9)
 
@@ -1061,7 +1065,7 @@ barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
         width= c(4,4,4,4,4,4,4,4,4,4,4,4),
         horiz= TRUE)
 
-#Modificamos los límites del eje x
+#Modificamos los l?mites del eje x
 x11()
 barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
         main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
@@ -1097,7 +1101,7 @@ barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
         horiz= TRUE, xlim = c(0,14000),
         legend= rownames(meses_table))
 
-#Cambiamos la orientación de los caracteres de los ejes con last
+#Cambiamos la orientaci?n de los caracteres de los ejes con last
 #0: predeterminado
 #1: pone horizontal el eje de ordenadas
 #2: pone horizontal el eje de ordenadas y vertical abscisas
@@ -1112,7 +1116,7 @@ barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
         las= 1)
 
 ###############################################################################
-#(Clase 13) Gráfico de barras apiladas y agrupadas en Rstudio
+#(Clase 13) Gr?fico de barras apiladas y agrupadas en Rstudio
 df_fuma<- data.frame(
   genero= rep(c("Femenino", "Masculino", "Masculino", "Femenino",
                 "Masculino", "Femenino", "Masculino", "Femenino"),
@@ -1160,9 +1164,9 @@ barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
         legend= rownames(fuma_table),
         beside= TRUE)
 
-#Combinamos gráficos
-#Dividimos la gráfica en una fila y dos columnas.
-#Normalmente está como mfrow= c(1,1)
+#Combinamos gr?ficos
+#Dividimos la gr?fica en una fila y dos columnas.
+#Normalmente est? como mfrow= c(1,1)
 x11()
 par(mfrow= c(1,2))
 
@@ -1178,13 +1182,13 @@ barplot(fuma_table, main= "Grafico de barras agrupadas",
         beside= TRUE)
 
 ###############################################################################
-#(Clase 14) Máximo, mínimo, desviación estándar, varianza,
+#(Clase 14) M?ximo, m?nimo, desviaci?n est?ndar, varianza,
 #media, mediana, percentil en Rstudio
 
 #Hay un conjunto de datos incorporado en R llamado 
-#mtcars (prueba de carrera de automóviles de Motor Tred)
+#mtcars (prueba de carrera de autom?viles de Motor Tred)
 
-#Información sobre le conjunto de datos
+#Informaci?n sobre le conjunto de datos
 help(mtcars)
 
 #mpg	  Miles/(US) gallon
@@ -1199,17 +1203,17 @@ help(mtcars)
 #gear	  Number of forward gears
 #carb	  Number of carburetors
 
-#Obtenemos la información y lo guardamos en la variable Data_Cars 
+#Obtenemos la informaci?n y lo guardamos en la variable Data_Cars 
 Data_Cars<- mtcars
 
-#Utilizamos la función la dim() para encontrar las dimensiones 
-#del data set y la función names() para ver 
+#Utilizamos la funci?n la dim() para encontrar las dimensiones 
+#del data set y la funci?n names() para ver 
 #los nombres de las variables:
 dim(Data_Cars)
 names(Data_Cars)
 
-#Usamos la función rownames() para obtener el nombre de cada fila
-#que son los nombres de los automóviles
+#Usamos la funci?n rownames() para obtener el nombre de cada fila
+#que son los nombres de los autom?viles
 rownames(Data_Cars)
 
 #Acceso a la data
@@ -1222,24 +1226,24 @@ Data_Cars[c(1,2)]
 Data_Cars$cyl
 sort(Data_Cars$cyl)
 
-#Usamos summary() para obtener un resumen estadístico de los datos
+#Usamos summary() para obtener un resumen estad?stico de los datos
 summary(Data_Cars)
 
-# Máximo y mínimo de la variable hp
+# M?ximo y m?nimo de la variable hp
 Data_Cars["hp"]
 Data_Cars$hp
 max(Data_Cars$hp)
 min(Data_Cars$hp)
 
 #Usamos las funciones which.max() y 
-#which.min() para encontrar la posición del índice del valor 
-#máximo y mínimo en la tabla:
+#which.min() para encontrar la posici?n del ?ndice del valor 
+#m?ximo y m?nimo en la tabla:
 which.max(Data_Cars$hp)
 which.min(Data_Cars$hp)
 
-#Combinamos las funciones which.max() y which.min() con la función
-#rownames() para obtener el nombre del automóvil que tiene la
-#máxima y mínima potencia
+#Combinamos las funciones which.max() y which.min() con la funci?n
+#rownames() para obtener el nombre del autom?vil que tiene la
+#m?xima y m?nima potencia
 rownames(Data_Cars)[which.max(Data_Cars$hp)]
 rownames(Data_Cars)[which.min(Data_Cars$hp)]
 
@@ -1253,24 +1257,24 @@ median(Data_Cars$mpg)
 sort(Data_Cars$mpg)
 range(Data_Cars$mpg)
 
-#Desviación estándar
+#Desviaci?n est?ndar
 sd(Data_Cars$wt)
 
 #Varianza
 var(Data_Cars$wt)
 
 #Percentil
-#El percentil es una medida de posición usada en estadística 
+#El percentil es una medida de posici?n usada en estad?stica 
 #que indica, una vez ordenados los datos de menor a mayor, 
 #el valor de la variable por debajo del cual se encuentra 
 #un porcentaje dado de observaciones en un grupo
 
-#¿Cuál es el precentil 75 de la variable wt?, 
+#?Cu?l es el precentil 75 de la variable wt?, 
 sort(Data_Cars$wt)
 quantile(Data_Cars$wt, c(0.75))
-#Es decir, el 75% de automóviles que pesan 3.61 o menos 
+#Es decir, el 75% de autom?viles que pesan 3.61 o menos 
 
-#Si ejecuta quantile() sin especificar el c(), obtendrá 
+#Si ejecuta quantile() sin especificar el c(), obtendr? 
 #los percentiles 0% 25% 50% 75% 100%
 summary(Data_Cars$wt)
 quantile(Data_Cars$wt)
@@ -1284,9 +1288,9 @@ quantile(Data_Cars$wt)
 #El valor del cuarto cuartil corta el 100% de los datos.
 
 ###############################################################################
-#(Clase 15) Gráfico histograma en Rstudio
+#(Clase 15) Gr?fico histograma en Rstudio
 
-#Mostrará la frecuencia con la que se presenta los datos seleccionados.
+#Mostrar? la frecuencia con la que se presenta los datos seleccionados.
 Data_Cars<- mtcars
 sort(Data_Cars$hp)
 
@@ -1310,7 +1314,7 @@ hist(Data_Cars$hp, main = "Histograma de densidad", xlab= "Caballos de fuerza",
      ylab= "Densidad", col= "plum4", ylim= c(0,0.01),
      prob= T)
 
-#Si queremos cambiar el número de barras usamos breaks
+#Si queremos cambiar el n?mero de barras usamos breaks
 x11()
 par(mfrow= c(1,3))
 
@@ -1327,7 +1331,7 @@ hist(Data_Cars$hp, main = "Histograma de densidad", xlab= "Caballos de fuerza",
      prob= T, breaks= 40)
 
 #rnorm (r significa random (aleatorio), norm significa normal)
-#rnorm(n, mean, sd) donde n es el número de valores a obtener
+#rnorm(n, mean, sd) donde n es el n?mero de valores a obtener
 x <- rnorm(1000, mean= 0, sd= 2)    
 y <- rnorm(500, mean= 0, sd= 2)
 
@@ -1337,13 +1341,13 @@ hist(x, main = "Primer histograma", ylab = "Frecuencia", col= "tomato2")
 hist(y, main= "Segundo histograma", ylab= "Frecuencia", col= c("skyblue"))
 
 #Histograma con dos variables
-#add= TRUE nos permitirá unir un histograma con otro
+#add= TRUE nos permitir? unir un histograma con otro
 x11()
 hist(x, main = "Histograma con dos variables", ylab = "Frecuencia", 
      col= "tomato2")
 hist(y, add = TRUE, col= c("skyblue"))
 
-#Juntando los tres gráficos para visualizarlos
+#Juntando los tres gr?ficos para visualizarlos
 x11()
 par(mfrow= c(1,3))
 hist(x, main = "Primer histograma", ylab = "Frecuencia", col= "tomato2")
@@ -1356,7 +1360,7 @@ hist(y, add = TRUE, col= c("skyblue"))
 ###############################################################################
 #(Clase 16) if y else en Rstudio
 
-#Condición if
+#Condici?n if
 a<- 33
 b<- 200
 
@@ -1364,10 +1368,10 @@ if (b>a) {
   print("b es mayor que a")
 }
 
-#Condición else if
+#Condici?n else if
 #else if: es la forma en que R dice 
 #"si las condiciones anteriores no eran verdaderas, 
-#pruebe esta condición"
+#pruebe esta condici?n"
 
 a<- 120
 b<- 120
@@ -1391,7 +1395,7 @@ if (b>a) {
   print("a es mayor que b")
 }
 
-#También podemos usar else sin else if
+#Tambi?n podemos usar else sin else if
 a<- 90
 b<- 26
 
@@ -1405,15 +1409,15 @@ if (b>a) {
 edad<- 15
 
 if (edad>18) {
-  print("Tu edad está por encima de los 18 años")
+  print("Tu edad est? por encima de los 18 a?os")
   if (edad>20){
-    print("y también está por encima de los 20 años")
+    print("y tambi?n est? por encima de los 20 a?os")
   } else {
     print("pero no por encima de los 20")
   }
 } else {
   print("No eres mayor de edad, tu tines:")
-  paste(edad, "años")
+  paste(edad, "a?os")
 }
 
 #and
@@ -1434,11 +1438,11 @@ monto<- 160
 metodo_pago<- "tarjeta"
 
 if (monto>150 & metodo_pago== "tarjeta") {
-  paste("El total será de",monto - monto*desc_tarje, "soles")
+  paste("El total ser? de",monto - monto*desc_tarje, "soles")
 } else if (monto>150 & metodo_pago== "efectivo") {
-  paste("El total será de", monto - monto*desc_efec, "soles")
+  paste("El total ser? de", monto - monto*desc_efec, "soles")
 } else{
-  paste("El total será de", monto, "soles")
+  paste("El total ser? de", monto, "soles")
 }
 
 #O
@@ -1459,9 +1463,9 @@ A<- 49
 B<- 80
 
 if(A>=50 | B>40) {
-  paste("Tendrá un descuento", (A*precioA + B*precioB)*0.2, "soles")
+  paste("Tendr? un descuento", (A*precioA + B*precioB)*0.2, "soles")
 } else if (A<50 | B<=40) {
-  print("No tendrán descuento")
+  print("No tendr?n descuento")
 }
 
 
@@ -1469,21 +1473,21 @@ if(A>=50 | B>40) {
 #(Clase 17) Funciones en Rstudio
 
 mi_funcion<- function() {
-  print("Mi primera función")
+  print("Mi primera funci?n")
 }
 
-#Llamar a una función
-#Use el nombre de la función seguido de paréntesis.
+#Llamar a una funci?n
+#Use el nombre de la funci?n seguido de par?ntesis.
 mi_funcion() 
 
 #Argumentos
-#La información se puede pasar a funciones como argumentos,
-#los argumentos se especifican después del nombre de la 
-#función, entre paréntesis. Puede agregar tantos argumentos
-#como desee, solo sepárelos con una coma.
-#El siguiente ejemplo tiene una función con argumento 
-#(fnombre). Cuando se llama a la función, pasamos un nombre,
-#que se usa dentro de la función para imprimir el 
+#La informaci?n se puede pasar a funciones como argumentos,
+#los argumentos se especifican despu?s del nombre de la 
+#funci?n, entre par?ntesis. Puede agregar tantos argumentos
+#como desee, solo sep?relos con una coma.
+#El siguiente ejemplo tiene una funci?n con argumento 
+#(fnombre). Cuando se llama a la funci?n, pasamos un nombre,
+#que se usa dentro de la funci?n para imprimir el 
 #nombre completo
 #Ejemplo 1
 mi_funcion<- function(elemento) {
@@ -1496,22 +1500,22 @@ mi_funcion(20*5)
 
 #Ejemplo 2
 edad_funcion<- function(edad, peso) {
-  paste(edad, "años")
+  paste(edad, "a?os")
 }
 
 edad_funcion(24)
 edad_funcion("Yo tengo 24")
 
-#Si su función espera 2 argumentos, debe llamar 
-#a la función con 2 argumentos.
+#Si su funci?n espera 2 argumentos, debe llamar 
+#a la funci?n con 2 argumentos.
 mi_funcion<- function(edad, hobby) {
   paste(edad, hobby)
 }
 
-mi_funcion(20, "años y mi hobby es tocar guitarra")
+mi_funcion(20, "a?os y mi hobby es tocar guitarra")
 
-#Valor de parámetro predeterminado 
-mi_funcion<- function(pais = "Perú"){
+#Valor de par?metro predeterminado 
+mi_funcion<- function(pais = "Per?"){
   paste("Yo soy de", pais)
 }
 
@@ -1520,7 +1524,7 @@ mi_funcion("Colombia")
 mi_funcion(23)
 
 #Valores devueltos
-#usamos la función return()
+#usamos la funci?n return()
 mi_funcion<- function(x) {
   return(5*x)
 }
@@ -1552,7 +1556,7 @@ costo(9)
 ###############################################################################
 #(Clase 18) Variables Globales, redLines en Rstudio
 
-#Las variables globales que se crean fuera de una función se conocen
+#Las variables globales que se crean fuera de una funci?n se conocen
 #como variables globales
 #todo el mundo puede utilizar las variables globales, 
 #tanto dentro como fuera de las funciones.
@@ -1567,7 +1571,7 @@ mi_funcion<- function() {
 mi_funcion()
 
 #Ejemplo 2
-#Si Global2 se usa como el nombre de un objeto dentro de la función, 
+#Si Global2 se usa como el nombre de un objeto dentro de la funci?n, 
 #el valor de Global2 en el entorno global  no cambia.
 Global2<- 3500
 
@@ -1579,8 +1583,8 @@ mi_funcion<- function() {
 mi_funcion()
 Global2
 
-#Si usa el operador de asignación <<- la variable pertenece
-#al ámbito global
+#Si usa el operador de asignaci?n <<- la variable pertenece
+#al ?mbito global
 mi_funcion<- function() {
   Global3<<- 2200
   paste("Mi gasto mensual es", Global3)
@@ -1589,13 +1593,13 @@ mi_funcion<- function() {
 mi_funcion()
 Global3
 
-#Además, use el operador de asignación global <<- si desea 
-#cambiar una variable global dentro de una función
+#Adem?s, use el operador de asignaci?n global <<- si desea 
+#cambiar una variable global dentro de una funci?n
 edad<- 20
 
 mi_funcion<- function() {
   edad<<- 25
-  paste("Yo tengo", edad, "años")
+  paste("Yo tengo", edad, "a?os")
 }
 
 mi_funcion()
@@ -1606,7 +1610,7 @@ edad
 pregunta<- function() {
   cat("Introduzca su edad: ")
   edad<- readLines(n= 3) 
-  paste("Yo tengo", edad, "años")
+  paste("Yo tengo", edad, "a?os")
 }
 
 pregunta()
@@ -1615,7 +1619,7 @@ pregunta()
 pregunta<- function() {
   cat("Introduzca su edad: ")
   edad<- readLines(n= 1) 
-  paste("Yo tengo", edad, "años")
+  paste("Yo tengo", edad, "a?os")
 }
 
 #Condicionales
@@ -1624,10 +1628,10 @@ pB<- 25
 pC<- 28
 
 pregunta<- function() {
-  cat("Introduzca el número de hamburguesas que comprará:")
+  cat("Introduzca el n?mero de hamburguesas que comprar?:")
   cantidad<- readLines(n=1)
   cantidad<- as.numeric(cantidad)
-  cat("Indicar si pagará con efectivo con un si, caso contrario colocar no:")
+  cat("Indicar si pagar? con efectivo con un si, caso contrario colocar no:")
   pago<- readLines(n= 1)
   
   if (pago == "si"){
@@ -1681,13 +1685,13 @@ pregunta()
 ###############################################################################
 #(Clase 19) Bucles while y for 
 
-#Los blucles pueden ejecutar un bloque de código siempre que se
-#alcance una condición específica 
+#Los blucles pueden ejecutar un bloque de c?digo siempre que se
+#alcance una condici?n espec?fica 
 
 #while: bucle que permite ejecutar un conjunto de declaraciones
-#Siempre que una condición sea Verdadera
+#Siempre que una condici?n sea Verdadera
 #Ejemplo 1
-#No se ejecutará porque no es verdadera la condición
+#No se ejecutar? porque no es verdadera la condici?n
 i<- 1
 
 while (i>10) {
@@ -1718,7 +1722,7 @@ while (i<10) {
   }
 }
 
-#next: podemos omitir una iteración sin terminar el ciclo
+#next: podemos omitir una iteraci?n sin terminar el ciclo
 i<- 0
 
 while (i<10) {
@@ -1736,10 +1740,10 @@ milist_m3<- list()
 milist_no3<- list()
 
 pregunta<- function(){
-  cat("Introduzca el número inicial")
+  cat("Introduzca el n?mero inicial")
   inicio<- readLines(n= 1)
   inicio<- as.numeric(inicio)
-  cat("Introduzca el número final")
+  cat("Introduzca el n?mero final")
   final<- readLines(n=1)
   final<- as.numeric(final)
   
@@ -1773,7 +1777,7 @@ for (x in frutas) {
   print(x)
 }
 
-#Ejemplo 2: imprime el número de dados:
+#Ejemplo 2: imprime el n?mero de dados:
 dados<- c(1,2,3,4,5,6)
 
 for (x in dados) {
@@ -1792,7 +1796,7 @@ for (x in frutas) {
   print(x)
 }
 
-#next: declaración, podemos omitir una iteración sin 
+#next: declaraci?n, podemos omitir una iteraci?n sin 
 #terminar el ciclo
 frutas<- list("manzana", "mango", "fresa")
 
@@ -1806,8 +1810,8 @@ for (x in frutas) {
 
 #Bucles anidados 
 #Es un bucle dentro de un bucle
-#El "bucle interno" se ejecutará una vez por cada 
-#iteración del "iteración" del "bucle externo"
+#El "bucle interno" se ejecutar? una vez por cada 
+#iteraci?n del "iteraci?n" del "bucle externo"
 
 num1<- c(5, 3)
 num2<- c(2, 4, 8)
@@ -1821,25 +1825,25 @@ for (x in num1) {
 
 #Funciones con ciclo for
 pregunta<- function(){
-  cat("Introduzca el número inicial")
+  cat("Introduzca el n?mero inicial")
   inicio<- readLines(n= 1)
   inicio<- as.numeric(inicio)
-  cat("Introduzca el número final")
+  cat("Introduzca el n?mero final")
   final<- readLines(n=1)
   final<- as.numeric(final)
   
   for (x in inicio:final) {
     
     if  ((x%%2) != 0) {
-      cat(x, "no es múltiplo de 2\n")
+      cat(x, "no es m?ltiplo de 2\n")
       sumaimpar<<- ((x + 1)/2)^2
     } else {
-      cat(x, "es múltiplo de 2\n")
+      cat(x, "es m?ltiplo de 2\n")
       sumapar<<- (x/2)*((x/2) + 1)
     }
   }
-  cat("La suma de los números pares es", sumapar, "\n")
-  cat("La suma de los números impares es", sumaimpar, "\n")
+  cat("La suma de los n?meros pares es", sumapar, "\n")
+  cat("La suma de los n?meros impares es", sumaimpar, "\n")
 }
 
 pregunta()
@@ -1850,29 +1854,29 @@ dfimpar<- c()
 dfpar<- c()
 
 pregunta<- function(){
-  cat("Introduzca el número inicial")
+  cat("Introduzca el n?mero inicial")
   inicio<- readLines(n= 1)
   inicio<- as.numeric(inicio)
-  cat("Introduzca el número final")
+  cat("Introduzca el n?mero final")
   final<- readLines(n=1)
   final<- as.numeric(final)
   
   for (x in inicio:final) {
     
     if  ((x%%2) != 0) {
-      cat(x, "no es múltiplo de 2\n")
+      cat(x, "no es m?ltiplo de 2\n")
       df_impar<- data.frame(impares = x)
       dfimpar<<- rbind(dfimpar, df_impar)
       sumaimpar<<- ((x + 1)/2)^2
     } else {
-      cat(x, "es múltiplo de 2\n")
+      cat(x, "es m?ltiplo de 2\n")
       df_par<- data.frame(pares = x)
       dfpar<<- rbind(dfpar, df_par)
       sumapar<<- (x/2)*((x/2) + 1)
     }
   }
-  cat("La suma de los números pares es", sumapar, "\n")
-  cat("La suma de los números impares es", sumaimpar, "\n")
+  cat("La suma de los n?meros pares es", sumapar, "\n")
+  cat("La suma de los n?meros impares es", sumaimpar, "\n")
 }
 
 pregunta()
