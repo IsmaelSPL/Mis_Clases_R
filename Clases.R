@@ -136,18 +136,18 @@ a ^ b
 ################################
 
 # Concatenación de cadenas
-cadena1 = "Hola, "
-cadena2 = "¿cómo estás?"
+cadena1 <- "Hola, "
+cadena2 <- "¿cómo estás?"
 
 # paste: fusiona o concatena dos o más cadenas
-concatenacion_paste = paste(cadena1, cadena2)
+concatenacion_paste <- paste(cadena1, cadena2)
 concatenacion_paste
 
 # cat:  se utiliza para concatenar y mostrar en la consola el contenido de uno 
 # o más objetos, sin devolver un valor.
 # No devuelve un valor (su valor de retorno es NULL). 
 # Simplemente se utiliza para mostrar información en la consola
-concatenacion_cat = cat("Mi cadeba de texto:", cadena1, cadena2)
+concatenacion_cat <- cat("Mi cadeba de texto:", cadena1, cadena2)
 concatenacion_cat
 cat("Mi cadeba de texto:", cadena1, cadena2)
 
@@ -175,11 +175,11 @@ nchar(cadena4)
 # &&: se utiliza para realizar una operación AND, pero solo evalúa el primer
 # elemento si hay más de uno.
 
-a = TRUE
-b = FALSE
-c = TRUE
+a <- TRUE
+b <- FALSE
+c <- TRUE
 
-resultado = a & b & c
+resultado <- a & b & c
 print(resultado)  # Salida: False
 
 # Conector or: ("|" o "||")
@@ -187,27 +187,27 @@ print(resultado)  # Salida: False
 # ||:  se utiliza para realizar una operación OR, pero solo evalúa el primer elemento 
 # si hay más de uno
 
-x = F
-y = T
-z = F
+x <- F
+y <- T
+z <- F
 
-resultado = x | y | z
+resultado <- x | y | z
 print(resultado)  # Salida: True
 
 # Conector not: ("!")
 # !: se utiliza para negar una condición
-valor = TRUE
-negado = !valor
+valor <- TRUE
+negado <- !valor
 
 print(negado)  # Salida: False
 
 # Ejemplo
 
-edad = 18
-tiene_dinero = TRUE
-permiso_adulto = FALSE
+edad <- 18
+tiene_dinero <- TRUE
+permiso_adulto <- FALSE
 
-puede_comprar = (edad >= 16 & tiene_dinero) | (edad < 16 & permiso_adulto)
+puede_comprar <- (edad >= 16 & tiene_dinero) | (edad < 16 & permiso_adulto)
 
 paste("¿Puede comprar el producto?", puede_comprar)
 
@@ -219,12 +219,12 @@ paste("¿Puede comprar el producto?", puede_comprar)
 readline()
 
 # Solicitar al usuario que ingrese su nombre y almacenarlo en una variable
-nombre = readline("Por favor, ingresa tu nombre: ")
+nombre <- readline("Por favor, ingresa tu nombre: ")
 
 class(nombre)
 
 # Solicitar al usuario que ingrese su edad y almacenarla en una variable
-edad = readline("Ingresa tu edad: ")
+edad <- readline("Ingresa tu edad: ")
 
 class(edad)
 
@@ -232,7 +232,7 @@ class(edad)
 paste("Hola,", nombre, "tienes", edad, "años.")
 
 # Transformaos a una variable entender
-edad = as.integer(edad)
+edad <- as.integer(edad)
 class(edad)
 
 #########################
@@ -249,12 +249,12 @@ class(edad)
 # i: tasa de interés mensual
 
 # Variables de entrada
-monto_prestamo = as.numeric(readline("Ingrese el monto del préstamo: "))
-num_meses = as.integer(readline("Ingrese el número de meses del préstamo: "))
-tasa_interes_mensual = as.numeric(readline("Ingrese la tasa de interés mensual en decimal (por ejemplo, 0.05 para 5%): "))
+monto_prestamo <- as.numeric(readline("Ingrese el monto del préstamo: "))
+num_meses <- as.integer(readline("Ingrese el número de meses del préstamo: "))
+tasa_interes_mensual <- as.numeric(readline("Ingrese la tasa de interés mensual en decimal (por ejemplo, 0.05 para 5%): "))
 
 # Cálculo del monto total a pagar
-monto_total_pagar = monto_prestamo * (1 + tasa_interes_mensual) ^ num_meses
+monto_total_pagar <- monto_prestamo * (1 + tasa_interes_mensual) ^ num_meses
 
 paste("El monto total a pagar al final del préstamo es:", round(monto_total_pagar))
 
@@ -262,100 +262,93 @@ paste("El monto total a pagar al final del préstamo es:", round(monto_total_pag
 #                      Módulo 2 - R Data Structures                           #
 ###############################################################################
 
-#(Clase 2) Vectores en Rstudio
+###############
+# 1. Vectores #
+###############
 
-#Vectores numeric
-numeros<- c(20,5,8)
+# un vector es una estructura de datos fundamental que permite almacenar un 
+# conjunto ordenado de elementos del mismo tipo. 
+# Los vectores son esenciales para realizar operaciones eficientes, 
+# ya que muchas funciones y operaciones están diseñadas para trabajar con ellos.
+
+# Vectores numeric
+numeros <- c(20,5,8)
 numeros
 class(numeros)
-#Para crear un vector con una secuencia de n?meros
-numeros<- 3:10
+
+# Crear un vector con una secuencia de números
+numeros <- 3:10
 numeros
-numeros<- c(3:10)
-#Vectores con decimales
-#Cuando pertenece el ?ltimo elemento a la secuencia
-numero1<- c(1.5:6.5)
-numero1
-#cuando no pertenece el ultimo elemento a la secuencia
-numero2<- c(1.5:6.3)
-numero2
-#Generaci?n de vectores secuenciados 
-numeros<- seq(from=0, to=100, by=20)
+numeros <- c(3:10)
+
+# Generación de vectores secuenciados 
+numeros <- seq(from = 0, to = 100, by = 20)
 numeros
-numeros<- seq(0,100, by=20)
-#Para repetir cada elemento del vector
-rep_each<- rep(c(1,2,3), each=3)
+numeros <- seq(0,50, by = 10)
+numeros
+
+# Repetir cada elemento del vector
+rep_each <- rep(c(1,2,3), each = 3)
 rep_each
-#Repite la secuencia del vector
-rep_times<- rep(c(1,2,3), times=3)
+
+# Rep la secuencia del vector
+rep_times <- rep(c(1,2,3), times = 3)
 rep_times
-#Repetimos cada valor de forma independiente
-rep_independiente<- rep(c(1,2,3), times=c(5,2,1))
+
+# Repetimos cada valor de forma independiente
+rep_independiente <- rep(c(1,2,3), times = c(5,2,1))
 rep_independiente
 
-#Vectores character
-frutas<- c("manzana","naranja","fresa","pera")
+# Vector character
+frutas <- c("manzana","naranja","fresa","pera")
 class(frutas)
 
-#Vector de valores logicos
-vec_logico<- c(TRUE, FALSE, T, F)
+# Vector de valores lógicos
+vec_logico <- c(TRUE, FALSE, T, F)
 class(vec_logico)
 
-#Para saber cuantos elementos tiene un vector 
-numeros<- c(20,5,8)
-frutas<- c("manzana","naranja","fresa","pera")
-vec_logico<- c(TRUE, FALSE, T, F)
-
+# Número de elementos que tiene cada vector 
 length(numeros)
 length(frutas)
 length(vec_logico)
 
-#Ordenamos los elementos de un vector
-numeros<- c(20,5,8)
-frutas<- c("manzana","naranja","fresa","pera")
-vec_logico<- c(TRUE, FALSE, T, F)
+# Accedemoes a los elementos de un vector
+numeros <- c(20,5,8)
+frutas <- c("manzana","naranja","fresa","pera")
+vec_logico <- c(TRUE, FALSE, T, F)
 
+numeros[3]
+numeros[c(1,3)]
+
+frutas[2]
+frutas[c(1,3)]
+
+vec_logico[4]
+vec_logico[c(2,4)]
+
+# Ordenamos los elementos de un vector
 sort(numeros)
 sort(frutas)
 sort(vec_logico)
 
-#Accedemos a un elemento del vector
-numeros<- c(20,5,8)
-frutas<- c("manzana","naranja","fresa","pera")
-vec_logico<- c(TRUE, FALSE, T, F)
+# Modificar elementos de un vector
+numeros[2] <- 23
+frutas[1] <- "mandarina"
+vec_logico[3] <- T
 
-numeros[3]
-frutas[2]
-vec_logico[4]
+# Operaciones con vectores
+vec1 <- c(1,5,6,30)
+vec2 <- c(5,10,3,2)
 
-#Accedemos a varios elementos del vector
-numeros<- c(20,5,8,10,15,7)
-frutas<- c("platano", "manzana", "naranja", "mango", "limon")
-vec_logico<- c(TRUE, FALSE, T, F,T,F)
+vec3 <- vec1 + vec2
+vec3 <- vec2 - vec1
+vec3 <- vec1 * vec2
+vec3 <- vec1 / vec2
 
-numeros[c(2,5)]
-frutas[c(1,3)]
-vec_logico[c(3,4)]
+# length: longitud del vector
 
-#Acceder a todos los elementos excepto a los especificados 
-numeros<- c(20,5,8,10,15,7)
-frutas<- c("platano", "manzana", "naranja", "mango", "limon")
-vec_logico<- c(TRUE, FALSE, T, F,T,F)
 
-numeros[c(-1)]
-frutas[c(-1,-2)]
-vec_logico[c(-1,-3)]
-
-#Cambiamos el elemento de un vector
-numeros<- c(20,5,8,10,15,7)
-frutas<- c("platano", "manzana", "naranja", "mango", "limon")
-vec_logico<- c(TRUE, FALSE, T, F,T,F)
-
-numeros[2]<- 23
-frutas[1]<- "mandarina"
-vec_logico[3]<- F
-
-#Insertamos los nombres de las frutas en el vector numeros
+# Insertamos los nombres de las frutas en el vector numeros
 numeros<- c(20,5,8,10,15,7)
 frutas<- c("platano", "manzana", "naranja", "mango", "limon", "fresa")
 
@@ -367,22 +360,6 @@ error1 <- c("Angela", "Carlos", 22, "Contabilidad",FALSE,TRUE)
 class(error1)
 error2 <- c(23,T,FALSE)
 class(error2)
-
-#Operaciones con vectores
-vec1<- c(1,5,6,30)
-vec2<- c(5,10,3,2)
-
-vec3<- vec1 + vec2
-vec3<- vec2 - vec1
-vec3<- vec1*vec2
-vec3<- vec1/vec2
-
-#Operamos vectores con diferente logitud
-vec1<- c(1,5,6,30)
-vec2<- c(5,10,3,2,10,15)
-
-#R agarrar? los valores del inicios hasta completar la longitud del otro vector
-vec3<- vec1 + vec2
 
 ###############################################################################
 #(Clase 3) Listas en Rstudio
