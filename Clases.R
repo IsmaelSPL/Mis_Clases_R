@@ -2,8 +2,9 @@
 #                         Módulo 1 - R Basics                                 #
 ###############################################################################
 
-# 0. Funciones iniciales
-########################
+##########################
+# 0. Funciones iniciales #
+##########################
 
 # Print: imprime el resultado
 print("Hola mundo")
@@ -49,8 +50,9 @@ setwd("Ruta")
 
 # Para limpiar la consola: control + L
 
-# 1. Tipos de Variables
-#######################
+#########################
+# 1. Tipos de Variables #
+#########################
 
 # Integer
 x <- 100L
@@ -81,8 +83,9 @@ c <- "Hola mundo!"
 class(c)
 print(c)
 
-# 2. Casteo de variables
-########################
+##########################
+# 2. Casteo de variables #
+##########################
 
 # Cambio de tipo de datos
 x <- 61.5
@@ -104,7 +107,10 @@ class(x)
 x <- as.logical(x)
 class(x)
 
-# 3. Operaciones Aritméticas
+##############################
+# 3. Operaciones Aritméticas #
+##############################
+
 a = 17
 b = 2
 
