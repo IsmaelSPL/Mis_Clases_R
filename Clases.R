@@ -272,20 +272,20 @@ paste("El monto total a pagar al final del préstamo es:", round(monto_total_pag
 # ya que muchas funciones y operaciones están diseñadas para trabajar con ellos.
 
 # Vectores numeric
-numeros <- c(20,5,8)
-numeros
-class(numeros)
+vect_num <- c(20,5,8)
+vect_num
+class(vect_num)
 
 # Crear un vector con una secuencia de números
-numeros <- 3:10
-numeros
-numeros <- c(3:10)
+vect_num <- 3:10
+vect_num
+vect_num <- c(3:10)
 
 # Generación de vectores secuenciados 
-numeros <- seq(from = 0, to = 100, by = 20)
-numeros
-numeros <- seq(0,50, by = 10)
-numeros
+vect_num <- seq(from = 0, to = 100, by = 20)
+vect_num
+vect_num <- seq(0,50, by = 10)
+vect_num
 
 # Repetir cada elemento del vector
 rep_each <- rep(c(1,2,3), each = 3)
@@ -300,36 +300,36 @@ rep_independiente <- rep(c(1,2,3), times = c(5,2,1))
 rep_independiente
 
 # Vector character
-frutas <- c("manzana","naranja","fresa","pera")
-class(frutas)
+vect_string <- c("manzana","naranja","fresa","pera")
+class(vect_string)
 
 # Vector de valores lógicos
-vec_logico <- c(TRUE, FALSE, T, F)
-class(vec_logico)
+vect_logico <- c(TRUE, FALSE, T, F)
+class(vect_logico)
 
 # Número de elementos que tiene cada vector 
-length(numeros)
-length(frutas)
-length(vec_logico)
+length(vect_num)
+length(vect_string)
+length(vect_logico)
 
-# Accedemoes a los elementos de un vector
-numeros <- c(20,5,8)
-frutas <- c("manzana","naranja","fresa","pera")
-vec_logico <- c(TRUE, FALSE, T, F)
+# Accedemos a los elementos de un vector
+vect_num <- c(20,5,8)
+vect_string <- c("manzana","naranja","fresa","pera")
+vect_logico <- c(TRUE, FALSE, T, F)
 
-numeros[3]
-numeros[c(1,3)]
+vect_num[3]
+vect_num[c(1,3)]
 
-frutas[2]
-frutas[c(1,3)]
+vect_string[2]
+vect_string[c(1,3)]
 
-vec_logico[4]
-vec_logico[c(2,4)]
+vect_logico[4]
+vect_logico[c(2,4)]
 
 # Modificar elementos de un vector
-numeros[2] <- 23
-frutas[1] <- "mandarina"
-vec_logico[3] <- T
+vect_num[2] <- 23
+vect_string[1] <- "mandarina"
+vect_logico[3] <- T
 
 # Operaciones con vectores
 vec1 <- c(1,5,6,30)
@@ -341,25 +341,25 @@ vec3 <- vec1 * vec2
 vec3 <- vec1 / vec2
 
 # length: longitud del vector
-length(numeros)
+length(vect_num)
 
 # Agregar elementos a un vector
-numeros <- c(numeros, 7, 9)
-numeros
+vect_num <- c(vect_num, 7, 9)
+vect_num
 
 # Eliminar elemento de un vector
-numeros <- numeros[-2]
-numeros
+vect_num <- vect_num[-2]
+vect_num
 
 # Ordenamos los elementos de un vector
-sort(numeros)
-sort(frutas)
-sort(vec_logico)
+sort(vect_num)
+sort(vect_string)
+sort(vect_logico)
 
 # sum, min, max
-suma_vector <- sum(numeros)
-minimo_vector <- min(numeros)
-maximo_vector <- max(numeros)
+suma_vector <- sum(vect_num)
+minimo_vector <- min(vect_num)
+maximo_vector <- max(vect_num)
 
 paste("La suma del vector es:", suma_vector)
 paste("El valor mínimo del vector es:", minimo_vector)
@@ -377,7 +377,7 @@ class(error2)
 ###############
 
 # Matriz numeric
-numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
+numatrix <- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
 
 # Accedemos a los elementos de una matriz
 
@@ -389,99 +389,28 @@ numatrix[c(1,2),] # Muestro la fila 1 y 2
 # Longitud de la matriz
 length(numatrix)
 
-# Para agregar filas adicionales usamos rbind()
-# Ejemplo 1
-numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
-
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
-
-numatrix2<- rbind(numatrix, c(23,27))
-
-animalmatrix2<- rbind(animalmatrix, c("coala", "tigre","perro"))
-# Las celdas de la nueva fila deben tener la misma longitud 
-# que la matriz existente.
-
-
-# Usamos cbind() para agregar columnas adicionales en la matriz
-# Ejemplo 2
-numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
-
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
-
-numatrix2<- cbind(numatrix, c(23,27,13,14))
-
-animalmatrix2<- cbind(animalmatrix, c("coala", "tigre","perro"))
-#Las celdas de la nueva columna deben tener la misma longitud 
-#que la matriz existente.
+#Utilizamos dim() para saber la cantidad de filas y columnas en una matriz
+dim(numatrix)
 
 #Eliminamos filas y columnas
-numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
+numatrix <- numatrix[-c(1),-c(2)] #Remueve la primera fila y la segunda columna
+numatrix
 
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
+#Jerarquía (character > numeric > logical)
+error1 <- matrix(c("león", "5", 6, 21, 8, 20, TRUE, FALSE), nrow=2, ncol=4)
+error1
 
-numatrix<- numatrix[-c(1),-c(1)] #Remover?la primera fila y la primera columna
+error2 <- matrix(c(5,TRUE, FALSE, T, F, F), nrow=2, ncol=3)
+error2
 
-animalmatrix<- animalmatrix2[,-c(2)] #Eliminar? la columna 2
+# Operaciones con matrices
+matriz_A <- matrix(c(22,8,15,12), nrow = 2, ncol = 2)
+matriz_B <- matrix(c(2,4,5,6), nrow = 2, ncol= 2 )
 
-#Compruebe si existe un elemento en la matriz
-numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
-
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
-
-23 %in% numatrix
-"lobo" %in% animalmatrix
-
-#Utilizamos dim() para saber la cantidad de filas y columnas en una matriz
-numatrix<- matrix(c(1,2,3,4,5,6,7,8), nrow=4, ncol=2)
-
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
-
-dim(numatrix)
-dim(animalmatrix)
-
-#Jerarqu?a (character > numeric > logical)
-error1<- matrix(c("le?n", "5", 6, 21,8,20, TRUE, FALSE), nrow=2, ncol=4)
-error2<- matrix(c(5,TRUE, FALSE, T, F,F), nrow=2, ncol=3)
-
-#Combinar dos matrices con filas
-#tienen que tener la misma cantidad de columnas
-numatrix<- matrix(c(1,2,3,4,5,6,7,8,9,10,11,12), nrow=4, ncol=3)
-
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
-
-combinar_matrix<- rbind(numatrix, animalmatrix)
-
-#Combinar dos matrices con columnas
-#Tienen que tener la misma cantidad de filas
-numatrix<- matrix(c(1,2,3,4,5,6,7,8,9,10,11,12), nrow=3, ncol=4)
-
-animalmatrix<- matrix(c("le?n", "panda", "gato", "canguro","cocodrilo",
-                        "elefante", "lobo", "jirafa",
-                        "conejo"), nrow=3, ncol = 3)
-
-combinar_matrix2<- cbind(numatrix, animalmatrix)
-
-#Operaciones con matrices
-numatrix<- matrix(c(22,8,15,12), nrow = 2, ncol = 2)
-numatrix2<- matrix(c(2,4,5,6), nrow = 2, ncol= 2 )
-
-numatrix + numatrix2
-numatrix - numatrix2
-numatrix %*% numatrix2
-numatrix / numatrix2
-5*numatrix
+matriz_A + matriz_B # Suma
+matriz_A - matriz_B # Resta
+matriz_A %*% matriz_B # Multiplicación
+matriz_A / matriz_B # División
 
 #############
 # 3. Listas #
@@ -630,13 +559,13 @@ mus_no_arrancar<- music_genre[-c(1,3)]
 ###############################################################################
 #(Clase 6) Data.Frames en Rstudio
 
-#Son datos que se muestran en formato de tabla
-#Pueden tener diferentes tipos de datos en su interior. 
-#Mientras que la primera columna puede ser character, 
-#la segunda y la tercera pueden ser numeric o logical.
-#Sin embargo, cada columna debe tener el mismo tipo de datos
+# Son datos que se muestran en formato de tabla
+# Pueden tener diferentes tipos de datos en su interior. 
+# Mientras que la primera columna puede ser character, 
+# la segunda y la tercera pueden ser numeric o logical.
+# Sin embargo, cada columna debe tener el mismo tipo de datos
 
-#Forma 1
+# Forma 1
 trabajadores<- c("Angela", "David", "Melanie", "Hector","Emma")
 edades<- c(22,23,24,26,25)
 hijos<- c(F,F,T,T,F)
