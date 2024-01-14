@@ -2,71 +2,126 @@
 #                         Módulo 1 - R Basics                                 #
 ###############################################################################
 
-# 1. Tipos de Variables
-#######################
+# 0. Funciones iniciales
+########################
 
-# Print
+# Print: imprime el resultado
 print("Hola mundo")
 "hola mundo"
+
+# paste: fusiona o concatena dos o más cadenas:
+nombre <- "Juan"
+edad <- 25
+hobby <- "guitarra"
+
+paste("Nombre", nombre, ", edad", edad, " y hobby tocar", hobby)
+
+# cat:  se utiliza para concatenar y mostrar en la consola el contenido de uno 
+# o más objetos, sin devolver un valor.
+# No devuelve un valor (su valor de retorno es NULL). 
+# Simplemente se utiliza para mostrar información en la consola
+
+cat("Nombre", nombre, ", edad", edad, " y hobby tocar", hobby)
+
+# Eliminar una variable
+rm(list = c("nombre"))
+# Eliminar dos o más variables
+rm(list = c("edad", "hobby"))
+# ls: sirve para conocer objetos existentes
+ls()
+# Eliminamos todos los objetos
+rm(list = ls())
 
 # Help
 help(summary)
 mean # Sombreas + F1
 
-# Instalación de paquete y activamos el paquete
-install.packages("car")
-library(car)
+# Instalar un paquete
+install.packages("ggplot2")
+# Activamos un paquete
+library(ggplot2)
 
 # Para saber donde está el directorio de trabajo
 getwd()
 
 # Cambiamos nuestro directorio de tabajo
-setwd("Colocar Ruta")
+setwd("Ruta")
 
 # Para limpiar la consola: control + L
 
-#Asignación de Variables y Tipos de datos
-#Flotantes
-x<- 10.5
+# 1. Tipos de Variables
+#######################
+
+# Integer
+x <- 100L
 class(x)
-x<-123
-class(x)
-#Integer
-x<-100L
-class(x)
-#Complex
-x<- 9i + 3
-class(x)
-#Character/string
-x<- "Si te gusta el video dejame un like"
-class(x)
-#Logical/boolean
-x<- TRUE
+print(x)
+
+# Flotantes (numeric)
+y <- 10.5
+class(y)
+print(y)
+
+z <- 123
+class(z)
+print(z)
+
+# Logical/boolean
+a <- TRUE
+class(a)
+print(a)
+
+# Complex
+b <- 9i + 3
+class(b)
+print(b)
+
+# Character/string
+c <- "Hola mundo!"
+class(c)
+print(c)
+
+# 2. Casteo de variables
+########################
+
+# Cambio de tipo de datos
+x <- 61.5
 class(x)
 
-#Cambio de tipo de datos
-x<- 61.5
+# Flotante a integer
+x <- as.integer(x)
 class(x)
-x<- as.character(x)
-x<- as.numeric(x)
-x<- as.complex(x)
-x<- as.integer(x)
-x<- as.logical(x)
-x<- FALSE
+# Integer a string
+x <- as.character(x)
+class(x)
+# String a flotante
+x <- as.numeric(x)
+class(x)
+# Flotante a complex
+x <- as.complex(x)
+class(x)
+# Complex a logical
+x <- as.logical(x)
+class(x)
 
-#Operadores aritmeticos
-5+5 
+# 3. Operaciones Aritméticas
+a = 17
+b = 2
+
+# Adición
+a + b 
+
 7-2
 7*9
 12/5
 5^2
 5%%2 #Para obtener el residuo
-35%/%2 #Divisi?n entera
+35%/%2 #División entera
 abs(-10) #Valor absoluto
 log(100) #Logaritmo neperiano
 log10(100)
 
-#Operadores de comparaci?n
+# Operadores de comparación
 5==5
 5!=7
 7>9
@@ -74,7 +129,7 @@ log10(100)
 7>=9
 7<=9
 
-#Operaciones con asignaci?n 
+# Operaciones con asignación 
 x<- 12
 y<- 5
 
@@ -85,47 +140,24 @@ x^y
 x<y
 print(x+y)
 
-#Para eliminar una variable
-rm(list = c("x"))
-#Para eliminar dos o m?s variables
-x<- 12
-y<- 5
-z<- 6
-rm(list = c("x","y"))
-#ls: sirve para conocer objetos existentes
-ls()
-#Eliminamos todos los objetos
-rm(list = ls())
 
-#Redondeo
-#ceilling: redondea un n?mero hacia arriba a su entero m?s cercano
-ceiling(2.4)
-#floor: redondea un n?mero hacia abajo a su entero m?s cercano
-floor(2.4)
-
-#String 
+# String 
 a<- "Aprediendo a 
 programar"
 a
 cat(a)
-#Para encontrar el n?mero de caracteres de una cadena
+# Para encontrar el número de caracteres de una cadena
 nchar(a)
 
-#grepl: verifica si un caracter o una secuencia de 
-#caracteres est?n presentes en una cadena
+# grepl: verifica si un caracter o una secuencia de 
+# caracteres est?n presentes en una cadena
 a<- "Hoy voy a pasear a mi gran perro que tiene 1 a?o"
 grepl("H",a)
 grepl("gran", a)
 grepl(1,a)
 grepl(5,a)
 
-#paste(): funci?n para fusionar o concatenar dos cadenas:
-a<- "Mi hobby es"
-b<- "tocar la guitarra"
-paste(a,b)
-c<- paste(a,b)
-print(c)
-c
+
 
 ###############################################################################
 #(Clase 2) Vectores en Rstudio
@@ -1599,7 +1631,7 @@ edad<- 20
 
 mi_funcion<- function() {
   edad<<- 25
-  paste("Yo tengo", edad, "a?os")
+  paste("Yo tengo", edad, "años")
 }
 
 mi_funcion()
