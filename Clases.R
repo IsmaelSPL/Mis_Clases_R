@@ -1526,9 +1526,9 @@ hist(Data_Cars$hp,
 # Regresamos a la dimensión normal 
 par(mfrow = c(1,1))
 
-##########################
-# 2. Gráfico con ggplot2 #
-##################### ####
+################################################
+#         2. Gráfico con ggplot2               #
+################################################
 
 # Activamos la librería
 library(ggplot2)
