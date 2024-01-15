@@ -924,94 +924,79 @@ mi_factorial(5)
 #                         Módulo 4 - Graphics                                 #
 ###############################################################################
 
-# GRÁFICOSSSSSSSS
+#############################
+# 1. Gráfico sin paquetería #
+#############################
 
-###############################################################################
-#(Clase 8) Introducci?n a los gr?ficos en Rstudio
+# Gráfico de Dispersión
+#######################
 
-#Dibujamos un punto en el diagrama, en la posici?n (1) y 
-#la posici?n (3)
-x11()
+# Dibujamos un punto en el diagrama, en la posición (1) y 
+# la posición (3)
+# x11() nos permitirá realizarle zoom al gráfico
 plot(1,3)
 
-#Dibuja dos puntos en el diagrama, uno en la posici?n (1, 3) 
-#y otro en la posici?n (8, 10)
-x11()
+# Dibuja dos puntos en el diagrama, uno en la posición (1, 3) 
+# y otro en la posición (8, 10)
 plot(c(1,8),c(3,10))
 
-#Dibujamos Varios puntos
-x11()
-plot(c(1,2,3,4,5),c(3,7,8,9,12))
-#Para ordenarlo mejor
+# Dibujamos Varios puntos
 x<- c(1,2,3,4,5)
 y<- c(3,7,8,9,12)
 
-x11()
 plot(x,y)
 
-#Secuencia de puntos tanto en el eje X y el eje Y
-x11()
+# Secuencia de puntos tanto en el eje X y el eje Y
 plot(1:10)
 
-#Etiquetas(labels)
-#main: colocamos t?tulo
-#xlab: etiqueta en el eje de abscisa
-#ylab: etiqueta en el eje de ordenada
-x11()
+# Etiquetas(labels)
+# main: colocamos título
+# xlab: etiqueta en el eje de abscisa
+# ylab: etiqueta en el eje de ordenada
+
 plot(1:10, main= "Mi grafico", xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas")
 
-#Cambiamos el tama?o de los puntos
-#1 es el valor predeterminado, mientras que 0.5 significa 50% m?s peque?o 
-#y 2 significa 100% m?s grande
-x11()
+# cex: cambia el tamaño de los puntos
+# 1: valor predeterminado, mientras que 
+# 0.5: es 50% más peque?o 
+# 2: es 100% más grande
 plot(1:10, main= "Mi grafico", xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas", cex= 2)
 
-#Cambiamos la forma del punto
-#Use pch con un valor de 0 a 25, donde 1 es el predeterminado
+# pch: Cambia la forma del punto
+# Use pch con un valor de 0 a 25, donde 1 es el predeterminado
 help("points")
 
-x11()
-plot(1:10, main= "Mi gr?fico", xlab = "Eje de abscisas", 
+plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas", cex= 2, pch= 18)
 
-#Apariencia del gr?fico
-x11()
-plot(1:10, main= "Mi gr?fico", xlab = "Eje de abscisas", 
+# Apariencia del gráfico
+plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas", cex= 2, pch=19 ,col= "red")
 
-#Vemos la lista de todos los colores
+# Vemos la lista de todos los colores
 colors()
 
-###############################################################################
-#(Clase 9) Gr?fico de dispersi?n en Rstudio
-
-#Un gr?fico de dispersi?n es un tipo de gr?fico que se 
-#utiliza para mostrar la relaci?n entre dos variables 
-#num?ricas y traza un punto para cada observaci?n
-
-#Creamos un data.frame del precio y consumo de pescado
+# Creamos un data.frame
 df_pescado<- data.frame(
   precio= c(5,7,8,7,2,2,9,4,11,12,9,6,10),
   consumo= c(99,86,87,88,111,103,87,94,78,77,85,86,80))
 
-x11()
 plot(df_pescado$consumo,df_pescado$precio,
-     main = "Gr?fico de dispersi?n", 
+     main = "Gráfico de dispersión", 
      xlab= "Consumo",
      ylab= "Precio", 
      cex= 2, pch= 19, col= "orange")
 
-#Insertamos un leyenda
-#usamos legend()
-##La leyenda se puede colocar como:
-#bottomright, bottomleft, bottom, topright, topleft, 
-#top, center, right, left.
+# Insertamos un leyenda
+# usamos legend()
+# La leyenda se puede colocar como:
+# bottomright, bottomleft, bottom, topright, topleft, 
+# top, center, right, left.
 
-x11()
 plot(df_pescado$consumo,df_pescado$precio,
-     main = "Gr?fico de dispersi?n", 
+     main = "Gráfico de dispersi?n", 
      xlab= "Consumo",
      ylab= "Precio", 
      cex= 2, pch= 19, col= "orange")
@@ -1019,7 +1004,7 @@ plot(df_pescado$consumo,df_pescado$precio,
 legend("topright", "Pescado", fill = "orange")
 
 
-#Combinamos dos gr?ficos de dispersi?n
+# Combinamos dos gráficos de dispersión
 df_pescado<- data.frame(
   precio= c(5,7,8,7,2,2,9,4,11,12,9,6,10),
   consumo= c(99,86,87,88,111,103,87,94,78,77,85,86,80))
@@ -1028,9 +1013,8 @@ df_pollo<- data.frame(
   precio= c(2,2,8,1,15,8,12,9,7,3,11,4,7,14,12),
   consumo= c(100,105,84,105,90,99,90,95,94,100,79,112,91,80,85))
 
-x11()
 plot(df_pescado$consumo,df_pescado$precio,
-     main = "Gr?fico de dispersi?n", 
+     main = "Gráfico de dispersión", 
      xlab= "Consumo",
      ylab= "Precio", 
      cex= 2, pch= 19, col= "orange")
@@ -1040,8 +1024,8 @@ points(df_pollo$consumo,df_pollo$precio,
 
 legend("topright", c("Pescado", "Pollo"), fill= c("orange", "dark green"))
 
-###############################################################################
-#(Clase 10) Gr?fico de linea en Rstudio
+# Gráfico de Línea
+##################
 
 #Colocamos type = "l" para que nos de un gr?fico lineal
 x<- c(10,15,18,23,26)
