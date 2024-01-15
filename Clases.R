@@ -1527,7 +1527,7 @@ hist(Data_Cars$hp,
 par(mfrow = c(1,1))
 
 ################################################
-#         2. Gráfico con ggplot2               #
+#          2. Gráfico con ggplot2              #
 ################################################
 
 # Activamos la librería
@@ -1535,6 +1535,71 @@ library(ggplot2)
 
 # Gráfico de dispersión
 #######################
+
+# Crear un data.frame
+datos <- data.frame(
+  Tiempo = seq(as.Date("2024-01-01"), by = "1 day", length.out = 10),
+  Ingresos = c(3, 8, 1, 10, 5, 7, 2, 9, 4, 6),
+  Gastos = c(5, 4, 9, 2, 6, 8, 3, 7, 1, 10)
+)
+
+# Gráfico de dispersión
+grafico_dispersion <- ggplot(datos, aes(x = Tiempo)) +
+  
+  # Línea para Ingresos
+  geom_point(aes(y = Ingresos, color = "Ingresos"), size = 3) +
+  
+  # Configuración del diseño del gráfico
+  labs(title = 'Gráfico de Línea con ggplot2',
+       x = 'Tiempo', # Etiqueta del eje X
+       y = 'Valor') +  # Etiqueta del eje Y
+  
+  theme_minimal() + # Ajusta el aspecto visual general del gráfico
+  
+  theme(plot.title = element_text(size = 18, # Tamaño de la fuente 
+                                  color = '#44546A', # Color del texto 
+                                  family = 'sans', # Familia de fuentes
+                                  hjust = 0.5), # Ajuste de posición horizontal para centrar
+        legend.position = "top") +  # Posiciona la leyenda en la parte superior
+  
+  # Agregar leyenda
+  scale_color_manual(values = c(Ingresos = 'Dark blue')) +  # Definimos colores de la leyenda
+  
+  guides(color = guide_legend(title = "Leyenda"))  # Agregamos un título a la leyenda
+
+# Mostrar el gráfico
+print(grafico_dispersion)
+
+# Combinamos dos gráficos de dispersión
+grafico_dispersion <- ggplot(datos, aes(x = Tiempo)) +
+  
+  # Línea para Ingresos
+  geom_point(aes(y = Ingresos, color = "Ingresos"), size = 3) +
+  
+  # Línea para Gastos
+  geom_point(aes(y = Gastos, color = "Gastos"), size = 3) +
+  
+  # Configuración del diseño del gráfico
+  labs(title = 'Gráfico de Línea con ggplot2',
+       x = 'Tiempo', # Etiqueta del eje X
+       y = 'Valor') +  # Etiqueta del eje Y
+  
+  theme_minimal() + # Ajusta el aspecto visual general del gráfico
+  
+  theme(plot.title = element_text(size = 18, # Tamaño de la fuente 
+                                  color = '#44546A', # Color del texto 
+                                  family = 'sans', # Familia de fuentes
+                                  hjust = 0.5), # Ajuste de posición horizontal para centrar
+        legend.position = "top") +  # Posiciona la leyenda en la parte superior
+  
+  # Agregar leyenda
+  scale_color_manual(values = c(Ingresos = 'Dark blue', Gastos = 'red')) +  # Definimos colores de la leyenda
+  
+  guides(color = guide_legend(title = "Leyenda"))  # Agregamos un título a la leyenda
+
+# Mostrar el gráfico
+x11()
+print(grafico_dispersion)
 
 # Gráfico de línea
 ##################
@@ -1628,12 +1693,135 @@ grafico_linea <- ggplot(datos, aes(x = Tiempo)) +
 x11()
 print(grafico_linea)
 
-
 # Gráfico circular
 ##################
 
+# Datos ficticios
+datos <- data.frame(
+  categoria = c("A", "B", "C", "D"),
+  valor = c(30, 20, 25, 25)
+)
+
+# Colores personalizados
+colores <- c("#FF9999", "#66B2FF", "#99FF99", "#FFCC99")
+
+# Crea un gráfico circular con ggplot2
+grafico_pie <- ggplot(datos, aes(x = "", y = valor, fill = categoria)) +
+  
+  geom_bar(width = 1, stat = "identity", color = "white") +
+  
+  coord_polar("y") + # convierte el gráfico en circular
+  theme_void() + # elimina ejes y etiquetas predeterminados.
+  
+  # Etiquetas con porcentajes
+  geom_text(aes(label = paste0(valor, "%")), 
+            position = position_stack(vjust = 0.5)) +  
+  
+  # Configuración del diseño del gráfico
+  labs(title = "Gráfico Circular",
+       fill = "Leyenda", # Título de la leyenda
+       y = NULL, # Eliminamos los valores eje y
+       x = NULL) + # Eliminamos los valores del eje x
+  
+  theme_minimal() + # Ajusta el aspecto visual general del gráfico
+  
+  theme(plot.title = element_text(size = 18, # Tamaño de la fuente 
+                                  #color = '#44546A', # Color del texto 
+                                  #family = 'sans', # Familia de fuentes
+                                  hjust = 0.5), # Ajuste de posición horizontal para centrar
+        legend.position = "top") + # Posiciona la leyenda en la parte superior
+  
+  
+  scale_fill_manual(values = colores)  # Colores personalizados
+
+x11()
+print(grafico_pie)
+
 # Gráfico de barra
 ##################
+
+# Creamos un data.frame
+
+data_barras <- data.frame(
+  Categorias = c('A', 'B', 'C'),
+  valores1 = c(25, 35, 40)
+)
+
+# Gráfico de barras
+grafico_barras <- ggplot(data_barras, aes(x = Categorias)) +
+  
+  # Gráfico
+  # fill: nombre del conjunto de datos
+  geom_bar(aes(y = valores1, fill = 'Ingresos (valores1)'), stat = "identity", width = 0.35) +
+  
+  # Configuración del diseño del gráfico
+  labs(title = 'Gráfico de Barras con ggplot2',
+       x = 'Categorías', # Etiqueta del eje X
+       y = 'Valores') +  # Etiqueta del eje Y
+  
+  theme_minimal() + # Ajusta el aspecto visual general del gráfico
+  
+  theme(plot.title = element_text(size = 18, # Tamaño de la fuente 
+                                  color = '#44546A', # Color del texto 
+                                  family = 'sans', # Familia de fuentes
+                                  hjust = 0.5), # Ajuste de posición horizontal para centrar
+        legend.position = "top") + # Posiciona la leyenda en la parte superior
+  
+  # Escala manual de colores
+  scale_fill_manual(values = c('Ingresos (valores1)' = 'blue')) +
+  
+  # Agregar leyenda
+  guides(fill = guide_legend(title = "Leyenda"))  # Agregamos un título a la leyenda
+
+# Mostrar el gráfico de barras
+x11()
+print(grafico_barras)
+
+# Combinamos dos gráficos de barras
+
+# Creamos los data.frame
+data_barras <- data.frame(
+  Categorias = c('A', 'B', 'C'),
+  Valores1 = c(25, 35, 40)
+)
+
+data_barras2 <- data.frame(
+  Categorias = c('A', 'B', 'C'),
+  Valores2 = c(20, 30, 45)
+)
+
+# Gráfico de barras con colores personalizados y segundo conjunto de datos
+grafico_barras <- ggplot(data_barras, aes(x = Categorias)) +
+  
+  # Barras para el primer conjunto de datos
+  geom_bar(aes(y = Valores1, fill = 'Ingresos (Valores1)'), stat = "identity", width = 0.35) +
+  
+  # Barras para el segundo conjunto de datos
+  geom_bar(data = data_barras2, 
+           aes(y = Valores2, fill = 'Ingresos (Valores2)'), stat = "identity", width = 0.35, position = "dodge") +
+  
+  # Configuración del diseño del gráfico
+  labs(title = 'Gráfico de Barras con ggplot2',
+       x = 'Categorías', # Etiqueta del eje X
+       y = 'Valores') +  # Etiqueta del eje Y
+  
+  theme_minimal() + # Ajusta el aspecto visual general del gráfico
+  
+  theme(plot.title = element_text(size = 18, # Tamaño de la fuente 
+                                  color = '#44546A', # Color del texto 
+                                  family = 'sans', # Familia de fuentes
+                                  hjust = 0.5), # Ajuste de posición horizontal para centrar
+        legend.position = "top") + # Posiciona la leyenda en la parte superior
+  
+  # Escala manual de colores
+  scale_fill_manual(values = c('Ingresos (Valores1)' = 'blue', 'Ingresos (Valores2)' = 'red')) +
+  
+  # Agregar leyenda
+  guides(fill = guide_legend(title = "Leyenda"))  # Agregamos un título a la leyenda
+
+# Mostrar el gráfico de barras
+x11()
+print(grafico_barras)
 
 # Histograma
 ############
