@@ -1374,8 +1374,8 @@ barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
         las= 1)
 
 
-# Gráfico de barras apiladas y agrupadas
-# ######################################
+# Gráfico de barras apiladas
+# ##########################
 
 # Creamos un data.frame
 df_fuma <- data.frame(
@@ -1393,45 +1393,53 @@ barplot(fuma_table,
         ylab = "Cantidad",
         col = c("dark red", "dark blue"))
 
-# Modificamos el eje de ordenadas
+# ylim: ponemos en un rango el eje de ordenadas
 barplot(fuma_table, 
         main= "Cantidad de personas que fuman y no fuman",
         xlab= "Fuman", 
         ylab = "Cantidad",
         col= c("dark red", "dark blue"), 
+        ylim = c(0,35))
+
+# legend: inserta una leyenda
+# Posición de la leyenda
+# bottomright, bottomleft, bottom, topright, topleft, 
+# top, center, right, left.
+barplot(fuma_table, 
+        main = "Cantidad de personas que fuman y no fuman",
+        xlab = "Fuman", 
+        ylab = "Cantidad",
+        col= c("dark red", "dark blue"), 
         ylim= c(0,35))
 
-#Insertamos leyenda
-x11()
-barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
-        xlab= "Fuman", ylab = "Cantidad",
-        col= c("dark red", "dark blue"), ylim= c(0,35),
-        legend= rownames(fuma_table))
+legend("top", rownames(fuma_table), 
+       fill = c("dark red", "dark blue"))
 
-#Otra forma de insertar leyenda
-#usamos legend()
-##La leyenda se puede colocar como:
-#bottomright, bottomleft, bottom, topright, topleft, 
-#top, center, right, left.
-x11()
-barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
-        xlab= "Fuman", ylab = "Cantidad",
-        col= c("dark red", "dark blue"), ylim= c(0,35))
+# Otra forma de insertar leyenda
+# legend: inserta una leyenda
+barplot(fuma_table, 
+        main= "Cantidad de personas que fuman y no fuman",
+        xlab= "Fuman", 
+        ylab = "Cantidad",
+        col= c("dark red", "dark blue"), 
+        ylim= c(0,35),
+        legend = rownames(fuma_table))
 
-legend("top", rownames(fuma_table), fill = c("dark red", "dark blue"))
+# Gráfico de barras agrupadas
+#############################
 
-#Diagrama de barras agrupadas 
-x11()
-barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
-        xlab= "Fuman", ylab = "Cantidad",
-        col= c("dark red", "dark blue"), ylim= c(0,35),
-        legend= rownames(fuma_table),
-        beside= TRUE)
+barplot(fuma_table, 
+        main = "Cantidad de personas que fuman y no fuman",
+        xlab = "Fuman", 
+        ylab = "Cantidad",
+        col = c("dark red", "dark blue"), 
+        ylim= c(0,35),
+        legend = rownames(fuma_table),
+        beside = TRUE)
 
-#Combinamos gr?ficos
-#Dividimos la gr?fica en una fila y dos columnas.
-#Normalmente est? como mfrow= c(1,1)
-x11()
+# Combinación de gráficos
+# Dividimos la gráfica en una fila y dos columnas.
+# Normalmente está como par(mfrow = c(1,1))
 par(mfrow= c(1,2))
 
 barplot(fuma_table, main= "Grafico de barras apiladas",
@@ -1445,73 +1453,182 @@ barplot(fuma_table, main= "Grafico de barras agrupadas",
         legend= rownames(fuma_table),
         beside= TRUE)
 
-###############################################################################
-#(Clase 15) Gráfico histograma en Rstudio
+par(mfrow = c(1,1))
 
-#Mostrar? la frecuencia con la que se presenta los datos seleccionados.
+# Histograma
+# ##########
+
+# Un histograma muestra la frecuencia con la que se presenta los datos seleccionados.
+
+# Creamos nuestro data.frame
 Data_Cars<- mtcars
 sort(Data_Cars$hp)
 
-x11()
-hist(Data_Cars$hp, main = "Histograma", xlab= "Caballos de fuerza",
-     ylab= "Frecuencia")
+hist(Data_Cars$hp, 
+     main = "Histograma", 
+     xlab = "Caballos de fuerza",
+     ylab = "Frecuencia")
 
-#Apariencia
-x11()
-hist(Data_Cars$hp, main = "Histograma", xlab= "Caballos de fuerza",
-     ylab= "Frecuencia", col= "plum4")
+# Apariencia
+hist(Data_Cars$hp, 
+     main = "Histograma", 
+     xlab= "Caballos de fuerza",
+     ylab= "Frecuencia", 
+     col= "plum4")
 
-#Cambiamos el limite del eje de ordenadas
-x11()
-hist(Data_Cars$hp, main = "Histograma", xlab= "Caballos de fuerza",
-     ylab= "Frecuencia", col= "plum4", ylim= c(0,12))
+# ylim: cambia el limite del eje de ordenadas
+hist(Data_Cars$hp, 
+     main = "Histograma", 
+     xlab = "Caballos de fuerza",
+     ylab = "Frecuencia", 
+     col = "plum4", 
+     ylim = c(0,12))
 
 #Histograma de densidad
 x11()
-hist(Data_Cars$hp, main = "Histograma de densidad", xlab= "Caballos de fuerza",
-     ylab= "Densidad", col= "plum4", ylim= c(0,0.01),
-     prob= T)
+hist(Data_Cars$hp, 
+     main = "Histograma de densidad", 
+     xlab= "Caballos de fuerza",
+     ylab= "Densidad", 
+     col= "plum4", 
+     ylim = c(0,0.01),
+     prob = T)
 
-#Si queremos cambiar el n?mero de barras usamos breaks
-x11()
+# breaks: cambia el número de barras
 par(mfrow= c(1,3))
 
-hist(Data_Cars$hp, main = "Histograma de densidad", xlab= "Caballos de fuerza",
-     ylab= "Densidad", col= "plum4", ylim= c(0,0.01),
-     prob= T)
+hist(Data_Cars$hp, 
+     main = "Histograma de densidad", 
+     xlab = "Caballos de fuerza",
+     ylab = "Densidad", 
+     col= "plum4", 
+     ylim = c(0,0.01),
+     prob = T)
 
-hist(Data_Cars$hp, main = "Histograma de densidad", xlab= "Caballos de fuerza",
-     ylab= "Densidad", col= "skyblue", ylim= c(0,0.01),
-     prob= T, breaks= 2)
+hist(Data_Cars$hp, 
+     main = "Histograma de densidad", 
+     xlab = "Caballos de fuerza",
+     ylab = "Densidad", 
+     col= "skyblue", 
+     ylim= c(0,0.01),
+     prob = T, 
+     breaks= 2)
 
-hist(Data_Cars$hp, main = "Histograma de densidad", xlab= "Caballos de fuerza",
-     ylab= "Densidad", col= "orange", ylim= c(0,0.01),
-     prob= T, breaks= 40)
+hist(Data_Cars$hp, 
+     main = "Histograma de densidad", 
+     xlab = "Caballos de fuerza",
+     ylab = "Densidad", 
+     col= "orange", 
+     ylim = c(0,0.01),
+     prob = T, 
+     breaks= 40)
 
-#rnorm (r significa random (aleatorio), norm significa normal)
-#rnorm(n, mean, sd) donde n es el n?mero de valores a obtener
-x <- rnorm(1000, mean= 0, sd= 2)    
-y <- rnorm(500, mean= 0, sd= 2)
+# Regresamos a la dimensión normal 
+par(mfrow = c(1,1))
 
+##########################
+# 2. Gráfico con ggplot2 #
+##################### ####
+
+# Activamos la librería
+library(ggplot2)
+
+# Gráfico de dispersión
+#######################
+
+# Gráfico de línea
+##################
+
+# Cargar la librería ggplot2
+library(ggplot2)
+
+# Crear un data.frame
+datos <- data.frame(
+  Tiempo = c(1, 2, 3, 4, 5),
+  Valor = c(10, 15, 7, 20, 12),
+  Serie = rep("Serie A", 5)  # Agregamos una columna para la leyenda
+)
+
+# Crear un gráfico de línea con ggplot2 y agregar una leyenda
+grafico_linea <- ggplot(datos, aes(x = Tiempo, y = Valor, color = Serie)) +
+  geom_line() +
+  labs(title = "Gráfico de Línea con Leyenda",
+       x = "Tiempo",
+       y = "Valor") +
+  scale_color_manual(values = c("Serie A" = "blue")) # Nombre y color de la leyenda
+
+# Mostrar el gráfico
+print(grafico_linea)
+
+
+##########################################################
+
+# Crear un data.frame
+datos <- data.frame(
+  Tiempo = seq(as.Date("2024-01-01"), by = "1 day", length.out = 10),
+  Ingresos = c(3, 8, 1, 10, 5, 7, 2, 9, 4, 6),
+  Gastos = c(5, 4, 9, 2, 6, 8, 3, 7, 1, 10)
+)
+
+# Crear el gráfico de línea
+grafico_linea <- ggplot(datos, 
+                        aes(x = Tiempo, 
+                            y = Ingresos)) +
+  geom_line(color = 'blue', 
+            linetype = 'solid', # Tipo de línea
+            size = 2) + # Grosor de la línea
+  
+  # Configuración del diseño del gráfico
+  labs(title = 'Gráfico de Línea con ggplot2',
+       x = 'Tiempo',
+       y = 'Ingresos') +
+  
+  theme_minimal() +
+  theme(plot.title = element_text(size = 20, # Tamaño de la fuente 
+                                  color = '#44546A', 
+                                  family = 'sans', 
+                                  hjust = 0.5))  # Ajuste de posición horizontal para centrar
+
+# Mostrar el gráfico
 x11()
-par(mfrow= c(1,2))
-hist(x, main = "Primer histograma", ylab = "Frecuencia", col= "tomato2")
-hist(y, main= "Segundo histograma", ylab= "Frecuencia", col= c("skyblue"))
+print(grafico_linea)
 
-#Histograma con dos variables
-#add= TRUE nos permitir? unir un histograma con otro
+
+# Mostrar el gráfico
 x11()
-hist(x, main = "Histograma con dos variables", ylab = "Frecuencia", 
-     col= "tomato2")
-hist(y, add = TRUE, col= c("skyblue"))
+print(grafico_linea)
 
-#Juntando los tres gr?ficos para visualizarlos
-x11()
-par(mfrow= c(1,3))
-hist(x, main = "Primer histograma", ylab = "Frecuencia", col= "tomato2")
-hist(y, main= "Segundo histograma", ylab= "Frecuencia", col= c("skyblue"))
+# linetype : tipos de línea disponibles
+# Solid (Sólida): linetype = 'solid'
+# Dashed (Guiones): linetype = 'dashed'
+# Dotted (Puntos): linetype = 'dotted'
+# Dotdash (Punto-Guion): linetype = 'dotdash'
+# Longdash (Guion Largo): linetype = 'longdash'
+# Twodash (Doble Guion): linetype = 'twodash'
+# Dashdot (Guion-Punto): linetype = 'dashdot'
 
-hist(x, main = "Histograma con dos variables", ylab = "Frecuencia", 
-     col= "tomato2")
-hist(y, add = TRUE, col= c("skyblue"))
+
+
+
+
+
+
+
+
+
+
+# Gráfico circular
+##################
+
+# Gráfico de barra
+##################
+
+# Histograma
+############
+
+
+
+
+
+
 
