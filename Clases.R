@@ -525,7 +525,7 @@ dia_clas_fac<- factor(clases_factor, levels= dias_factor)
 table(dia_clas_fac)
 
 #################
-# 3. data.frame #
+# 4. data.frame #
 #################
 
 # Son datos que se muestran en formato de tabla
@@ -535,7 +535,7 @@ table(dia_clas_fac)
 # Sin embargo, cada columna debe tener el mismo tipo de datos
 
 # Creamos un data.frame
-grupo_df<- data.frame(
+grupo_df <- data.frame(
   trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
   edades = c(22, 23, 24, 26, 25),
   hijos = c(F, F, T, T, F),
@@ -545,53 +545,35 @@ grupo_df<- data.frame(
 grupo_df
 View(grupo_df)
 
-#Acceso de elementos de la data.frame
-grupo_df<- data.frame(
-  trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
-  edades = c(22,23,24,26,25),
-  hijos = c(F,F,T,T,F),
-  ingresos = c(1500, 12000,8500,5500,14500),
-  genero = c("Femenino","Masculino","Femenino","Masculino","Femenino"))
+# Acceso de elementos de la data.frame
+grupo_df[1,] # Accedemos a la primera fila
+grupo_df[,1] # Accedemos a la primera columna
+grupo_df[["trabajadores"]] # Accedemos a una columna específica
+grupo_df$trabajadores # Accedemos a una columna específica
 
-grupo_df[1,]
-grupo_df[,1]
-grupo_df[1]
-grupo_df[["trabajadores"]]
-grupo_df$trabajadores
+# rbind: agrega una filas
+newfila_grupo_df <- rbind(grupo_df, c("Pamela",23,F,4300,"Femenino"))
+newfila_grupo_df
 
-#Agregamos filas con rbind()
-grupo_df<- data.frame(
-  trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
-  edades = c(22,23,24,26,25),
-  hijos = c(F,F,T,T,F),
-  ingresos = c(1500, 12000,8500,5500,14500),
-  genero = c("Femenino","Masculino","Femenino","Masculino","Femenino"))
+# cbind: agrega una columna
 
-newfila_grupo_df<- rbind(grupo_df, c("Pamela",23,F,4300,"Femenino"))
-
-#Agregamos columnas con cbind()
-grupo_df<- data.frame(
-  trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
-  edades = c(22,23,24,26,25),
-  hijos = c(F,F,T,T,F),
-  ingresos = c(1500, 12000,8500,5500,14500),
-  genero = c("Femenino","Masculino","Femenino","Masculino","Femenino"))
-
-#Primera forma
+# Primera forma con cbind
 newcol_grupo_df<- cbind(grupo_df,
                         ahorros= c(15500,30000,21200,18300,42300))
+newcol_grupo_df
 
-#Segunda forma
+# Segunda forma sin cbind
 grupo_df$ahorros<- c(15500,30000,21200,18300,42300)
 
-#Cambiamos los nombres de las columnas
+# Cambiar los nombres de las columnas
 colnames(grupo_df)<- c("TRABAJADORES", "EDADES", "HIJOS", "INGRESOS",
                        "GENERO", "AHORROS")
 
-#Cambiamos los nombres de las filas
+# Cambiar los nombres de las filas
 rownames(grupo_df)<- c("Fila 1", "Fila 2", "Fila 3", "Fila 4", "Fila 5")
 
-#Usamos cbind() para combinar dos o m?s data frame horizontalmente
+# Unión de DataFrame
+# Usamos cbind() para unir dos data.frame por columna
 grupo_df<- data.frame(
   trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
   edades = c(22,23,24,26,25),
@@ -604,8 +586,9 @@ grupo_df2<- data.frame(
   mascotas= c(T,F,F,T,T))
 
 new_grupo_df<- cbind(grupo_df, grupo_df2)
+new_grupo_df
 
-#Utilice rbind() para combinar dos o m?s data.frame verticalmente
+# Utilice rbind() para combinar dos o más data.frame por fila
 grupo_df<- data.frame(
   trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
   edades = c(22,23,24,26,25),
@@ -620,59 +603,48 @@ grupo_df2<- data.frame(
   ingresos = c(2150,7500,1200,3650,10200),
   genero = c("Masculino", "Femenino", "Masculino", "Femenino", "Masculino"))
 
-new_grupo_df<- rbind(grupo_df, grupo_df2)
+new_grupo_df2 <- rbind(grupo_df, grupo_df2)
+new_grupo_df2
 
-#Eliminar fila y columna 
-grupo_df<- data.frame(
-  trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
-  edades = c(22,23,24,26,25),
-  hijos = c(F,F,T,T,F),
-  ingresos = c(1500, 12000,8500,5500,14500),
-  genero = c("Femenino","Masculino","Femenino","Masculino","Femenino"))
-
-#Primera forma
-grupo_df<- grupo_df[-c(1),-c(2)]
-grupo_df<- grupo_df[-c(1),]
-grupo_df<- grupo_df[,-c(2)]
-
-#Segunda forma para borrar columna
-grupo_df$ingresos<- NULL
-
-
-#Cantidad de filas y columnas
-grupo_df<- data.frame(
-  trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
-  edades = c(22,23,24,26,25),
-  hijos = c(F,F,T,T,F),
-  ingresos = c(1500, 12000,8500,5500,14500),
-  genero = c("Femenino","Masculino","Femenino","Masculino","Femenino"))
-
+# dim: muestra la cantidad de filas y columnas
 dim(grupo_df)
 
-#Tambi?n se puede usar ncol() para encontrar el n?mero 
-#de columnas y nrow() para encontrar el n?mero de filas
+# row(): muestra el número de filas
+# ncol(): muestra el número de columnas
 ncol(grupo_df)
 nrow(grupo_df)
 
-#Longitud de data.frame
-grupo_df<- data.frame(
-  trabajadores = c("Angela", "David", "Melanie", "Hector","Emma"),
-  edades = c(22,23,24,26,25),
-  hijos = c(F,F,T,T,F),
-  ingresos = c(1500, 12000,8500,5500,14500),
-  genero = c("Femenino","Masculino","Femenino","Masculino","Femenino"))
-
+# Longitud de data.frame
 length(grupo_df)
 
-#Para saber el nombre de las variables
+# Mostrar nombre de las variables
 names(grupo_df)
-#Para saber la estructura del data.frame
+# Mostrar la estructura del data.frame
 str(grupo_df)
 
+# Eliminar fila y columna 
 
-###############################################################################
-#(Clase 7) Subconjunto de un data.frame en Rstudio
-grupo_df<- data.frame(
+# Primera forma
+grupo_df
+grupo_df<- grupo_df[-c(1),-c(2)] # Eliminamos la primera fila y la segunda columna
+grupo_df
+
+grupo_df<- grupo_df[-c(1),] # Eliminamos toda la primera fila
+grupo_df
+
+grupo_df<- grupo_df[,-c(2)] # Eliminamos toda la segunda columna
+grupo_df
+
+# Segunda forma para borrar columna
+grupo_df$ingresos<- NULL
+grupo_df
+
+##################
+# 5. subconjunto #
+##################
+
+# Creamos un data.frame
+grupo_df <- data.frame(
   trabajadores = c("Angela", "David", "Melanie", "Hector","Emma", "Daniel"),
   edades = c(22,23,24,26,25,27),
   hijos = c(F,F,T,T,F,T),
@@ -680,16 +652,279 @@ grupo_df<- data.frame(
   genero = c("Femenino","Masculino","Femenino","Masculino",
              "Femenino","Masculino"))
 
-#subconjuntos subset(data, condici?n)
-hombres<- subset(grupo_df, genero == "Masculino")
-mujeres<- subset(grupo_df, genero == "Femenino")
-ingresos_sub<- subset(grupo_df, ingresos>7000)
+# Subconjunto subset(data, condición)
+hombres <- subset(grupo_df, genero == "Masculino")
+hombres
 
-#Subconjunto con m?s de una condici?n
-hombres_ingreso<- subset(grupo_df, genero == "Masculino" & ingresos>9000)
-mujeres_edades<- subset(grupo_df, genero == "Femenino" & edades>23)
-mujeres_ed_ing<- subset(grupo_df, genero == "Femenino" & ingresos>5000 &
+mujeres <- subset(grupo_df, genero == "Femenino")
+mujeres
+
+ingresos_sub <- subset(grupo_df, ingresos > 7000)
+ingresos_sub
+
+# Subconjunto con más de una condición
+hombres_ingreso <- subset(grupo_df, genero == "Masculino" & ingresos>9000)
+mujeres_edades <- subset(grupo_df, genero == "Femenino" & edades>23)
+mujeres_ed_ing <- subset(grupo_df, genero == "Femenino" & ingresos>5000 &
                           edades>24)
+
+###############################################################################
+#                    Módulo 3 - Programming Fundamentals                      #
+###############################################################################
+
+############################
+# 1. Estructura de Control # 
+############################
+
+# Las condiciones se utilizan para tomar decisiones en tu código. 
+# Permiten que tu programa ejecute diferentes bloques de código según si se 
+# cumple o no una condición específica. Esto es esencial para escribir programas 
+# robustos y flexibles que pueden adaptarse a diferentes escenarios. 
+# Las condiciones te brindan el control sobre el flujo de tu programa y 
+# te permiten automatizar acciones basadas en reglas predefinidas.
+
+# Condición: if
+edad <- 18
+
+if (edad >= 18) {
+  print("Eres mayor de edad")
+}
+
+# Condición: else
+# Se usa "else" para proporcionar una acción alternativa si la condición "if" no se cumple
+edad <- 15
+
+if (edad >= 18) {
+  print("Eres mayor de edad")
+} else {
+  print("Eres menor de edad")
+}
+
+# Condición: else if
+# else if se utiliza para manejar múltiples condiciones en secuencia.
+nota <- 75
+
+if (nota < 60) {
+  print("Tienes una calificación insuficiente.")
+} else if (60 <= nota < 70) {
+  print("Tienes una calificación suficiente.")
+} else if (70 <= nota < 80) {
+  print("Tienes una calificación buena.")
+} else {
+  print("Tienes una calificación sobresaliente.")
+}
+
+# Condición Anidado
+
+# Las reglas para determinar que un año sea bisiesto son las siguientes:
+  
+  # Los años bisiestos son divisibles entre 4 (2004, 2008)  
+  # Excepeto si es divisible entre 100, por lo tanto, no es bisiesto (2100, 2200)
+  # No obstante, si es divisible entre 400, entonces si es bisiesto (2000, 2400)
+
+anio <- as.integer(readline("Ingrese el año: "))
+
+if (anio %% 4 == 0) {
+  
+  if (anio %% 100 == 0) {
+    
+    if (anio %% 400 == 0) {
+      paste("El año", anio, "es bisiesto")
+    } else {
+      paste("El año", anio, "no es bisiesto")
+    }
+  } else {
+    paste("El año", anio, "es bisiesto")
+  }
+} else {
+  paste("El año", anio, "no es bisiesto")
+}
+
+
+# Condicional con Conectores Lógicos
+numero <- as.integer(readline("Ingresa un número: "))
+
+if (numero > 0 & numero %% 2 == 0) {
+  print("El número es positivo y par.")
+} else {
+  print("El número no cumple con ambas condiciones.")
+}
+
+##################
+# 2. Bucle while # 
+##################
+
+# El bucle "while" sirve para ejecutar un bloque de código repetidamente mientras 
+# una condición dada sea verdadera. Esto significa que el código dentro del bucle 
+# se ejecutará una y otra vez hasta que la condición especificada se vuelva falsa. 
+# Es importante tener en cuenta que debes asegurarte de que la condición del bucle while 
+# eventualmente se vuelva falsa, de lo contrario, podrías tener un bucle infinito que hará 
+# que tu programa se ejecute continuamente sin detenerse.
+
+# Crear un bucle while
+
+contador <- as.integer(readline("Ingrese un número: "))
+
+while (contador <= 5){
+  print(contador)
+  contador = contador + 1
+}
+
+# break
+# El uso de break te permite salir del bucle antes de que se cumpla la condición de parada
+numero <- as.integer(readline("Ingrese un número: "))
+
+while (numero < 10){
+  
+  if (numero == 5){
+    break
+  } else {
+    print(numero)
+    numero = numero + 1
+  }
+}
+
+# next 
+# El uso de "next" te permite omitir la iteración actual y pasar a la siguiente sin ejecutar
+# el código restante dentro del bucle para esa iteración en particular.
+
+numero = as.integer(readline("Ingrese un número: "))
+
+while (numero <= 10){
+  
+  if (numero == 5){
+    numero = numero + 1
+    next # Salta la iteración actual si el número es 5
+  } else {
+    print(numero)
+    numero = numero + 1
+  }
+}
+
+# flag
+# "flag" se utiliza para referirse a una variable booleana que se utiliza
+# como una señal o indicador para controlar el flujo de un programa
+
+# Calcular la suma de una cantidad de números enteros ingresados por el usuario
+
+suma <- 0
+continuar <- TRUE
+
+# Como nosotros no sabemos cuantos números va a ingresar el usuario, vamos a
+# realizar un bucle infinito con un while que siempre va a ser verdadero.
+
+while (continuar){
+  input_usuario <- readline("Ingrese el número (exit para terminar): ")
+  
+  if (input_usuario == "exit"){
+    continuar = FALSE
+  } else {
+    numero = as.integer(input_usuario)
+    suma = suma + numero
+    print(paste("La suma es", suma))
+  }
+}
+
+print(paste("La suma final es: ", suma))
+
+################
+# 3. Bucle for # 
+################
+
+# El bucle "for" se utiliza para iterar sobre elementos de una secuencia 
+# (como una lista, cadena de texto, vector, etc) y ejecutar un 
+# bloque de código repetidamente para cada elemento de la secuencia. 
+# Su función principal es realizar tareas que requieren procesamiento o 
+# manipulación de datos en colecciones de elementos.
+
+# Crear un bucle for
+mi_vector <- c(1:10)
+mi_vector
+
+# Iterar sobre un vector
+for (x in mi_vector) {
+  print(x)
+}
+
+# Iterar sobre una lista
+frutas <- list("manzana", "mango", "fresa")
+
+for (x in frutas) {
+  print(x)
+}
+
+# Iterar sobre un data.frame
+
+# Crear un data.frame
+mi_data_frame <- data.frame(
+  Nombre = c("Juan", "María", "Carlos"),
+  Edad = c(25, 30, 22),
+  Puntuacion = c(80, 95, 75)
+)
+
+# Iterar sobre filas
+for (i in 1:nrow(mi_data_frame)) {
+  fila <- mi_data_frame[i, ]
+  print(paste("Nombre:", fila$Nombre, "- Edad:", fila$Edad, "- Puntuación:", fila$Puntuacion))
+}
+
+# Iterar sobre columnas
+for (nombre_columna in colnames(mi_data_frame)) {
+  columna <- mi_data_frame[[nombre_columna]]
+  print(paste("Nombre de la columna:", nombre_columna))
+  print(columna)
+}
+
+##############
+# 4. Funciones
+##############
+
+# Las funciones son bloques de código que realizan una tarea específica y 
+# pueden ser reutilizados en diferentes partes de un programa. 
+# Son una parte fundamental de la programación, ya que facilitan la creación 
+# de programas más organizados, mantenibles y eficientes al dividir tareas en 
+# bloques lógicos y reutilizables.
+
+# Función simple
+saludar <- function(){
+  print("¡Hola, mundo!")
+}
+
+saludar() # Llamamos a la función
+
+# Función con parámetros
+saludar <- function(nombre){
+  print(paste("Hola, ", nombre,"!"))
+}
+
+saludar("Juan") # Llamamos a la función con un argumento
+
+# Valores de retorno: varios
+
+suma <- function(a, b){
+  resultado = a + b
+  return(resultado)
+}
+
+print(paste("La suma es: ", suma(3,5)))
+
+# Función recursiva
+# La recursión es un enfoque en el que una función se llama a sí misma
+mi_factorial <- function(n){
+  if (n == 0){
+    return(1)
+  } else {
+    return(n * mi_factorial(n - 1))
+  }
+}
+
+mi_factorial(5)
+
+###############################################################################
+#                         Módulo 4 - Graphics                                 #
+###############################################################################
+
+# GRÁFICOSSSSSSSS
 
 ###############################################################################
 #(Clase 8) Introducci?n a los gr?ficos en Rstudio
@@ -961,8 +1196,8 @@ legend("topleft", df_gustos$cursos, fill = df_gustos$colores, cex= 0.85)
 
 df_ingresos<- data.frame(
   meses= c("En", "Fe", "Mar", "Abr", "May", "Jun",
-            "Jul", "Ago", "Sep", "Oct", "Nov",
-            "Dic"),
+           "Jul", "Ago", "Sep", "Oct", "Nov",
+           "Dic"),
   ingresos= c(1500,2500,2000,3500,7000,4000,8500,6000,10000,5000,7500,
               11000))
 
@@ -1133,113 +1368,7 @@ barplot(fuma_table, main= "Grafico de barras agrupadas",
         beside= TRUE)
 
 ###############################################################################
-#(Clase 14) M?ximo, m?nimo, desviaci?n est?ndar, varianza,
-#media, mediana, percentil en Rstudio
-
-#Hay un conjunto de datos incorporado en R llamado 
-#mtcars (prueba de carrera de autom?viles de Motor Tred)
-
-#Informaci?n sobre le conjunto de datos
-help(mtcars)
-
-#mpg	  Miles/(US) gallon
-#cyl	  Number of cylinders
-#disp	  Displacement (cu.in.)
-#hp	    Gross horsepower
-#drat	  Rear axle ratio
-#wt	    Weight (1000 lbs)
-#qsec	  1/4 mile time
-#vs	    Engine (0 = V-shaped, 1 = straight)
-#am	    Transmission (0 = automatic, 1 = manual)
-#gear	  Number of forward gears
-#carb	  Number of carburetors
-
-#Obtenemos la informaci?n y lo guardamos en la variable Data_Cars 
-Data_Cars<- mtcars
-
-#Utilizamos la funci?n la dim() para encontrar las dimensiones 
-#del data set y la funci?n names() para ver 
-#los nombres de las variables:
-dim(Data_Cars)
-names(Data_Cars)
-
-#Usamos la funci?n rownames() para obtener el nombre de cada fila
-#que son los nombres de los autom?viles
-rownames(Data_Cars)
-
-#Acceso a la data
-Data_Cars[2]
-Data_Cars[,2]
-Data_Cars[2,]
-Data_Cars[c(1,2)]
-
-#Usamos sort() para ordenar las variables
-Data_Cars$cyl
-sort(Data_Cars$cyl)
-
-#Usamos summary() para obtener un resumen estad?stico de los datos
-summary(Data_Cars)
-
-# M?ximo y m?nimo de la variable hp
-Data_Cars["hp"]
-Data_Cars$hp
-max(Data_Cars$hp)
-min(Data_Cars$hp)
-
-#Usamos las funciones which.max() y 
-#which.min() para encontrar la posici?n del ?ndice del valor 
-#m?ximo y m?nimo en la tabla:
-which.max(Data_Cars$hp)
-which.min(Data_Cars$hp)
-
-#Combinamos las funciones which.max() y which.min() con la funci?n
-#rownames() para obtener el nombre del autom?vil que tiene la
-#m?xima y m?nima potencia
-rownames(Data_Cars)[which.max(Data_Cars$hp)]
-rownames(Data_Cars)[which.min(Data_Cars$hp)]
-
-#Media de la variable wt
-mean(Data_Cars$mpg)
-
-#Mediana de la variable wt
-median(Data_Cars$mpg)
-
-#Rango
-sort(Data_Cars$mpg)
-range(Data_Cars$mpg)
-
-#Desviaci?n est?ndar
-sd(Data_Cars$wt)
-
-#Varianza
-var(Data_Cars$wt)
-
-#Percentil
-#El percentil es una medida de posici?n usada en estad?stica 
-#que indica, una vez ordenados los datos de menor a mayor, 
-#el valor de la variable por debajo del cual se encuentra 
-#un porcentaje dado de observaciones en un grupo
-
-#?Cu?l es el precentil 75 de la variable wt?, 
-sort(Data_Cars$wt)
-quantile(Data_Cars$wt, c(0.75))
-#Es decir, el 75% de autom?viles que pesan 3.61 o menos 
-
-#Si ejecuta quantile() sin especificar el c(), obtendr? 
-#los percentiles 0% 25% 50% 75% 100%
-summary(Data_Cars$wt)
-quantile(Data_Cars$wt)
-
-#Los cuartiles son datos divididos en cuatro partes, cuando se ordenan 
-#en orden ascendente:
-
-#El valor del primer cuartil corta el primer 25% de los datos.
-#El valor del segundo cuartil corta el primer 50% de los datos.
-#El valor del tercer cuartil corta el primer 75% de los datos.
-#El valor del cuarto cuartil corta el 100% de los datos.
-
-###############################################################################
-#(Clase 15) Gr?fico histograma en Rstudio
+#(Clase 15) Gráfico histograma en Rstudio
 
 #Mostrar? la frecuencia con la que se presenta los datos seleccionados.
 Data_Cars<- mtcars
@@ -1308,526 +1437,3 @@ hist(x, main = "Histograma con dos variables", ylab = "Frecuencia",
      col= "tomato2")
 hist(y, add = TRUE, col= c("skyblue"))
 
-###############################################################################
-#(Clase 16) if y else en Rstudio
-
-#Condici?n if
-a<- 33
-b<- 200
-
-if (b>a) {
-  print("b es mayor que a")
-}
-
-#Condici?n else if
-#else if: es la forma en que R dice 
-#"si las condiciones anteriores no eran verdaderas, 
-#pruebe esta condici?n"
-
-a<- 120
-b<- 120
-
-if (b>a) {
-  print("b es mayor que a")
-} else if (a==b) {
-  print("a y b son iguales")
-}
-
-#else: captura cualquier cosa que no sea capturada por las 
-#condiciones anteriores:
-a<- 150
-b<- 75
-
-if (b>a) {
-  print("b es mayor que a")
-} else if (a==b) {
-  print("a es igual que b")
-} else {
-  print("a es mayor que b")
-}
-
-#Tambi?n podemos usar else sin else if
-a<- 90
-b<- 26
-
-if (b>a) {
-  print("b es mayor que a")
-} else {
-  print("b no es mayor que a")
-}
-
-#Declaraciones de if anidadas
-edad<- 15
-
-if (edad>18) {
-  print("Tu edad est? por encima de los 18 a?os")
-  if (edad>20){
-    print("y tambi?n est? por encima de los 20 a?os")
-  } else {
-    print("pero no por encima de los 20")
-  }
-} else {
-  print("No eres mayor de edad, tu tines:")
-  paste(edad, "a?os")
-}
-
-#and
-#&: se usa para combinar declaraciones condicionales
-#Ejemplo 1
-a<- 200
-b<- 150
-c<- 500
-
-if (a>b & c>a) {
-  print("Ambas condiciones son verdaderas")
-}
-
-#Ejemplo 2
-desc_tarje<- 0.4
-desc_efec<- 0.2
-monto<- 160
-metodo_pago<- "tarjeta"
-
-if (monto>150 & metodo_pago== "tarjeta") {
-  paste("El total ser? de",monto - monto*desc_tarje, "soles")
-} else if (monto>150 & metodo_pago== "efectivo") {
-  paste("El total ser? de", monto - monto*desc_efec, "soles")
-} else{
-  paste("El total ser? de", monto, "soles")
-}
-
-#O
-#Ejemplo 1
-#|: se usa para combinar declaraciones condicionales:
-a<- 180
-b<- 150
-c<- 250
-
-if (a>b | a>c) {
-  print("Al menos una de las condiciones es verdadera")
-}
-
-#Ejemplo 2
-precioA<- 10
-precioB<- 5
-A<- 49
-B<- 80
-
-if(A>=50 | B>40) {
-  paste("Tendr? un descuento", (A*precioA + B*precioB)*0.2, "soles")
-} else if (A<50 | B<=40) {
-  print("No tendr?n descuento")
-}
-
-
-###############################################################################
-#(Clase 17) Funciones en Rstudio
-
-mi_funcion<- function() {
-  print("Mi primera funci?n")
-}
-
-#Llamar a una funci?n
-#Use el nombre de la funci?n seguido de par?ntesis.
-mi_funcion() 
-
-#Argumentos
-#La informaci?n se puede pasar a funciones como argumentos,
-#los argumentos se especifican despu?s del nombre de la 
-#funci?n, entre par?ntesis. Puede agregar tantos argumentos
-#como desee, solo sep?relos con una coma.
-#El siguiente ejemplo tiene una funci?n con argumento 
-#(fnombre). Cuando se llama a la funci?n, pasamos un nombre,
-#que se usa dentro de la funci?n para imprimir el 
-#nombre completo
-#Ejemplo 1
-mi_funcion<- function(elemento) {
-  print(elemento)
-}
-
-mi_funcion("Ismael")
-mi_funcion(15)
-mi_funcion(20*5)
-
-#Ejemplo 2
-edad_funcion<- function(edad, peso) {
-  paste(edad, "a?os")
-}
-
-edad_funcion(24)
-edad_funcion("Yo tengo 24")
-
-#Si su funci?n espera 2 argumentos, debe llamar 
-#a la funci?n con 2 argumentos.
-mi_funcion<- function(edad, hobby) {
-  paste(edad, hobby)
-}
-
-mi_funcion(20, "a?os y mi hobby es tocar guitarra")
-
-#Valor de par?metro predeterminado 
-mi_funcion<- function(pais = "Per?"){
-  paste("Yo soy de", pais)
-}
-
-mi_funcion()
-mi_funcion("Colombia")
-mi_funcion(23)
-
-#Valores devueltos
-#usamos la funci?n return()
-mi_funcion<- function(x) {
-  return(5*x)
-}
-
-mi_funcion(10)
-print(mi_funcion(3))
-
-#Funciones anidadas
-#Ejemplo 1
-fcosto<- function(precio, cantidad) {
-  costo<- precio*cantidad
-  return(costo)
-}
-
-fcosto(4,9)
-fcosto(fcosto(2,2), fcosto(3,3))
-
-#Ejemplo 2
-fcosto1<- function(precio) {
-  fcosto2<- function(cantidad) {
-    costo<- precio*cantidad
-    return(costo)
-  }
-  return(fcosto2)
-}
-
-costo<- fcosto1(4)
-costo(9)
-###############################################################################
-#(Clase 18) Variables Globales, redLines en Rstudio
-
-#Las variables globales que se crean fuera de una funci?n se conocen
-#como variables globales
-#todo el mundo puede utilizar las variables globales, 
-#tanto dentro como fuera de las funciones.
-
-#Ejemplo 1
-Global1<- "Hola"
-
-mi_funcion<- function() {
-  paste(Global1, "mundo")
-}
-
-mi_funcion()
-
-#Ejemplo 2
-#Si Global2 se usa como el nombre de un objeto dentro de la funci?n, 
-#el valor de Global2 en el entorno global  no cambia.
-Global2<- 3500
-
-mi_funcion<- function() {
-  Global2= 9500
-  paste("Mi ingreso mensual es", Global2)
-}
-
-mi_funcion()
-Global2
-
-#Si usa el operador de asignaci?n <<- la variable pertenece
-#al ?mbito global
-mi_funcion<- function() {
-  Global3<<- 2200
-  paste("Mi gasto mensual es", Global3)
-}
-
-mi_funcion()
-Global3
-
-#Adem?s, use el operador de asignaci?n global <<- si desea 
-#cambiar una variable global dentro de una funci?n
-edad<- 20
-
-mi_funcion<- function() {
-  edad<<- 25
-  paste("Yo tengo", edad, "años")
-}
-
-mi_funcion()
-edad
-
-#redLines
-#Ejemplo 1
-pregunta<- function() {
-  cat("Introduzca su edad: ")
-  edad<- readLines(n= 3) 
-  paste("Yo tengo", edad, "a?os")
-}
-
-pregunta()
-
-#Ejemplo 2
-pregunta<- function() {
-  cat("Introduzca su edad: ")
-  edad<- readLines(n= 1) 
-  paste("Yo tengo", edad, "a?os")
-}
-
-#Condicionales
-pA<- 20
-pB<- 25
-pC<- 28
-
-pregunta<- function() {
-  cat("Introduzca el n?mero de hamburguesas que comprar?:")
-  cantidad<- readLines(n=1)
-  cantidad<- as.numeric(cantidad)
-  cat("Indicar si pagar? con efectivo con un si, caso contrario colocar no:")
-  pago<- readLines(n= 1)
-  
-  if (pago == "si"){
-    cat("Indicar que hamburguesa desea comprar: A, B, C")
-    hamburguesa<- readLines(n=1)
-    
-    if (hamburguesa == "A") {
-      costo<- pA*cantidad
-      print(costo)
-      
-    }else if (hamburguesa == "B") {
-      costo<- pA*cantidad
-      print(costo)
-      
-    }else if (hamburguesa == "C") {
-      costo<- pC*cantidad
-      print(costo)
-      
-    }else {
-      print("Hubo un problema, por favor intente de nuevo")
-    }
-    
-  } else if (pago == "no") {
-    cat("Indicar que hamburguesa desea comprar: A, B, C")
-    hamburguesa<- readLines(n=1)
-    
-    if (hamburguesa == "A") {
-      costo<- (pA - pA*0.05)*cantidad
-      print(costo)
-      
-    } else if (hamburguesa == "B") {
-      costo<- (pB - pB*0.05)*cantidad
-      print(costo)
-      
-    }else if (hamburguesa == "c"){
-      costo<- (pC - pC*0.05)*cantidad
-      print(costo)
-      
-    }else {
-      print("Hubo un problema, por favor intente de nuevo")
-    }
-    
-  }else {
-    print("Hubo un problema, por favor intente de nuevo")
-  } 
-
-}
-
-pregunta()
-
-###############################################################################
-#(Clase 19) Bucles while y for 
-
-#Los blucles pueden ejecutar un bloque de c?digo siempre que se
-#alcance una condici?n espec?fica 
-
-#while: bucle que permite ejecutar un conjunto de declaraciones
-#Siempre que una condici?n sea Verdadera
-#Ejemplo 1
-#No se ejecutar? porque no es verdadera la condici?n
-i<- 1
-
-while (i>10) {
-  print(i)
-  i<- i + 1
-}
-
-#Ejemplo 2
-i<- 1
-
-while (i<10) {
-  print(i)
-  i<- i + 1
-}
-
-print(i)
-
-#break: podemos detener el ciclo 
-i<- 1
-
-while (i<10) {
-  print(i)
-  i<- i+1
-  
-  if (i==4) {
-    print(i)
-    break
-  }
-}
-
-#next: podemos omitir una iteraci?n sin terminar el ciclo
-i<- 0
-
-while (i<10) {
-  i<- i + 1
-  
-  if (i==4) {
-    next
-  }
-  
-  print(i)
-}
-
-#Funciones con bucle while
-milist_m3<- list()
-milist_no3<- list()
-
-pregunta<- function(){
-  cat("Introduzca el n?mero inicial")
-  inicio<- readLines(n= 1)
-  inicio<- as.numeric(inicio)
-  cat("Introduzca el n?mero final")
-  final<- readLines(n=1)
-  final<- as.numeric(final)
-  
-  while (inicio <= final) {
-    
-    if  ((inicio%%3) != 0) {
-      cat(inicio, "no es multiplo de 3\n")
-      milist_no3<<- append(milist_no3, inicio)
-    } else {
-      cat(inicio, "es multiplo de 3\n")
-      milist_m3<<- append(milist_m3, inicio)
-    }
-    
-    inicio<- inicio + 1
-  }
-}
-
-pregunta()
-
-#for: bucle que se usa para iterar sobre una secuencia,
-#podemos ejecutar un conjunto de sentencias,
-#una vez por cada elemento de un vector, matriz, lista, etc.
-for (x in 1:10) {
-  print(x)
-}
-
-#Ejemplo 1: imprima todos los elementos de una lista
-frutas<- list("manzana", "mango", "fresa")
-
-for (x in frutas) {
-  print(x)
-}
-
-#Ejemplo 2: imprime el n?mero de dados:
-dados<- c(1,2,3,4,5,6)
-
-for (x in dados) {
-  print(x)
-}
-
-#break: podemos detener el ciclo antes de que haya pasado
-#por todos los elementos
-frutas<- list("manzana", "mango", "fresa")
-
-for (x in frutas) {
-  
-  if (x == "mango") {
-    break
-  }
-  print(x)
-}
-
-#next: declaraci?n, podemos omitir una iteraci?n sin 
-#terminar el ciclo
-frutas<- list("manzana", "mango", "fresa")
-
-for (x in frutas) {
-  if (x == "mango") {
-    next
-  }
-  print(x)
-}
-
-
-#Bucles anidados 
-#Es un bucle dentro de un bucle
-#El "bucle interno" se ejecutar? una vez por cada 
-#iteraci?n del "iteraci?n" del "bucle externo"
-
-num1<- c(5, 3)
-num2<- c(2, 4, 8)
-
-for (x in num1) {
-  for (y in num2) {
-    print(x*y)
-  }
-}
-
-
-#Funciones con ciclo for
-pregunta<- function(){
-  cat("Introduzca el n?mero inicial")
-  inicio<- readLines(n= 1)
-  inicio<- as.numeric(inicio)
-  cat("Introduzca el n?mero final")
-  final<- readLines(n=1)
-  final<- as.numeric(final)
-  
-  for (x in inicio:final) {
-    
-    if  ((x%%2) != 0) {
-      cat(x, "no es m?ltiplo de 2\n")
-      sumaimpar<<- ((x + 1)/2)^2
-    } else {
-      cat(x, "es m?ltiplo de 2\n")
-      sumapar<<- (x/2)*((x/2) + 1)
-    }
-  }
-  cat("La suma de los n?meros pares es", sumapar, "\n")
-  cat("La suma de los n?meros impares es", sumaimpar, "\n")
-}
-
-pregunta()
-
-
-#Funciones con data.frame, bucle for 
-dfimpar<- c()
-dfpar<- c()
-
-pregunta<- function(){
-  cat("Introduzca el n?mero inicial")
-  inicio<- readLines(n= 1)
-  inicio<- as.numeric(inicio)
-  cat("Introduzca el n?mero final")
-  final<- readLines(n=1)
-  final<- as.numeric(final)
-  
-  for (x in inicio:final) {
-    
-    if  ((x%%2) != 0) {
-      cat(x, "no es m?ltiplo de 2\n")
-      df_impar<- data.frame(impares = x)
-      dfimpar<<- rbind(dfimpar, df_impar)
-      sumaimpar<<- ((x + 1)/2)^2
-    } else {
-      cat(x, "es m?ltiplo de 2\n")
-      df_par<- data.frame(pares = x)
-      dfpar<<- rbind(dfpar, df_par)
-      sumapar<<- (x/2)*((x/2) + 1)
-    }
-  }
-  cat("La suma de los n?meros pares es", sumapar, "\n")
-  cat("La suma de los n?meros impares es", sumaimpar, "\n")
-}
-
-pregunta()
