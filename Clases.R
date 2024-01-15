@@ -1544,27 +1544,6 @@ library(ggplot2)
 
 # Crear un data.frame
 datos <- data.frame(
-  Tiempo = c(1, 2, 3, 4, 5),
-  Valor = c(10, 15, 7, 20, 12),
-  Serie = rep("Serie A", 5)  # Agregamos una columna para la leyenda
-)
-
-# Crear un gráfico de línea con ggplot2 y agregar una leyenda
-grafico_linea <- ggplot(datos, aes(x = Tiempo, y = Valor, color = Serie)) +
-  geom_line() +
-  labs(title = "Gráfico de Línea con Leyenda",
-       x = "Tiempo",
-       y = "Valor") +
-  scale_color_manual(values = c("Serie A" = "blue")) # Nombre y color de la leyenda
-
-# Mostrar el gráfico
-print(grafico_linea)
-
-
-##########################################################
-
-# Crear un data.frame
-datos <- data.frame(
   Tiempo = seq(as.Date("2024-01-01"), by = "1 day", length.out = 10),
   Ingresos = c(3, 8, 1, 10, 5, 7, 2, 9, 4, 6),
   Gastos = c(5, 4, 9, 2, 6, 8, 3, 7, 1, 10)
@@ -1572,26 +1551,30 @@ datos <- data.frame(
 
 # Crear el gráfico de línea
 grafico_linea <- ggplot(datos, 
-                        aes(x = Tiempo, 
-                            y = Ingresos)) +
-  geom_line(color = 'blue', 
-            linetype = 'solid', # Tipo de línea
-            size = 2) + # Grosor de la línea
+                        aes(x = Tiempo, y = Ingresos, color = "Ingresos")) +
+  
+  geom_line(linetype = 'solid', # Tipo de línea
+            size = 1) + # Grosor de la línea
   
   # Configuración del diseño del gráfico
+  
   labs(title = 'Gráfico de Línea con ggplot2',
        x = 'Tiempo',
-       y = 'Ingresos') +
+       y = 'Ingresos',
+       color = "Leyenda") + # Agregamos un título a la leyenda
   
-  theme_minimal() +
-  theme(plot.title = element_text(size = 20, # Tamaño de la fuente 
-                                  color = '#44546A', 
-                                  family = 'sans', 
-                                  hjust = 0.5))  # Ajuste de posición horizontal para centrar
+  theme_minimal() + # Ajusta el aspecto visual general del gráfico
+  
+  theme(plot.title = element_text(size = 18, # Tamaño de la fuente 
+                                  color = '#44546A', # Color del texto 
+                                  family = 'sans', # Familia de fuentes
+                                  hjust = 0.5), # Ajuste de posición horizontal para centrar
+        legend.position = "top") +# Posiciona de la leyenda
 
-# Mostrar el gráfico
-x11()
-print(grafico_linea)
+  # Agregar leyenda
+  scale_color_manual(values = c(Ingresos = 'Dark blue')) +  # Definimos el color de la leyenda
+    
+  guides(color = guide_legend(title = "Leyenda"))  # Agregamos un título a la leyenda
 
 
 # Mostrar el gráfico
@@ -1599,6 +1582,7 @@ x11()
 print(grafico_linea)
 
 # linetype : tipos de línea disponibles
+
 # Solid (Sólida): linetype = 'solid'
 # Dashed (Guiones): linetype = 'dashed'
 # Dotted (Puntos): linetype = 'dotted'
@@ -1607,14 +1591,46 @@ print(grafico_linea)
 # Twodash (Doble Guion): linetype = 'twodash'
 # Dashdot (Guion-Punto): linetype = 'dashdot'
 
+# Posición de la leyenda
+# "none": No se muestra la leyenda.
+# "left": La leyenda se coloca a la izquierda del gráfico.
+# "right": La leyenda se coloca a la derecha del gráfico.
+# "top": La leyenda se coloca en la parte superior del gráfico.
+# "bottom": La leyenda se coloca en la parte inferior del gráfico.
+# "inside": La leyenda se coloca dentro del área del gráfico, en la esquina superior derecha por defecto.
+# "inside_horizontal": Similar a "inside", pero la leyenda se coloca en la parte superior del gráfico.
+# "inside_vertical": Similar a "inside", pero la leyenda se coloca a la derecha del gráfico.
 
+# Combinamos dos gráficos de líneas
+grafico_linea <- ggplot(datos, aes(x = Tiempo)) +
+  
+  # Línea para Ingresos
+  geom_line(aes(y = Ingresos, color = "Ingresos"), linetype = 'solid', size = 1) +
+  
+  # Línea para Gastos
+  geom_line(aes(y = Gastos, color = "Gastos"), linetype = 'dashed', size = 1) +
+  
+  # Configuración del diseño del gráfico
+  labs(title = 'Gráfico de Línea con ggplot2',
+       x = 'Tiempo',
+       y = 'Valor') +  # Cambiado a "Valor" para generalizar la etiqueta del eje y
+  
+  theme_minimal() + # Ajusta el aspecto visual general del gráfico
+  
+  theme(plot.title = element_text(size = 18, # Tamaño de la fuente 
+                                  color = '#44546A', # Color del texto 
+                                  family = 'sans', # Familia de fuentes
+                                  hjust = 0.5), # Ajuste de posición horizontal para centrar
+        legend.position = "top") +  # Posiciona la leyenda en la parte superior
+  
+  # Agregar leyenda
+  scale_color_manual(values = c(Ingresos = 'Dark blue', Gastos = 'red')) +  # Definimos colores de la leyenda
+  
+  guides(color = guide_legend(title = "Leyenda"))  # Agregamos un título a la leyenda
 
-
-
-
-
-
-
+# Mostrar el gráfico
+x11()
+print(grafico_linea)
 
 
 # Gráfico circular
