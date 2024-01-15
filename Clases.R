@@ -954,26 +954,40 @@ plot(1:10)
 # xlab: etiqueta en el eje de abscisa
 # ylab: etiqueta en el eje de ordenada
 
-plot(1:10, main= "Mi grafico", xlab = "Eje de abscisas", 
+plot(1:10, 
+     main= "Mi gráfico", 
+     xlab = "Eje de abscisas", 
      ylab = "Eje de ordenadas")
 
 # cex: cambia el tamaño de los puntos
 # 1: valor predeterminado, mientras que 
 # 0.5: es 50% más peque?o 
 # 2: es 100% más grande
-plot(1:10, main= "Mi grafico", xlab = "Eje de abscisas", 
-     ylab = "Eje de ordenadas", cex= 2)
+plot(1:10, 
+     main= "Mi gráfico", 
+     xlab = "Eje de abscisas", 
+     ylab = "Eje de ordenadas", 
+     cex= 2)
 
 # pch: Cambia la forma del punto
 # Use pch con un valor de 0 a 25, donde 1 es el predeterminado
 help("points")
 
-plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
-     ylab = "Eje de ordenadas", cex= 2, pch= 18)
+plot(1:10, 
+     main= "Mi gráfico", 
+     xlab = "Eje de abscisas", 
+     ylab = "Eje de ordenadas", 
+     cex= 2, 
+     pch= 18)
 
 # Apariencia del gráfico
-plot(1:10, main= "Mi gráfico", xlab = "Eje de abscisas", 
-     ylab = "Eje de ordenadas", cex= 2, pch=19 ,col= "red")
+plot(1:10, 
+     main= "Mi gráfico", 
+     xlab = "Eje de abscisas", 
+     ylab = "Eje de ordenadas", 
+     cex= 2, 
+     pch=19 ,
+     col= "red")
 
 # Vemos la lista de todos los colores
 colors()
@@ -987,7 +1001,9 @@ plot(df_pescado$consumo,df_pescado$precio,
      main = "Gráfico de dispersión", 
      xlab= "Consumo",
      ylab= "Precio", 
-     cex= 2, pch= 19, col= "orange")
+     cex= 2, 
+     pch= 19, 
+     col= "orange")
 
 # Insertamos un leyenda
 # usamos legend()
@@ -999,7 +1015,9 @@ plot(df_pescado$consumo,df_pescado$precio,
      main = "Gráfico de dispersi?n", 
      xlab= "Consumo",
      ylab= "Precio", 
-     cex= 2, pch= 19, col= "orange")
+     cex= 2, 
+     pch= 19, 
+     col= "orange")
 
 legend("topright", "Pescado", fill = "orange")
 
@@ -1017,38 +1035,43 @@ plot(df_pescado$consumo,df_pescado$precio,
      main = "Gráfico de dispersión", 
      xlab= "Consumo",
      ylab= "Precio", 
-     cex= 2, pch= 19, col= "orange")
+     cex= 2, 
+     pch= 19, 
+     col= "orange")
 
 points(df_pollo$consumo,df_pollo$precio,
-       cex= 2, pch= 19, col= "dark green")
+       cex= 2, 
+       pch= 19, 
+       col= "dark green")
 
 legend("topright", c("Pescado", "Pollo"), fill= c("orange", "dark green"))
 
 # Gráfico de Línea
 ##################
 
-#Colocamos type = "l" para que nos de un gr?fico lineal
+# type = "l" para que nos de un gráfico lineal
 x<- c(10,15,18,23,26)
 y<- c(9,11,15,20,22)
 
-x11()
-plot(x,y, main= "Mi gr?fico lineal", xlab= "Eje de abscisas",
-     ylab = "Eje de ordenadas", type = "l")
+plot(x,y, 
+     main= "Mi gráfico lineal", 
+     xlab= "Eje de abscisas",
+     ylab = "Eje de ordenadas", 
+     type = "l")
 
-#Cambiamos el grosor de la linea
-#1 es el valor predeterminado, mientras que 0.5 significa 50% m?s peque?o 
-#y 2 significa 100% m?s grande
-x11()
-plot(x,y, main= "Mi gr?fico lineal", xlab= "Eje de abscisas",
-     ylab = "Eje de ordenadas", type = "l", lwd=2)
+# lwd: Cambia el grosor de la linea
+# 1: es el valor predeterminado, 
+# 0.5: es 50% más pequeñoo 
+# 2: es 100% más grande
+plot(x,y, 
+     main= "Mi gráfico lineal", 
+     xlab= "Eje de abscisas",
+     ylab = "Eje de ordenadas", 
+     type = "l", 
+     lwd=2)
 
-#Estilos de linea
-#Utilizamos lty con un valor de 0 a 6 para especificar el formato de l?nea.
-x11()
-plot(x,y, main= "Mi gr?fico lineal", xlab= "Eje de abscisas",
-     ylab = "Eje de ordenadas", type = "l", lwd=2, lty=3)
-
-#Valores de par?metro disponibles para lty
+# lty: estilos de linea
+# Valores de parámetro disponibles para lty
 # 0 quita la línea
 # 1 muestra una línea continua
 # 2 muestra una línea discontinua
@@ -1057,255 +1080,326 @@ plot(x,y, main= "Mi gr?fico lineal", xlab= "Eje de abscisas",
 # 5 muestra una l?nea de "trazos largos"
 # 6 muestra una l?nea de "dos guiones"
 
-#Graficamos los ingresos anuales
+plot(x,y, 
+     main= "Mi gráfico lineal", 
+     xlab= "Eje de abscisas",
+     ylab = "Eje de ordenadas", 
+     type = "l", 
+     lwd=2, 
+     lty=3)
+
+# Creamo un data.frame
 grupo_df<- data.frame(
-  a?os = c(2016, 2017, 2018, 2019, 2020),
+  años = c(2016, 2017, 2018, 2019, 2020),
   ingresos = c(1500, 12000,8500,14300,12500))
 
-x11()
-plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "A?os", ylab= "Ingresos", type= "l", lwd= 2, lty= 5)
+plot(grupo_df$años, grupo_df$ingresos, 
+     main= "Ingresos anuales",
+     xlab= "Años", 
+     ylab= "Ingresos", 
+     type= "l", 
+     lwd= 2, 
+     lty= 5)
 
-#Color de linea
-x11()
-plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "A?os", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
+# Color de linea
+
+plot(grupo_df$años, grupo_df$ingresos, 
+     main= "Ingresos anuales",
+     xlab= "A?os", 
+     ylab= "Ingresos", 
+     type= "l", 
+     lwd= 2, 
+     lty= 5,
      col="dark blue")
 
-#Insertamos un leyenda
-#usamos legend()
-##La leyenda se puede colocar como:
-#bottomright, bottomleft, bottom, topright, topleft, 
-#top, center, right, left.
-x11()
-plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "A?os", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
+# legend: insertar una leyenda
+# Posiciones de la leyenda:
+# bottomright, bottomleft, bottom, topright, topleft, 
+# top, center, right, left.
+
+plot(grupo_df$años, grupo_df$ingresos, 
+     main= "Ingresos anuales",
+     xlab= "A?os", 
+     ylab= "Ingresos", 
+     type= "l", 
+     lwd= 2, 
+     lty= 5,
      col="dark blue")
 
 legend("bottomright", "Angela", fill = "dark blue")
 
-#Juntamos dos gr?ficos lineales
-grupo_df<- data.frame(
-  a?os = c(2016, 2017, 2018, 2019, 2020),
+# Juntar dos gráficos lineales
+grupo_df <- data.frame(
+  años = c(2016, 2017, 2018, 2019, 2020),
   ingresos = c(1500, 12000,8500,14300,12500))
 
-grupo_df2<- data.frame(
-  a?os= c(2016, 2017, 2018, 2019, 2020),
-  ingresos= c(8300,4200,7500,10800,9700))
+grupo_df2 <- data.frame(
+  años = c(2016, 2017, 2018, 2019, 2020),
+  ingresos = c(8300,4200,7500,10800,9700))
 
-x11()
-plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "A?os", ylab= "Ingresos", type= "l", lwd= 2, lty= 5,
+plot(grupo_df$años, grupo_df$ingresos, 
+     main= "Ingresos anuales",
+     xlab= "Años", 
+     ylab= "Ingresos", 
+     type= "l", 
+     lwd= 2, 
+     lty= 5,
      col="dark blue")
-lines(grupo_df2$a?os, grupo_df2$ingresos, type= "l", lwd= 2, lty= 6,
+
+lines(grupo_df2$años, grupo_df2$ingresos, 
+      type= "l", 
+      lwd= 2, 
+      lty= 6,
       col= "dark red")
 
 legend("bottomright", c("Angela", "Victor"), 
        fill = c("dark blue", "dark red"))
 
-#Gr?fico de lineas siguiente la secuencia de puntos
-x11()
-plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "A?os", ylab= "Ingresos", type= "o", lwd= 2, lty= 5,
+# Gráfico de lineas con secuencia de puntos
+plot(grupo_df$años, grupo_df$ingresos, 
+     main= "Ingresos anuales",
+     xlab= "Años", 
+     ylab= "Ingresos", 
+     type= "o", 
+     lwd= 2, 
+     lty= 5,
      col="dark blue")
-lines(grupo_df2$a?os, grupo_df2$ingresos, type= "o", lwd= 2, lty= 6,
+
+lines(grupo_df2$años, grupo_df2$ingresos, 
+      type= "o", 
+      lwd= 2, 
+      lty= 6,
       col= "dark red")
 
 legend("bottomright", c("Angela", "Victor"), 
        fill = c("dark blue", "dark red"))
 
-#Cambios el tipo de puntos y aumentamos su tama?o
-x11()
-plot(grupo_df$a?os, grupo_df$ingresos, main= "Ingresos anuales",
-     xlab= "A?os", ylab= "Ingresos", type= "o", lwd= 2, lty= 5,
-     col="dark blue", pch= 19, cex= 2)
-lines(grupo_df2$a?os, grupo_df2$ingresos, type= "o", lwd= 2, lty= 6,
-      col= "dark red", pch= 19, cex= 2)
+# Cambios el tipo de puntos y aumentamos su tamaño
+plot(grupo_df$años, grupo_df$ingresos, 
+     main= "Ingresos anuales",
+     xlab= "Años", 
+     ylab= "Ingresos", 
+     type= "o", 
+     lwd= 2, 
+     lty= 5,
+     col="dark blue", 
+     pch= 19, 
+     cex= 2)
+
+lines(grupo_df2$años, grupo_df2$ingresos, 
+      type= "o", 
+      lwd= 2, 
+      lty= 6,
+      col= "dark red", 
+      pch= 19, 
+      cex= 2)
 
 legend("bottomright", c("Angela", "Victor"), 
        fill = c("dark blue", "dark red"))
 
-###############################################################################
-#(Clase 11) Gr?ficos circulares en Rstudio
+# Gráfico circular
+##################
 
 df_gustos<- data.frame(
-  preferencia= c(0.32, 0.24,0.16,0.29),
-  cursos= c("?lgebra", "Trigonometr?a", "Geometr?a","Aritm?tica"),
+  preferencia= c(32, 24, 16, 28),
+  cursos= c("Álgebra", "Trigonometría", "Geometría","Aritmética"),
   colores= c("dark blue", "dark red", "orange", "purple"))
 
-x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n")
+pie(df_gustos$preferencia, 
+    main = "Preferencia de los cursos en el salón")
 
-#Etiquetas y encabezados
+# Etiquetas y encabezados
+# Sin símbolo de %
 etiqueta1<- paste(df_gustos$preferencia)
 
-x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n",
+pie(df_gustos$preferencia, 
+    main = "Preferencia de los cursos en el salón",
     label= etiqueta1)
 
+# Con símbolo de %
 etiqueta2<- paste(df_gustos$preferencia, "%", sep= " ")
 
-x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n",
+pie(df_gustos$preferencia, 
+    main = "Preferencia de los cursos en el salón",
     label= etiqueta2)
 
-#Apariencia
-x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n",
+# Apariencia
+pie(df_gustos$preferencia, 
+    main = "Preferencia de los cursos en el salón",
     label= etiqueta2,
     col = df_gustos$colores)
 
-#Insertamos un leyenda
-#usamos legend()
-##La leyenda se puede colocar como:
-#bottomright, bottomleft, bottom, topright, topleft, 
-#top, center, right, left.
-x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n",
+# legend: inserta una leyenda
+# Posición de la leyenda
+# bottomright, bottomleft, bottom, topright, topleft, 
+# top, center, right, left.
+pie(df_gustos$preferencia, 
+    main = "Preferencia de los cursos en el salón",
     label= etiqueta2,
     col = df_gustos$colores)
 
 legend("topleft", df_gustos$cursos, fill = df_gustos$colores)
 
-#Tama?o de leyenda
-x11()
-pie(df_gustos$preferencia, main = "Preferencia de los cursos en el sal?n",
+# cex: cambia el tamaño de la leyenda
+pie(df_gustos$preferencia, 
+    main = "Preferencia de los cursos en el salón",
     label= etiqueta2,
     col = df_gustos$colores)
 
 legend("topleft", df_gustos$cursos, fill = df_gustos$colores, cex= 0.85)
 
-###############################################################################
-#(Clase 12) Gr?fico de barras en Rstudio
+# Gráfico de barra
+# ################
 
-df_ingresos<- data.frame(
-  meses= c("En", "Fe", "Mar", "Abr", "May", "Jun",
+df_ingresos <- data.frame(
+  meses = c("En", "Fe", "Mar", "Abr", "May", "Jun",
            "Jul", "Ago", "Sep", "Oct", "Nov",
            "Dic"),
-  ingresos= c(1500,2500,2000,3500,7000,4000,8500,6000,10000,5000,7500,
+  ingresos = c(1500,2500,2000,3500,7000,4000,8500,6000,10000,5000,7500,
               11000))
 
-#Usamaos barplot para graficar
-#Usamos namex.arg para definir los nombres de cada 
-#observaci?n en el eje x
-x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses)
+# namex.arg: define los nombres de cada observación en el eje x
+barplot(df_ingresos$ingresos, 
+        names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", 
+        xlab= "Meses", 
+        ylab= "Ingresos")
 
-#Cambiamos el tama?o de los nombres
-x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses, cex.names = 0.9)
-
-#Titulo y ejes
-x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
-        main= "Ingresos mensuales", xlab= "Meses", ylab= "Ingresos",
+# cex.name: cambia el tamaño de los nombres
+barplot(df_ingresos$ingresos, 
+        names.arg = df_ingresos$meses, 
         cex.names = 0.9)
 
-#Apariencia
-x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
-        main= "Ingresos mensuales", xlab= "Meses", ylab= "Ingresos",
-        cex.names = 0.9, col = "tomato3")
+# Apariencia
+barplot(df_ingresos$ingresos, 
+        names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", 
+        xlab= "Meses", 
+        ylab= "Ingresos",
+        cex.names = 0.9, 
+        col = "tomato3")
 
-#Densidad / Textura de barra
-#Para cambiar la textura de la barra usamos density
-x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
-        main= "Ingresos mensuales", xlab= "Meses", ylab= "Ingresos",
-        cex.names = 0.9, col= "tomato3", density= 25)
+# density: cambia la textura de la barra
+barplot(df_ingresos$ingresos, 
+        names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", 
+        xlab= "Meses", 
+        ylab= "Ingresos",
+        cex.names = 0.9, 
+        col= "tomato3", 
+        density= 25)
 
-#Utilizamos width para el ancho de la barra
-x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
-        main= "Ingresos mensuales", xlab= "Meses", ylab= "Ingresos",
-        cex.names = 0.9, col= "tomato3", density= 25,
+# width: cambia el tamaño de la barra
+barplot(df_ingresos$ingresos, 
+        names.arg = df_ingresos$meses,
+        main= "Ingresos mensuales", 
+        xlab= "Meses", 
+        ylab= "Ingresos",
+        cex.names = 0.9, 
+        col= "tomato3", 
+        density= 25,
         width= c(1,2,3,4,5,6,7,8,9,10,11,12))
 
-x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
-        main= "Ingresos mensuales", xlab= "Meses", ylab= "Ingresos",
-        cex.names = 0.9, col= "tomato3", density= 25,
-        width= c(4,4,4,4,4,4,4,4,4,4,4,4))
-
-#Barras horizontales
-x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
-        main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
-        cex.names = 0.8, col= "tomato3", density= 25,
+# horiz: cambia la posición del gráfico a horizontal
+barplot(df_ingresos$ingresos, 
+        names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", 
+        xlab= "ingresos", 
+        ylab= "Meses",
+        cex.names = 0.8, 
+        col= "tomato3", 
+        density= 25,
         width= c(4,4,4,4,4,4,4,4,4,4,4,4),
         horiz= TRUE)
 
-#Modificamos los l?mites del eje x
-x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
-        main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
-        cex.names = 0.8, col= "tomato3", density= 25,
-        width= c(4,4,4,4,4,4,4,4,4,4,4,4),
-        horiz= TRUE, xlim = c(0,14000))
+# Definimos los límites del eje x
+barplot(df_ingresos$ingresos, 
+        names.arg = df_ingresos$meses,
+        main = "Ingresos mensuales", 
+        xlab= "ingresos", 
+        ylab= "Meses",
+        cex.names = 0.8, 
+        col = "tomato3", 
+        density = 25,
+        width = c(4,4,4,4,4,4,4,4,4,4,4,4),
+        horiz = TRUE, 
+        xlim = c(0,14000))
 
-#Insertamos un leyenda
-#usamos legend()
-##La leyenda se puede colocar como:
-#bottomright, bottomleft, bottom, topright, topleft, 
-#top, center, right, left.
-x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
-        main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
-        cex.names = 0.8, col= "tomato3", density= 25,
-        width= c(4,4,4,4,4,4,4,4,4,4,4,4),
-        horiz= TRUE, xlim = c(0,14000))
+# legend: insertamos un leyenda
+# Posición de leyenda 
+# bottomright, bottomleft, bottom, topright, topleft, 
+# top, center, right, left.
+barplot(df_ingresos$ingresos, 
+        names.arg = df_ingresos$meses,
+        main = "Ingresos mensuales", 
+        xlab = "ingresos", 
+        ylab = "Meses",
+        cex.names = 0.8, 
+        col = "tomato3", density = 25,
+        width = c(4,4,4,4,4,4,4,4,4,4,4,4),
+        horiz = TRUE, 
+        xlim = c(0,14000))
 
 legend("bottomright", "Ingresos de Pamela", fill = "tomato3")
 
-#Otra forma de insertar leyenda
+# Otra forma de insertar leyenda
 meses_table<- table(df_ingresos$meses)
-colores<- c("blue", "red", "yellow", "orange", "gray", "green", 
+mis_colores<- c("blue", "red", "yellow", "orange", "gray", "green", 
             "tomato3", "dark red", "violetred", "turquoise", "pink2",
             "honeydew")
 
 x11()
-barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
-        main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
-        cex.names = 0.8, col= colores,
+barplot(df_ingresos$ingresos, 
+        names.arg=df_ingresos$meses,
+        main= "Ingresos mensuales", 
+        xlab= "ingresos", 
+        ylab= "Meses",
+        cex.names = 0.8, 
+        col= mis_colores,
         width= c(4,4,4,4,4,4,4,4,4,4,4,4),
         horiz= TRUE, xlim = c(0,14000),
         legend= rownames(meses_table))
 
-#Cambiamos la orientaci?n de los caracteres de los ejes con last
-#0: predeterminado
-#1: pone horizontal el eje de ordenadas
-#2: pone horizontal el eje de ordenadas y vertical abscisas
-#3: pone todos los ejes verticalmente
-x11()
+# last: cambia la orientación de los caracteres de los ejes 
+# 0: predeterminado
+# 1: pone horizontal el eje de ordenadas
+# 2: pone horizontal el eje de ordenadas y vertical abscisas
+# 3: pone todos los ejes verticalmente
 barplot(df_ingresos$ingresos, names.arg=df_ingresos$meses,
         main= "Ingresos mensuales", xlab= "ingresos", ylab= "Meses",
-        cex.names = 0.8, col= colores,
+        cex.names = 0.8, col= mis_colores,
         width= c(4,4,4,4,4,4,4,4,4,4,4,4),
         horiz= TRUE, xlim = c(0,14000),
         legend= rownames(meses_table),
         las= 1)
 
-###############################################################################
-#(Clase 13) Gr?fico de barras apiladas y agrupadas en Rstudio
-df_fuma<- data.frame(
-  genero= rep(c("Femenino", "Masculino", "Masculino", "Femenino",
+
+# Gráfico de barras apiladas y agrupadas
+# ######################################
+
+# Creamos un data.frame
+df_fuma <- data.frame(
+  genero = rep(c("Femenino", "Masculino", "Masculino", "Femenino",
                 "Masculino", "Femenino", "Masculino", "Femenino"),
               times= c(2,3,8,7,9,5,4,6)),
-  fuma= rep(c("Si", "No", "Si", "Si", "Si", "No", "Si", "No"), 
+  fuma = rep(c("Si", "No", "Si", "Si", "Si", "No", "Si", "No"), 
             times= c(7,3,5,9,4,6,2,8)))
 
-fuma_table<- table(df_fuma$genero, df_fuma$fuma)
+fuma_table <- table(df_fuma$genero, df_fuma$fuma)
 
-x11()
-barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
-        xlab= "Fuman", ylab = "Cantidad",
-        col= c("dark red", "dark blue"))
+barplot(fuma_table, 
+        main = "Cantidad de personas que fuman y no fuman",
+        xlab = "Fuman", 
+        ylab = "Cantidad",
+        col = c("dark red", "dark blue"))
 
-#Modificamos el eje de ordenadas
-x11()
-barplot(fuma_table, main= "Cantidad de personas que fuman y no fuman",
-        xlab= "Fuman", ylab = "Cantidad",
-        col= c("dark red", "dark blue"), ylim= c(0,35))
+# Modificamos el eje de ordenadas
+barplot(fuma_table, 
+        main= "Cantidad de personas que fuman y no fuman",
+        xlab= "Fuman", 
+        ylab = "Cantidad",
+        col= c("dark red", "dark blue"), 
+        ylim= c(0,35))
 
 #Insertamos leyenda
 x11()
