@@ -1049,13 +1049,13 @@ plot(x,y, main= "Mi gr?fico lineal", xlab= "Eje de abscisas",
      ylab = "Eje de ordenadas", type = "l", lwd=2, lty=3)
 
 #Valores de par?metro disponibles para lty
-#0 quita la l?nea
-#1 muestra una l?nea continua
-#2 muestra una l?nea discontinua
-#3 muestra una l?nea de puntos
-#4 muestra una l?nea de "puntos discontinuos"
-#5 muestra una l?nea de "trazos largos"
-#6 muestra una l?nea de "dos guiones"
+# 0 quita la línea
+# 1 muestra una línea continua
+# 2 muestra una línea discontinua
+# 3 muestra una línea de puntos
+# 4 muestra una línea de "puntos discontinuos"
+# 5 muestra una l?nea de "trazos largos"
+# 6 muestra una l?nea de "dos guiones"
 
 #Graficamos los ingresos anuales
 grupo_df<- data.frame(
