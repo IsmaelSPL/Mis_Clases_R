@@ -1549,19 +1549,16 @@ datos <- data.frame(
   Gastos = c(5, 4, 9, 2, 6, 8, 3, 7, 1, 10)
 )
 
-# Crear el gráfico de línea
-grafico_linea <- ggplot(datos, 
-                        aes(x = Tiempo, y = Ingresos, color = "Ingresos")) +
+# Gráfico de línea
+grafico_linea <- ggplot(datos, aes(x = Tiempo)) +
   
-  geom_line(linetype = 'solid', # Tipo de línea
-            size = 1) + # Grosor de la línea
+  # Línea para Ingresos
+  geom_line(aes(y = Ingresos, color = "Ingresos"), linetype = 'solid', size = 1) +
   
   # Configuración del diseño del gráfico
-  
   labs(title = 'Gráfico de Línea con ggplot2',
-       x = 'Tiempo',
-       y = 'Ingresos',
-       color = "Leyenda") + # Agregamos un título a la leyenda
+       x = 'Tiempo', # Etiqueta del eje X
+       y = 'Valor') +  # Etiqueta del eje Y
   
   theme_minimal() + # Ajusta el aspecto visual general del gráfico
   
@@ -1569,13 +1566,12 @@ grafico_linea <- ggplot(datos,
                                   color = '#44546A', # Color del texto 
                                   family = 'sans', # Familia de fuentes
                                   hjust = 0.5), # Ajuste de posición horizontal para centrar
-        legend.position = "top") +# Posiciona de la leyenda
-
+        legend.position = "top") +  # Posiciona la leyenda en la parte superior
+  
   # Agregar leyenda
-  scale_color_manual(values = c(Ingresos = 'Dark blue')) +  # Definimos el color de la leyenda
-    
+  scale_color_manual(values = c(Ingresos = 'Dark blue')) +  # Definimos colores de la leyenda
+  
   guides(color = guide_legend(title = "Leyenda"))  # Agregamos un título a la leyenda
-
 
 # Mostrar el gráfico
 x11()
@@ -1612,8 +1608,8 @@ grafico_linea <- ggplot(datos, aes(x = Tiempo)) +
   
   # Configuración del diseño del gráfico
   labs(title = 'Gráfico de Línea con ggplot2',
-       x = 'Tiempo',
-       y = 'Valor') +  # Cambiado a "Valor" para generalizar la etiqueta del eje y
+       x = 'Tiempo', # Etiqueta del eje X
+       y = 'Valor') +  # Etiqueta del eje Y
   
   theme_minimal() + # Ajusta el aspecto visual general del gráfico
   
