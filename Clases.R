@@ -1533,6 +1533,25 @@ par(mfrow = c(1,1))
 # Activamos la librería
 library(ggplot2)
 
+# Diferencia entre ggplot y geom_
+
+# 1. ggplot(): ggplot es la función principal de ggplot2 que se utiliza para inicializar un gráfico. 
+  # Proporciona la estructura básica del gráfico y se encarga de definir los datos y 
+  # las variables estéticas. La función ggplot requiere al menos dos argumentos principales:
+    
+    # data: Especifica el conjunto de datos que se utilizará en el gráfico.
+    # aes(): Define las estéticas (atributos visuales) del gráfico, como los ejes x e y, 
+    # el color, la forma, etc.
+
+  # Después de ggplot, puedes agregar capas adicionales utilizando funciones geom_, stat_, 
+  # y otras, para agregar elementos específicos al gráfico.
+
+# 2. geom_ (por ejemplo, geom_point, geom_histogram, etc.)
+  # Las funciones que comienzan con geom_ representan capas geométricas que se añaden al gráfico. 
+  # Cada geom_ representa un tipo específico de visualización (puntos, líneas, barras, etc.). 
+  # Por ejemplo, geom_point se utiliza para agregar puntos al gráfico, geom_histogram 
+  # para agregar un histograma, y así sucesivamente.
+
 # Gráfico de dispersión
 #######################
 
@@ -1826,9 +1845,37 @@ print(grafico_barras)
 # Histograma
 ############
 
+# Creamos un data.frame
+datos <- data.frame(
+  valores = rnorm(100, mean = 0, sd = 1)
+)
 
+# Color personalizado
+color <- "#66B2FF"
 
+# Crea un histograma con ggplot2 (versión actualizada)
 
+grafico_histograma<- ggplot(datos, aes(x = valores, fill = after_stat(count))) +
+  
+  # binwidth: Este argumento define el ancho de los "bins" (contenedores) del histograma
+  # color = "white": Este argumento especifica el color del borde de los "bins".
+  # alpha = 0.7: Este argumento controla la transparencia de los "bins". 
+  # fill = color: Este argumento define el color de relleno de los "bins"
+  geom_histogram(binwidth = 0.5, color = "white", alpha = 0.7, fill = color) +
+  
+  labs(title = "Histograma",
+       x = "Valores",
+       y = "Frecuencia") +
+  
+  theme_minimal() + # Ajusta el aspecto visual general del gráfico
+  
+  theme(plot.title = element_text(size = 18, # Tamaño de la fuente 
+                                  color = '#44546A', # Color del texto 
+                                  family = 'sans', # Familia de fuentes
+                                  hjust = 0.5)) + # Ajuste de posición horizontal para centrar
+  
+  # estamos colocando low y high del mismo color para que todo sea igual
+  scale_fill_gradient(low = color, high = color)
 
-
-
+x11()
+print(grafico_histograma)
