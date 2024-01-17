@@ -104,8 +104,8 @@ class(x)
 # 3. Operaciones Aritméticas #
 ##############################
 
-a = 17
-b = 2
+a <- 17
+b <- 2
 
 # Adición
 a + b 
